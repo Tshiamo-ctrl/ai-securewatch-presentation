@@ -1,0 +1,946 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AI SecureWatch – Brand, Market & Landscape | Milgrand Tshiamo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Independent brand, market and competitive landscape view of AI SecureWatch by Milgrand Tshiamo, focused on ghost vendors and payment reality.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --text-xs:   clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+      --text-sm:   clamp(0.875rem,0.8rem + 0.35vw, 1rem);
+      --text-base: clamp(1rem,0.95rem + 0.25vw,1.125rem);
+      --text-lg:   clamp(1.125rem,1rem + 0.75vw,1.5rem);
+      --text-xl:   clamp(1.5rem,1.2rem + 1.25vw,2.25rem);
+      --text-2xl:  clamp(2rem,1.2rem + 2.5vw,3.5rem);
+
+      --space-1: 0.25rem;
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-5: 1.25rem;
+      --space-6: 1.5rem;
+      --space-8: 2rem;
+      --space-10: 2.5rem;
+      --space-12: 3rem;
+      --space-16: 4rem;
+
+      --color-bg: #09090b;
+      --color-surface: rgba(24, 24, 27, 0.6);
+      --color-surface-soft: rgba(39, 39, 42, 0.4);
+      --color-border: rgba(255, 255, 255, 0.1);
+      --color-text: #f4f4f5;
+      --color-text-muted: #a1a1aa;
+      --color-accent: #38bdf8;
+      --color-accent-soft: rgba(56, 189, 248, 0.1);
+      --color-badge: rgba(56, 189, 248, 0.15);
+
+      --radius-sm: 0.5rem;
+      --radius-md: 1rem;
+      --radius-lg: 1.5rem;
+      --radius-pill: 9999px;
+
+      --shadow-soft: 0 10px 40px -10px rgba(0,0,0,0.5);
+      --max-width: 1120px;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: var(--text-base);
+      line-height: 1.6;
+      color: var(--color-text);
+      background: radial-gradient(circle at 0% 0%, #1e1b4b 0%, #09090b 40%, #09090b 100%);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><rect width="100" height="100" fill="none"/><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.03)"/></svg>');
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    h1, h2, h3, .logo-text-main {
+      font-family: 'Outfit', system-ui, sans-serif;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    main {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: var(--space-8) var(--space-4) var(--space-12);
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--space-4);
+      margin-bottom: var(--space-10);
+      animation: fadeInDown 0.8s ease-out;
+    }
+
+    .logo-mark {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+
+    .logo-shape {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #0ea5e9, #38bdf8);
+      box-shadow: 0 8px 24px rgba(14, 165, 233, 0.4);
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+    }
+
+    .logo-shape::after {
+      content: "";
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 3px solid rgba(255, 255, 255, 0.9);
+      border-right-color: transparent;
+      transform: rotate(45deg);
+    }
+
+    .logo-text-main {
+      font-size: var(--text-lg);
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      background: linear-gradient(90deg, #fff, #a1a1aa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .logo-text-sub {
+      font-size: 0.7rem;
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-weight: 500;
+      margin-top: -2px;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      justify-content: flex-end;
+    }
+
+    nav a {
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-pill);
+      font-size: var(--text-xs);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-text-muted);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid transparent;
+      backdrop-filter: blur(10px);
+      transition: all 0.2s ease;
+    }
+
+    nav a:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin-bottom: var(--space-5);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.3rem 0.8rem;
+      border-radius: var(--radius-pill);
+      font-size: var(--text-xs);
+      font-weight: 500;
+      background: rgba(56, 189, 248, 0.1);
+      color: var(--color-accent);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      backdrop-filter: blur(8px);
+    }
+
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--color-accent);
+      box-shadow: 0 0 8px var(--color-accent);
+      animation: pulse 2s infinite;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: var(--space-10);
+      padding: var(--space-10);
+      border-radius: var(--radius-lg);
+      background: linear-gradient(145deg, rgba(30, 41, 59, 0.4), rgba(15, 23, 42, 0.2));
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.05);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      margin-bottom: var(--space-12);
+      position: relative;
+      overflow: hidden;
+      animation: fadeInUp 1s ease-out;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: radial-gradient(circle at 50% 50%, rgba(56, 189, 248, 0.05) 0%, transparent 50%);
+      pointer-events: none;
+      animation: rotateSlow 20s linear infinite;
+    }
+
+    .hero-left {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-kicker {
+      font-family: 'Outfit', sans-serif;
+      font-size: var(--text-sm);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-3);
+    }
+
+    .hero-title {
+      font-size: var(--text-2xl);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: var(--space-5);
+      color: #fff;
+    }
+
+    .hero-title span {
+      background: linear-gradient(135deg, #38bdf8, #818cf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+
+    .hero-lede {
+      font-size: 1.1rem;
+      color: #cbd5e1;
+      max-width: 36rem;
+      margin-bottom: var(--space-6);
+      line-height: 1.7;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-4);
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      padding-top: var(--space-4);
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .hero-meta strong {
+      color: #fff;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    .hero-right {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hero-panel {
+      padding: var(--space-6);
+      border-radius: var(--radius-md);
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--color-border);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 10px 30px -5px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+    }
+    
+    .hero-panel:hover {
+      transform: translateY(-5px);
+      border-color: rgba(56, 189, 248, 0.3);
+    }
+
+    .hero-panel h3 {
+      font-size: var(--text-base);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: var(--space-3);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .hero-panel h3::before {
+      content: '';
+      display: inline-block;
+      width: 12px; height: 12px;
+      background: #818cf8;
+      border-radius: 3px;
+    }
+
+    .hero-panel p {
+      margin: 0 0 var(--space-4);
+      color: #cbd5e1;
+      font-size: 0.95rem;
+    }
+
+    .hero-chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+    }
+
+    .chip {
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 0.3rem 0.8rem;
+      border-radius: var(--radius-pill);
+      background: rgba(56, 189, 248, 0.1);
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+
+    section {
+      margin-bottom: var(--space-16);
+      animation: fadeInUp 1s ease-out;
+      animation-fill-mode: both;
+    }
+    
+    section:nth-child(even) { animation-delay: 0.2s; }
+    section:nth-child(odd) { animation-delay: 0.3s; }
+
+    .section-label {
+      font-family: 'Outfit', sans-serif;
+      font-size: var(--text-xs);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--color-accent);
+      margin-bottom: var(--space-2);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .section-label::before {
+      content: '';
+      width: 20px;
+      height: 2px;
+      background: var(--color-accent);
+    }
+
+    h2 {
+      font-size: var(--text-xl);
+      font-weight: 700;
+      margin: 0 0 var(--space-4);
+      letter-spacing: -0.01em;
+      color: #fff;
+    }
+
+    p {
+      margin: 0 0 var(--space-4);
+      color: #a1a1aa;
+      max-width: 70ch;
+    }
+
+    .columns {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: var(--space-8);
+      align-items: start;
+    }
+
+    .card {
+      padding: var(--space-6);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--color-border);
+      background: var(--color-surface);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      border-color: rgba(255,255,255,0.2);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+
+    .card h3 {
+      font-size: var(--text-lg);
+      font-weight: 600;
+      margin: 0 0 var(--space-4);
+      color: #fff;
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin-top: var(--space-4);
+    }
+
+    .pill {
+      font-size: var(--text-xs);
+      font-weight: 500;
+      padding: 0.3rem 0.8rem;
+      border-radius: var(--radius-pill);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: #e4e4e7;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-5);
+      margin-top: var(--space-6);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-5);
+      margin-top: var(--space-6);
+    }
+
+    .stat {
+      padding: var(--space-5);
+      border-radius: var(--radius-md);
+      background: linear-gradient(180deg, rgba(24, 24, 27, 0.8) 0%, rgba(9, 9, 11, 0.8) 100%);
+      border: 1px solid var(--color-border);
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s ease;
+    }
+    
+    .stat:hover {
+      border-color: var(--color-accent);
+    }
+    
+    .stat::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .stat:hover::before {
+      opacity: 1;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-2);
+    }
+
+    .stat-value {
+      font-family: 'Outfit', sans-serif;
+      font-size: var(--text-xl);
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: var(--space-3);
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 1.25rem;
+      color: var(--color-text-muted);
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+      position: relative;
+    }
+
+    li::marker {
+      color: var(--color-accent);
+    }
+
+    .table-wrapper {
+      border-radius: var(--radius-md);
+      border: 1px solid var(--color-border);
+      overflow-x: auto;
+      background: rgba(24, 24, 27, 0.4);
+      margin-top: var(--space-6);
+      backdrop-filter: blur(10px);
+    }
+
+    table {
+      width: 100%;
+      min-width: 800px; /* Forces scroll on small screens */
+      border-collapse: collapse;
+      font-size: 0.95rem;
+    }
+
+    thead {
+      background: rgba(255,255,255,0.03);
+    }
+
+    th, td {
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      text-align: left;
+    }
+
+    th {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 600;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 0.75rem;
+      white-space: nowrap;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tbody tr {
+      transition: background 0.2s ease;
+    }
+
+    tbody tr:hover {
+      background: rgba(255,255,255,0.02);
+    }
+    
+    tbody td:first-child {
+      font-weight: 500;
+      color: #fff;
+    }
+
+    .note {
+      font-size: 0.85rem;
+      color: #71717a;
+      margin-top: var(--space-6);
+      padding: var(--space-4);
+      background: rgba(255,255,255,0.02);
+      border-left: 3px solid #3f3f46;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    }
+
+    footer {
+      border-top: 1px solid var(--color-border);
+      margin-top: var(--space-16);
+      padding-top: var(--space-8);
+      padding-bottom: var(--space-4);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+      text-align: center;
+      font-size: 0.85rem;
+      color: #71717a;
+    }
+
+    footer strong {
+      color: #a1a1aa;
+      font-weight: 500;
+    }
+
+    /* Animations */
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.4); }
+      70% { box-shadow: 0 0 0 6px rgba(56, 189, 248, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0); }
+    }
+    
+    @keyframes rotateSlow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .hero {
+        grid-template-columns: 1fr;
+        gap: var(--space-8);
+      }
+      .hero-right {
+        order: -1;
+      }
+      .columns,
+      .grid-3 {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      :root {
+        --space-10: 2rem;
+        --space-12: 2.5rem;
+        --space-16: 3.5rem;
+      }
+      .columns,
+      .grid-3,
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-4);
+      }
+      nav {
+        width: 100%;
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-bottom: 0.5rem;
+        -webkit-overflow-scrolling: touch;
+        flex-wrap: nowrap;
+      }
+      nav a {
+        flex-shrink: 0;
+      }
+      .hero {
+        padding: var(--space-6);
+        border-radius: var(--radius-md);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-title {
+        font-size: 2rem;
+      }
+      .hero-meta {
+        flex-direction: column;
+        gap: var(--space-3);
+      }
+      main {
+        padding: var(--space-6) var(--space-4);
+      }
+      .badge {
+        font-size: 0.7rem;
+        padding: 0.25rem 0.6rem;
+      }
+      .card, .stat, .hero-panel {
+        padding: var(--space-4);
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <div class="logo-mark">
+        <div class="logo-shape" aria-hidden="true"></div>
+        <div>
+          <div class="logo-text-main">AI SecureWatch</div>
+          <div class="logo-text-sub">Brand · Market · Landscape</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#brand">Brand</a>
+        <a href="#problem">Problem</a>
+        <a href="#market">Market</a>
+        <a href="#landscape">Landscape</a>
+        <a href="#positioning">Positioning</a>
+        <a href="#about">About</a>
+      </nav>
+    </header>
+
+    <section class="hero" id="brand">
+      <div class="hero-left">
+        <div class="badge-row">
+          <div class="badge">
+            <span class="badge-dot"></span>
+            <span>Independent view by Milgrand Tshiamo</span>
+          </div>
+          <div class="badge">
+            <span class="badge-dot"></span>
+            <span>B2B GTM · Sales · Business Analysis</span>
+          </div>
+        </div>
+        <div class="hero-kicker">Brand & market narrative</div>
+        <h1 class="hero-title">
+          Making <span>payment reality</span> visible — for boards, auditors and risk leaders.
+        </h1>
+        <p class="hero-lede">
+          AI SecureWatch reconciles 100% of payment transactions against the vendor master to reveal ghost vendors and other entities that receive money but never appear as approved suppliers, providing a system‑independent view of who actually got paid.
+        </p>
+        <div class="hero-meta">
+          <div><strong>Use case focus:</strong><br/>Ghost vendors, shadow entities, out‑of‑master spend</div>
+          <div><strong>Primary buyers:</strong><br/>Internal Audit, TPRM leaders, CFO/Finance executives</div>
+        </div>
+      </div>
+
+      <aside class="hero-right" aria-label="Snapshot">
+        <div class="hero-panel">
+          <h3>What this page is</h3>
+          <p>
+            A concise, third‑party view of the AI SecureWatch brand, problem space, market context, and competitive landscape, built from the public pitch deck and open‑source research.
+          </p>
+          <p>
+            The goal is to show how the product can be positioned and sold into enterprise finance, audit and risk teams — not to disclose or modify any proprietary IP.
+          </p>
+          <div class="hero-chip-row">
+            <span class="chip">Deck insight synthesis</span>
+            <span class="chip">Market & buyer mapping</span>
+            <span class="chip">Landscape & positioning</span>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section id="problem">
+      <div class="section-label">Problem space</div>
+      <h2>The gap between ERP records and financial reality</h2>
+      <div class="columns">
+        <div>
+          <p>
+            Most organisations have two pictures of their payments: what their systems believe happened, and what actually happened in the bank account.
+          </p>
+          <p>
+            ERP, AP automation, vendor master files and TPRM platforms are all built around the approved vendor list and in‑system transactions, so they struggle to surface entities that receive funds without ever being set up as vendors.
+          </p>
+          <p>
+            This blind spot enables ghost vendor fraud and “shadow” entities — legitimate‑looking payment recipients that sit outside formal procurement and risk workflows.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Key pain themes</h3>
+          <ul>
+            <li>Boards and audit committees increasingly ask for independent proof of who actually received payment, not just ERP reports.</li>
+            <li>Ghost vendor schemes and social‑engineering frauds continue to hit public bodies and enterprises, with multi‑million‑dollar losses.</li>
+            <li>Traditional AP and audit approaches still rely heavily on sampling rather than full‑population testing of all payees.</li>
+            <li>Third‑party risk tools focus on registered vendors and questionnaire workflows, not the long tail of entities appearing only in payment data.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="market">
+      <div class="section-label">Market context</div>
+      <h2>Where AI SecureWatch sits in the risk & assurance stack</h2>
+      <p>
+        AI SecureWatch is an enterprise intelligence layer focused on “ground truth” for payments — ingesting AP files and the vendor master to produce a reconciled view of every entity that actually received money, and flagging those that are not in the master file.
+      </p>
+      <p>
+        That puts the product at the intersection of accounts payable audit, forensic investigation, and third‑party risk management rather than competing directly with ERP or AP automation platforms.
+      </p>
+
+      <div class="grid-3">
+        <div class="stat">
+          <div class="stat-label">Primary buyers</div>
+          <div class="stat-value">Internal Audit · TPRM · CFO</div>
+          <p>
+            The deck explicitly calls out Heads of Internal Audit, third‑party risk leaders and CFOs/finance executives as the three core buyer personas.
+          </p>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Service model</div>
+          <div class="stat-value">Pilot → License</div>
+          <p>
+            A paid pilot on 12–36 months of AP data with a single findings report, converting into an annual license with recurring runs for continuous monitoring.
+          </p>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Delivery</div>
+          <div class="stat-value">2–3 weeks</div>
+          <p>
+            From receiving AP exports and the vendor master, AI‑driven reconciliation plus human analyst QA produces the out‑of‑master entity list in roughly 2–3 weeks.
+          </p>
+        </div>
+      </div>
+
+      <p class="note">
+        FSG Forensics, a South African forensic investigation practice founded in 1985, appears as a delivery partner, giving AI SecureWatch access to established forensic capabilities and credibility with enterprise and public‑sector clients.
+      </p>
+    </section>
+
+    <section id="landscape">
+      <div class="section-label">Competitive landscape</div>
+      <h2>Positioning within AP, fraud and third‑party risk tooling</h2>
+
+      <p>
+        The product sits alongside, rather than inside, existing systems — working from raw payment data to surface entities that mainstream tools are not designed to see.
+      </p>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th>Representative vendors</th>
+              <th>Primary focus</th>
+              <th>Where AI SecureWatch is different</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>AP automation & audit</td>
+              <td>HighRadius, ApprovalMax, Ramp, Stampli</td>
+              <td>Invoice capture, approval workflows, vendor master hygiene, audit readiness.</td>
+              <td>Starts from executed payments rather than invoices, reconciling every payee against the vendor master to detect entities that were never onboarded.</td>
+            </tr>
+            <tr>
+              <td>TPRM / vendor risk platforms</td>
+              <td>Panorays, MetricStream, UpGuard, BitSight, SupplyWisdom</td>
+              <td>Continuous monitoring of vendor cyber and compliance posture, questionnaire workflows, risk scoring.</td>
+              <td>Focuses on entities missing entirely from the approved vendor universe, giving TPRM teams a more complete starting list of who actually receives money.</td>
+            </tr>
+            <tr>
+              <td>Fraud analytics / investigations</td>
+              <td>FraudNet, Active Intel, forensic firms such as FSG Forensics</td>
+              <td>Detecting patterns like ghost vendors, ghost employees and anomalous payments; case‑by‑case investigations.</td>
+              <td>Productised, repeatable reconciliation service with AI + human review, designed as a standardised deliverable that quantifies out‑of‑master exposure.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="note">
+        Public commentary from AI SecureWatch’s founder reinforces this “ghost vendor and hidden entity” positioning, emphasising that traditional controls and SoD can still miss vendors that never enter the master file yet receive repeated payments.
+      </p>
+    </section>
+
+    <section id="positioning">
+      <div class="section-label">Brand & GTM narrative</div>
+      <h2>How I would tell the story to enterprise buyers</h2>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>Brand idea · “Ground truth for payments”</h3>
+          <p>
+            The most distinctive and defensible idea in the deck is the focus on “financial reality” — a complete, system‑independent picture of every entity that actually received payment in the last 12 months.
+          </p>
+          <p>
+            That creates a clean, board‑friendly promise: you are not buying another dashboard; you are buying a reconciled, investigation‑ready list of entities that sit outside the vendor master but still receive funds.
+          </p>
+          <div class="pill-list">
+            <span class="pill">One question: “Who actually got paid?”</span>
+            <span class="pill">Single findings report as core deliverable</span>
+            <span class="pill">Independent of ERP and TPRM stack</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>GTM angle · “Stop sampling, see 100%”</h3>
+          <p>
+            Most AP audits and TPRM assessments still rely on sampling vendors and invoices; the AI SecureWatch offer is to reconcile the full population and hand over a prioritised out‑of‑master list tied to actual spend.
+          </p>
+          <p>
+            For internal audit and risk leaders, this reframes the product from a tool to a targeted assurance engagement that immediately feeds their investigation pipeline.
+          </p>
+          <div class="pill-list">
+            <span class="pill">Pilot anchored in a real AP export</span>
+            <span class="pill">Quantified exposure (entities × spend)</span>
+            <span class="pill">Hand‑off to forensic partners like FSG</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="columns" style="margin-top: var(--space-8);">
+        <div>
+          <h3>Conversation structure for buyers</h3>
+          <ul>
+            <li>Start from recent, public fraud examples (e.g. councils losing ~USD 1.9m to AI‑driven vendor fraud) to establish that current controls can be bypassed without system breaches.</li>
+            <li>Ask whether the organisation can produce, on demand, a complete list of all entities that received payments last year, independent of ERP and vendor master constraints.</li>
+            <li>Position AI SecureWatch as a low‑friction, export‑only pilot that answers that question once, with clear numbers and a finite out‑of‑master list.</li>
+            <li>Show how that list slots into existing internal audit, TPRM and forensic investigation workflows, rather than asking teams to adopt a new platform.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Signals to keep in the brand</h3>
+          <ul>
+            <li>System‑independent, file‑based delivery (no credentials, no ERP integration).</li>
+            <li>AI reconciliation plus human analyst QA — no raw model output given directly to clients.</li>
+            <li>Partnership with an established forensic firm for follow‑through, not just detection.</li>
+            <li>Calm, insight‑led language that avoids fear‑mongering and emphasises visibility and governance.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="section-label">About this view</div>
+      <h2>Who I am and how I’d like to contribute</h2>
+      <p>
+        I’m Milgrand Tshiamo, working mainly in B2B marketing, sales and business analysis, and this page is my synthesis of AI SecureWatch’s brand, market and competitive context based solely on your public deck and open‑source research.
+      </p>
+      <p>
+        My intent is to add value on the go‑to‑market side — clarifying the story for Internal Audit, TPRM and Finance buyers, sharpening the positioning against adjacent tools, and helping design campaigns and conversations that consistently land the “ground truth for payments” message.
+      </p>
+      <p class="note">
+        All descriptions of AI SecureWatch, FSG Forensics, market context and competitor categories are drawn from your pitch deck plus publicly available sources; this page does not include or imply access to any non‑public IP or confidential client information.
+      </p>
+    </section>
+
+    <footer>
+      <p><strong>Prepared by:</strong> Milgrand Tshiamo · Johannesburg, South Africa</p>
+      <p>
+        Created as a static page for discussion purposes; feel free to treat it as a starting point for refining the brand and go‑to‑market narrative together.
+      </p>
+    </footer>
+  </main>
+</body>
+</html>
