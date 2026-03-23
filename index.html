@@ -10,17 +10,17 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap"
     rel="stylesheet">
   <style>
     :root {
       /* Typography scaling */
       --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
       --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
-      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
-      --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
-      --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
-      --text-2xl: clamp(2rem, 1.5rem + 2.5vw, 3.5rem);
+      --text-base: clamp(1.05rem, 1rem + 0.25vw, 1.15rem);
+      --text-lg: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);
+      --text-xl: clamp(1.75rem, 1.5rem + 1.25vw, 2.5rem);
+      --text-2xl: clamp(2.5rem, 2rem + 3vw, 4.5rem);
 
       /* Spacing */
       --space-1: 0.25rem;
@@ -33,12 +33,14 @@
       --space-10: 2.5rem;
       --space-12: 3rem;
       --space-16: 4rem;
+      --space-24: 6rem;
 
       /* Pitch Deck Colors */
       --color-bg: #0a0e17;
       /* Very dark navy/charcoal */
       --color-surface: #111623;
-      --color-border: rgba(255, 255, 255, 0.1);
+      --color-border: rgba(255, 255, 255, 0.08);
+      --color-border-hover: rgba(255, 69, 0, 0.3);
 
       --color-text: #ffffff;
       --color-text-muted: #9ca3af;
@@ -56,10 +58,10 @@
       /* Dark text for contrast panels */
 
       --radius-sm: 0.25rem;
-      --radius-md: 0.5rem;
+      --radius-md: 0.75rem;
       --radius-pill: 9999px;
 
-      --max-width: 1120px;
+      --max-width: 1200px;
     }
 
     *,
@@ -81,6 +83,32 @@
       color: var(--color-text);
       background-color: var(--color-bg);
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* Ambient Background Glow */
+    body::before {
+      content: '';
+      position: fixed;
+      top: -20%;
+      left: -10%;
+      width: 50vw;
+      height: 50vh;
+      background: radial-gradient(circle, rgba(255, 69, 0, 0.03) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      bottom: -20%;
+      right: -10%;
+      width: 60vw;
+      height: 60vh;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.02) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: -1;
     }
 
     h1,
@@ -103,156 +131,261 @@
       padding: var(--space-8) var(--space-4) var(--space-12);
     }
 
+    /* --- Animations --- */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .delay-1 {
+      transition-delay: 0.1s;
+    }
+
+    .delay-2 {
+      transition-delay: 0.2s;
+    }
+
+    .delay-3 {
+      transition-delay: 0.3s;
+    }
+
+    .delay-4 {
+      transition-delay: 0.4s;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     /* Minimal Header */
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: var(--space-4);
-      margin-bottom: var(--space-12);
+      margin-bottom: var(--space-16);
       border-bottom: 1px solid var(--color-border);
-      padding-bottom: var(--space-4);
+      padding-bottom: var(--space-6);
+      animation: fadeInDown 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
     .logo-mark {
       display: inline-flex;
       align-items: center;
       gap: var(--space-3);
+      group: logo;
+      transition: transform 0.3s ease;
+    }
+
+    .logo-mark:hover {
+      transform: scale(1.02);
     }
 
     .logo-shape {
-      width: 32px;
-      height: 32px;
+      width: 38px;
+      height: 38px;
       background: var(--color-accent);
       border-radius: var(--radius-sm);
       position: relative;
+      box-shadow: 0 4px 14px rgba(255, 69, 0, 0.2);
     }
 
     .logo-shape::after {
       content: "";
       position: absolute;
-      inset: 6px;
+      inset: 8px;
       border: 2px solid var(--color-bg);
       border-radius: 50%;
+      transition: transform 0.5s ease;
+    }
+
+    .logo-mark:hover .logo-shape::after {
+      transform: scale(0.6);
     }
 
     .logo-text-main {
       font-size: var(--text-lg);
-      font-weight: 600;
+      font-weight: 700;
       letter-spacing: -0.02em;
     }
 
     .logo-text-sub {
-      font-size: 0.7rem;
+      font-size: 0.75rem;
       color: var(--color-text-muted);
       text-transform: uppercase;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.15em;
       margin-top: -2px;
+      font-weight: 500;
+      font-family: 'Inter', sans-serif;
     }
 
     nav {
       display: flex;
       flex-wrap: wrap;
-      gap: var(--space-4);
+      gap: var(--space-5);
       justify-content: flex-end;
     }
 
     nav a {
-      font-size: var(--text-xs);
-      font-weight: 500;
+      font-size: 0.8rem;
+      font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.15em;
       color: var(--color-text-muted);
-      transition: color 0.2s ease;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0%;
+      height: 1px;
+      background: var(--color-accent);
+      transition: width 0.3s ease;
     }
 
     nav a:hover {
-      color: var(--color-accent);
+      color: var(--color-text);
+    }
+
+    nav a:hover::after {
+      width: 100%;
     }
 
     /* Hero Section */
     .hero {
-      margin-bottom: var(--space-16);
+      margin-bottom: var(--space-24);
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-8);
+      position: relative;
     }
 
     .hero-kicker {
-      font-family: 'Outfit', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: var(--text-sm);
-      font-weight: 600;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.2em;
       color: var(--color-accent);
       margin-bottom: var(--space-4);
+      display: inline-block;
+      padding-bottom: var(--space-2);
+      border-bottom: 2px solid var(--color-accent-soft);
     }
 
     .hero-title {
       font-size: var(--text-2xl);
-      line-height: 1.1;
+      line-height: 1.05;
+      font-weight: 800;
       letter-spacing: -0.03em;
       margin-bottom: var(--space-6);
-      max-width: 22ch;
+      max-width: 18ch;
+    }
+
+    .hero-title span {
+      color: var(--color-text-muted);
+      font-weight: 400;
     }
 
     .hero-lede {
-      font-size: clamp(1.1rem, 1rem + 0.5vw, 1.25rem);
+      font-size: clamp(1.1rem, 1rem + 0.6vw, 1.35rem);
       color: var(--color-text-muted);
-      max-width: 36rem;
-      margin-bottom: var(--space-8);
+      max-width: 42rem;
+      margin-bottom: var(--space-10);
       line-height: 1.6;
     }
 
     .hero-meta {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: var(--space-6);
-      padding: var(--space-5);
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-8);
+      padding: var(--space-6);
       background: var(--color-surface);
-      border-left: 2px solid var(--color-accent);
-      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      border: 1px solid var(--color-border);
+      border-left: 3px solid var(--color-accent);
+      border-radius: var(--radius-sm);
+      max-width: max-content;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .hero-meta:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 69, 0, 0.1);
+      border-color: var(--color-border-hover);
+    }
+
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
     }
 
     .meta-item strong {
-      display: block;
       color: var(--color-text);
-      font-size: var(--text-sm);
+      font-size: 0.8rem;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: var(--space-1);
+      letter-spacing: 0.1em;
     }
 
     .meta-item span {
-      font-size: var(--text-sm);
+      font-size: 0.95rem;
       color: var(--color-text-muted);
     }
 
     /* General Sections */
     section {
-      margin-bottom: var(--space-16);
-      padding-top: var(--space-8);
-      border-top: 1px solid var(--color-border);
+      margin-bottom: var(--space-24);
+    }
+
+    .section-header {
+      margin-bottom: var(--space-10);
+      border-left: 1px solid var(--color-accent);
+      padding-left: var(--space-6);
     }
 
     .section-label {
-      font-family: 'Outfit', sans-serif;
-      font-size: var(--text-xs);
-      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.2em;
       color: var(--color-accent);
       margin-bottom: var(--space-3);
     }
 
     h2 {
       font-size: var(--text-xl);
-      margin: 0 0 var(--space-6);
+      font-weight: 700;
+      margin: 0 0 var(--space-4);
       letter-spacing: -0.02em;
       max-width: 28ch;
+      line-height: 1.2;
     }
 
     p {
       margin: 0 0 var(--space-4);
       color: var(--color-text-muted);
-      max-width: 70ch;
+      max-width: 65ch;
+      font-size: 1.05rem;
     }
 
     /* Picture 1 vs Picture 2 - High Contrast Panels */
@@ -265,23 +398,17 @@
 
     .panel {
       padding: var(--space-8);
-      border-radius: var(--radius-sm);
+      border-radius: var(--radius-md);
       color: var(--color-text-dark);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
-    .panel h3 {
-      font-size: var(--text-lg);
-      margin: 0 0 var(--space-3);
-      color: var(--color-text-dark);
-      text-transform: uppercase;
-      letter-spacing: -0.01em;
-      font-weight: 600;
-    }
-
-    .panel p,
-    .panel ul {
-      color: rgba(17, 24, 39, 0.85);
-      font-size: 0.95rem;
+    .panel:hover {
+      transform: translateY(-8px) scale(1.01);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
     }
 
     .panel-peach {
@@ -290,6 +417,32 @@
 
     .panel-grey {
       background: var(--color-light-grey);
+    }
+
+    .panel h3 {
+      font-size: var(--text-lg);
+      margin: 0 0 var(--space-4);
+      color: var(--color-text-dark);
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      font-weight: 700;
+    }
+
+    .panel p {
+      color: rgba(17, 24, 39, 0.85);
+      font-size: 1.05rem;
+      margin-bottom: var(--space-4);
+    }
+
+    .panel p:last-child {
+      margin-bottom: 0;
+    }
+
+    .panel .result {
+      margin-top: auto;
+      padding-top: var(--space-4);
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+      font-weight: 600;
     }
 
     /* Standard Grid/Cards */
@@ -309,24 +462,42 @@
       padding: var(--space-6);
       background: var(--color-surface);
       border: 1px solid var(--color-border);
-      border-radius: var(--radius-sm);
+      border-radius: var(--radius-md);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--color-border-hover);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      background: #141a29;
     }
 
     .stat-label {
-      font-size: var(--text-xs);
-      font-weight: 600;
+      font-size: 0.8rem;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--color-text-muted);
-      margin-bottom: var(--space-2);
+      letter-spacing: 0.15em;
+      color: var(--color-accent);
+      margin-bottom: var(--space-3);
     }
 
     .stat-value {
       font-family: 'Outfit', sans-serif;
-      font-size: var(--text-lg);
-      font-weight: 500;
+      font-size: var(--text-xl);
+      font-weight: 600;
       color: var(--color-text);
       margin-bottom: var(--space-3);
+      letter-spacing: -0.02em;
+    }
+
+    .stat-card p {
+      font-size: 0.95rem;
+      margin: 0;
+      color: #9ca3af;
+      line-height: 1.5;
     }
 
     ul.minimal-list {
@@ -338,8 +509,9 @@
     ul.minimal-list li {
       position: relative;
       padding-left: 1.5rem;
-      margin-bottom: var(--space-3);
+      margin-bottom: var(--space-4);
       color: var(--color-text-muted);
+      font-size: 1rem;
     }
 
     ul.minimal-list li::before {
@@ -352,34 +524,46 @@
 
     /* Tables */
     .table-wrapper {
-      margin-top: var(--space-8);
+      margin-top: var(--space-10);
       overflow-x: auto;
       background: var(--color-surface);
       border: 1px solid var(--color-border);
-      border-radius: var(--radius-sm);
+      border-radius: var(--radius-md);
+      transition: border-color 0.4s ease;
+    }
+
+    .table-wrapper:hover {
+      border-color: rgba(255, 255, 255, 0.2);
     }
 
     table {
       width: 100%;
-      min-width: 800px;
+      min-width: 900px;
       border-collapse: collapse;
-      font-size: 0.95rem;
     }
 
     th,
     td {
-      padding: 1.25rem;
+      padding: 1.5rem 1.25rem;
       border-bottom: 1px solid var(--color-border);
       text-align: left;
     }
 
     th {
-      font-family: 'Outfit', sans-serif;
-      font-weight: 500;
-      color: var(--color-text);
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      color: var(--color-text-muted);
       text-transform: uppercase;
-      letter-spacing: 0.05em;
-      font-size: var(--text-xs);
+      letter-spacing: 0.1em;
+      font-size: 0.8rem;
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    tr {
+      transition: background 0.2s ease;
+    }
+
+    tr:hover td {
       background: rgba(255, 255, 255, 0.02);
     }
 
@@ -388,48 +572,72 @@
     }
 
     td:first-child {
-      font-weight: 500;
+      font-weight: 600;
       color: var(--color-text);
-      width: 25%;
+      width: 20%;
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.1rem;
     }
 
     td:nth-child(2) {
-      color: var(--color-text-muted);
-      font-size: 0.85rem;
+      color: #cbd5e1;
+      font-weight: 500;
+    }
+
+    td:nth-child(3),
+    td:nth-child(4) {
+      font-size: 0.95rem;
+      color: #9ca3af;
     }
 
     /* Badges / Tags */
     .pill {
       display: inline-block;
       font-size: 0.75rem;
-      font-weight: 500;
-      padding: 0.2rem 0.6rem;
+      font-weight: 600;
+      padding: 0.3rem 0.8rem;
       border-radius: var(--radius-sm);
-      background: var(--color-surface);
+      background: var(--color-bg);
       border: 1px solid var(--color-border);
       color: var(--color-text-muted);
-      margin-right: 0.25rem;
-      margin-bottom: 0.25rem;
+      margin-right: 0.5rem;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: all 0.3s ease;
+    }
+
+    .pill:hover {
+      color: var(--color-text);
+      border-color: var(--color-accent);
+      background: var(--color-accent-soft);
     }
 
     .note {
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       color: var(--color-text-muted);
-      margin-top: var(--space-6);
-      padding-top: var(--space-4);
-      border-top: 1px dashed var(--color-border);
+      margin-top: var(--space-8);
+      padding: var(--space-5);
+      background: var(--color-surface);
+      border-left: 2px solid var(--color-border);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
     }
 
     /* Footer */
     footer {
       border-top: 1px solid var(--color-border);
-      margin-top: var(--space-16);
-      padding-top: var(--space-8);
-      font-size: var(--text-sm);
+      margin-top: var(--space-24);
+      padding-top: var(--space-10);
+      font-size: 0.9rem;
       color: var(--color-text-muted);
       display: flex;
       flex-direction: column;
       gap: var(--space-2);
+      text-align: center;
+    }
+
+    footer strong {
+      color: var(--color-text);
     }
 
     /* Responsive */
@@ -448,6 +656,7 @@
     @media (max-width: 768px) {
       :root {
         --space-16: 3rem;
+        --space-24: 4rem;
       }
 
       header {
@@ -465,7 +674,11 @@
       }
 
       .hero-title {
-        font-size: 2.25rem;
+        font-size: 2.75rem;
+      }
+
+      .section-header {
+        padding-left: var(--space-4);
       }
     }
   </style>
@@ -487,29 +700,30 @@
         <a href="#market">Market</a>
         <a href="#landscape">Landscape</a>
         <a href="#positioning">Positioning</a>
-        <a href="#about">About</a>
       </nav>
     </header>
 
     <section class="hero" id="brand">
-      <div class="hero-kicker">Brand & Market Narrative</div>
-      <h1 class="hero-title">
-        Making payment reality visible.
-      </h1>
-      <p class="hero-lede">
-        AI SecureWatch reconciles 100% of payment transactions against the vendor master to reveal ghost vendors and
-        other entities that receive money but never appear as approved suppliers. A system‑independent view of who
-        actually got paid.
-      </p>
+      <div class="reveal">
+        <div class="hero-kicker">Brand & Market Narrative</div>
+        <h1 class="hero-title">
+          Making payment reality <span>visible.</span>
+        </h1>
+        <p class="hero-lede">
+          AI SecureWatch reconciles 100% of payment transactions against the vendor master to reveal ghost vendors and
+          other entities that receive money but never appear as approved suppliers. A system‑independent view of who
+          actually got paid.
+        </p>
+      </div>
 
-      <div class="hero-meta">
+      <div class="hero-meta reveal delay-2">
         <div class="meta-item">
           <strong>Use case focus</strong>
           <span>Ghost vendors, shadow entities, out‑of‑master spend</span>
         </div>
         <div class="meta-item">
           <strong>Primary buyers</strong>
-          <span>Internal Audit, TPRM leaders, CFO/Finance executives</span>
+          <span>Internal Audit, TPRM leaders, CFO/Finance</span>
         </div>
         <div class="meta-item">
           <strong>Prepared By</strong>
@@ -519,95 +733,100 @@
     </section>
 
     <section id="problem">
-      <div class="section-label">The Blind Spot</div>
-      <h2>The gap between ERP records and financial reality</h2>
+      <div class="section-header reveal">
+        <div class="section-label">The Blind Spot</div>
+        <h2>The gap between ERP records and financial reality</h2>
+      </div>
 
-      <p>
+      <p class="reveal delay-1">
         Most organisations have two pictures of their payments: what their systems believe happened, and what actually
         happened in the bank account. ERP, AP automation, vendor master files and TPRM platforms are built around the
         approved vendor list. They struggle to surface entities that receive funds without ever being set up as vendors.
       </p>
 
       <div class="contrast-panels">
-        <div class="panel panel-peach">
+        <div class="panel panel-peach reveal delay-2">
           <h3>Picture 1: The ERP Illusion</h3>
           <p>
             The system tells you every vendor is validated, tracked, and vetted. AP automation workflows appear
             perfectly sound because they only process what enters the pipeline. Sampling audits capture standard
             variances but miss entirely bypassed controls.
           </p>
-          <p><strong>Result:</strong> Blind trust in incomplete records.</p>
+          <p class="result">Result: Blind trust in incomplete records.</p>
         </div>
-        <div class="panel panel-grey">
+        <div class="panel panel-grey reveal delay-3">
           <h3>Picture 2: Payment Reality</h3>
           <p>
             The bank account reveals shadow entities and ghost vendors collecting multi-million dollar payouts entirely
             off the radar. These legitimate-looking recipients sit completely outside formal procurement, TPRM
             workflows, and master files.
           </p>
-          <p><strong>Result:</strong> Realized financial loss and unquantified risk.</p>
+          <p class="result">Result: Realized financial loss and unquantified risk.</p>
         </div>
       </div>
 
       <div class="grid-2">
-        <div class="stat-card">
+        <div class="stat-card reveal delay-1">
           <div class="stat-label">Audit Pressure</div>
-          <p style="margin:0; font-size: 0.95rem;">Boards and audit committees increasingly ask for independent proof of
-            who actually received payment, not just ERP reports.</p>
+          <p>Boards and audit committees increasingly ask for independent proof of who actually received payment, not
+            just internal ERP reports.</p>
         </div>
-        <div class="stat-card">
+        <div class="stat-card reveal delay-2">
           <div class="stat-label">Loss Exposure</div>
-          <p style="margin:0; font-size: 0.95rem;">Ghost vendor schemes and social‑engineering frauds continue to hit
-            public bodies and enterprises with heavy losses.</p>
+          <p>Ghost vendor schemes and social‑engineering frauds continue to hit public bodies and enterprises with heavy
+            financial losses.</p>
         </div>
       </div>
     </section>
 
     <section id="market">
-      <div class="section-label">The Insight</div>
-      <h2>Where AI SecureWatch sits in the stack</h2>
-      <p>
+      <div class="section-header reveal">
+        <div class="section-label">The Insight</div>
+        <h2>Where AI SecureWatch sits in the stack</h2>
+      </div>
+
+      <p class="reveal delay-1">
         AI SecureWatch is an enterprise intelligence layer focused on “ground truth” for payments — ingesting AP files
         and the vendor master to produce a reconciled view of every entity that actually received money, and flagging
         those that are not in the master file.
       </p>
 
       <div class="grid-3">
-        <div class="stat-card">
+        <div class="stat-card reveal delay-2">
           <div class="stat-label">Primary buyers</div>
-          <div class="stat-value">Internal Audit · TPRM · CFO</div>
-          <p style="font-size: 0.85rem; margin:0;">Targeting Heads of Internal Audit, third‑party risk leaders and CFOs
-            as core personas.</p>
+          <div class="stat-value">Internal Audit<br>TPRM & CFO</div>
+          <p>Targeting Heads of Internal Audit, third‑party risk leaders and CFOs as core personas.</p>
         </div>
-        <div class="stat-card">
+        <div class="stat-card reveal delay-3">
           <div class="stat-label">Service model</div>
-          <div class="stat-value">Pilot → License</div>
-          <p style="font-size: 0.85rem; margin:0;">12–36 months AP data pilot with findings report, converting to annual
-            continuous monitoring.</p>
+          <div class="stat-value">Pilot<br>to License</div>
+          <p>12–36 months AP data pilot with findings report, converting to annual continuous monitoring.</p>
         </div>
-        <div class="stat-card">
+        <div class="stat-card reveal delay-4">
           <div class="stat-label">Delivery timeframe</div>
-          <div class="stat-value">2–3 weeks</div>
-          <p style="font-size: 0.85rem; margin:0;">AI‑driven reconciliation plus human analyst QA produces the anomaly
-            list rapidly.</p>
+          <div class="stat-value">2–3<br>Weeks</div>
+          <p>AI‑driven reconciliation plus human analyst QA produces the anomaly list rapidly.</p>
         </div>
       </div>
 
-      <p class="note">
+      <div class="note reveal delay-2">
         FSG Forensics appears as a delivery partner, giving AI SecureWatch access to established forensic capabilities
         and credibility with enterprise and public‑sector clients.
-      </p>
+      </div>
     </section>
 
     <section id="landscape">
-      <div class="section-label">Landscape</div>
-      <h2>AP, fraud and third‑party risk tooling</h2>
-      <p>
+      <div class="section-header reveal">
+        <div class="section-label">Landscape</div>
+        <h2>AP, fraud & risk tooling</h2>
+      </div>
+
+      <p class="reveal delay-1">
         The product sits alongside, rather than inside, existing systems — working from raw payment data to surface
         entities that mainstream tools are not designed to see.
       </p>
 
-      <div class="table-wrapper">
+      <div class="table-wrapper reveal delay-2">
         <table>
           <thead>
             <tr>
@@ -642,26 +861,28 @@
     </section>
 
     <section id="positioning">
-      <div class="section-label">Positioning</div>
-      <h2>GTM angle and Brand signals</h2>
+      <div class="section-header reveal">
+        <div class="section-label">Positioning</div>
+        <h2>GTM angle and Brand signals</h2>
+      </div>
 
       <div class="grid-2">
-        <div>
+        <div class="reveal delay-1">
           <h3>Brand idea: “Ground truth for payments”</h3>
           <p>
             The most distinctive idea is the focus on “financial reality” — a complete, system‑independent picture of
             every entity that actually received payment in the last 12 months.
           </p>
-          <div style="margin-top:var(--space-4);">
+          <div style="margin-top:var(--space-6);">
             <span class="pill">Who actually got paid?</span>
             <span class="pill">System independent</span>
             <span class="pill">Targeted assurance</span>
           </div>
         </div>
 
-        <div class="stat-card">
+        <div class="stat-card reveal delay-2">
           <div class="stat-label">Conversation Structure</div>
-          <ul class="minimal-list">
+          <ul class="minimal-list" style="margin-top: var(--space-4);">
             <li>Establish that current controls can be bypassed without system breaches using recent fraud cases.</li>
             <li>Ask whether the organisation can produce a list of all entities that received payments last year.</li>
             <li>Position a low‑friction pilot that answers that question instantly.</li>
@@ -671,22 +892,33 @@
       </div>
     </section>
 
-    <section id="about">
-      <div class="section-label">About</div>
-      <h2>Scope of assessment</h2>
-      <p>
-        This page is a synthesis of AI SecureWatch’s brand, market and competitive context based solely on public pitch
-        decks and open‑source research. The goal is to add value on the go‑to‑market side — clarifying the story for
-        Internal Audit, TPRM and Finance buyers, and helping design campaigns that consistently land the “ground truth
-        for payments” message.
-      </p>
-    </section>
-
-    <footer>
-      <div><strong>Prepared by:</strong> Milgrand Tshiamo · Johannesburg, South Africa</div>
+    <footer class="reveal">
+      <div><strong>Prepared by Milgrand Tshiamo</strong> · Johannesburg, South Africa</div>
       <div>Created for discussion purposes to refine the brand and go‑to‑market narrative.</div>
     </footer>
   </main>
+
+  <script>
+    // Intersection Observer for scroll animations
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.15
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
 </body>
 
 </html>
