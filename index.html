@@ -134,7 +134,7 @@
       overflow-y: hidden;
       scroll-snap-type: x mandatory;
       scroll-behavior: smooth;
-      padding-top: 100px;
+      padding-top: 140px;
       -ms-overflow-style: none;
       /* IE and Edge */
       scrollbar-width: none;
@@ -201,8 +201,14 @@
       animation: fadeInDown 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
       pointer-events: none;
     }
-    .logo-mark { pointer-events: auto; }
-    #slide-title { pointer-events: auto; }
+
+    .logo-mark {
+      pointer-events: auto;
+    }
+
+    #slide-title {
+      pointer-events: auto;
+    }
 
     .logo-mark {
       display: inline-flex;
@@ -376,25 +382,33 @@
     .hero,
     footer {
       flex: 0 0 100vw;
-      height: calc(100vh - 100px);
+      height: calc(100vh - 140px);
       scroll-snap-align: start;
       scroll-snap-stop: always;
       overflow-y: auto;
-      padding: var(--space-8) max(var(--space-4), calc((100vw - var(--max-width)) / 2));
+      padding: max(var(--space-4), 5vh) max(var(--space-4), calc((100vw - var(--max-width)) / 2)) var(--space-8);
       margin-bottom: 0;
       position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
     .slider-controls {
       position: fixed;
-      bottom: var(--space-6);
-      right: var(--space-8);
+      top: 50%;
+      left: 0;
+      right: 0;
+      transform: translateY(-50%);
       display: flex;
-      gap: var(--space-4);
+      justify-content: space-between;
+      padding: 0 var(--space-4);
+      pointer-events: none;
       z-index: 100;
     }
 
     .slide-btn {
+      pointer-events: auto;
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid var(--color-border);
       color: var(--color-text);
@@ -806,6 +820,7 @@
       header {
         flex-direction: column;
         align-items: flex-start;
+        gap: var(--space-4);
       }
 
       nav {
@@ -825,10 +840,127 @@
         padding-left: var(--space-4);
       }
     }
+
+    /* --- Auth Overlay Styles --- */
+    #auth-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--color-bg);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.3s ease;
+    }
+
+    .auth-container {
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: var(--space-6);
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+      text-align: center;
+      margin: 0 var(--space-4);
+    }
+
+    .auth-container h2 {
+      margin-bottom: var(--space-2);
+      font-size: var(--text-lg);
+    }
+
+    .auth-container p {
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-4);
+      font-size: 0.95rem;
+      line-height: 1.4;
+    }
+
+    .auth-input {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--color-border);
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      margin-bottom: var(--space-3);
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .auth-input:focus {
+      border-color: var(--color-accent);
+    }
+
+    .auth-btn {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: var(--radius-pill);
+      background-color: var(--color-accent);
+      color: white;
+      border: none;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .auth-btn:hover {
+      background-color: #ff5722;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 14px rgba(255, 69, 0, 0.3);
+    }
+
+    .auth-error {
+      color: rgba(248, 113, 113, 0.9);
+      font-size: 0.85rem;
+      margin-top: var(--space-3);
+      display: none;
+    }
+
+    body.locked {
+      overflow: hidden !important;
+    }
   </style>
 </head>
 
-<body>
+<body class="locked">
+  <!-- Client-side Auth Overlay -->
+  <div id="auth-overlay">
+    <div class="auth-container">
+      <div class="logo-mark" style="justify-content: center; margin-bottom: 20px;">
+        <div class="logo-shape" aria-hidden="true" style="width: 48px; height: 48px;"></div>
+      </div>
+      <h2>Secure Access</h2>
+      <p>Please enter the passcode to view the Brand & Market strategy.</p>
+      <form id="auth-form" style="display: flex; flex-direction: column;">
+        <input type="password" id="auth-password" class="auth-input" placeholder="Passcode" required autofocus>
+
+        <!-- Hidden guest form link -->
+        <div id="guest-fields" style="display: none; text-align: center;">
+          <p style="font-size: 0.9rem; margin-bottom: 16px; color: var(--color-accent);">Guest Passcode accepted. To
+            continue, you must register via our secure form.</p>
+          <a href="https://forms.gle/t7KEVyRsKz1e54ae6" target="_blank" rel="noopener noreferrer" class="auth-btn"
+            style="display: inline-block; text-decoration: none; margin-bottom: 12px; background-color: #2563eb; color: #fff;">Open
+            Registration Form</a>
+          <p style="font-size: 0.8rem; color: var(--color-text-muted); margin-bottom: 16px;">(Opens in a new tab. Please
+            complete it before continuing.)</p>
+        </div>
+
+        <button type="submit" id="auth-submit-btn" class="auth-btn">Unlock</button>
+        <div id="auth-error" class="auth-error">Incorrect passcode. Please try again.</div>
+      </form>
+    </div>
+  </div>
+
   <header>
     <div class="logo-mark">
       <div class="logo-shape" aria-hidden="true"></div>
@@ -837,7 +969,9 @@
         <div class="logo-text-sub">Brand · Market · Landscape</div>
       </div>
     </div>
-    <div id="slide-title" style="font-family: 'Outfit', sans-serif; font-size: 1.1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-text-muted);">Brand Narrative</div>
+    <div id="slide-title"
+      style="font-family: 'Outfit', sans-serif; font-size: 1.1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-text-muted);">
+      Brand Narrative</div>
   </header>
   <main class="slider">
 
@@ -1343,10 +1477,16 @@
 
   <div class="slider-controls">
     <button id="prevBtn" class="slide-btn" aria-label="Previous">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
     </button>
     <button id="nextBtn" class="slide-btn" aria-label="Next">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg>
     </button>
   </div>
   <script>
@@ -1367,16 +1507,16 @@
       'roadmap': 'Product Roadmap',
       'yc': 'YC & Traction'
     };
-    
+
     const scrollSlide = (dir) => {
-        if (!slider) return;
-        slider.scrollBy({ left: dir * window.innerWidth, behavior: 'smooth' });
+      if (!slider) return;
+      slider.scrollBy({ left: dir * window.innerWidth, behavior: 'smooth' });
     }
 
     if (prevBtn && nextBtn && slider) {
       prevBtn.addEventListener('click', () => scrollSlide(-1));
       nextBtn.addEventListener('click', () => scrollSlide(1));
-      
+
       window.addEventListener('keydown', (e) => {
         if (e.key === 'ArrowRight') scrollSlide(1);
         if (e.key === 'ArrowLeft') scrollSlide(-1);
@@ -1398,11 +1538,11 @@
               setTimeout(() => { isScrolling = false; }, 800);
             }
           } else {
-             e.preventDefault();
-             if (isScrolling) return;
-             isScrolling = true;
-             scrollSlide(e.deltaY > 0 ? 1 : -1);
-             setTimeout(() => { isScrolling = false; }, 800);
+            e.preventDefault();
+            if (isScrolling) return;
+            isScrolling = true;
+            scrollSlide(e.deltaY > 0 ? 1 : -1);
+            setTimeout(() => { isScrolling = false; }, 800);
           }
         }
       }, { passive: false });
@@ -1416,7 +1556,7 @@
         }
       });
     }, { root: slider, threshold: 0.5 });
-    
+
     document.querySelectorAll('main > section').forEach(sec => titleObserver.observe(sec));
 
     const revealObserver = new IntersectionObserver((entries, obs) => {
@@ -1431,6 +1571,70 @@
     document.querySelectorAll('.reveal').forEach(el => {
       revealObserver.observe(el);
     });
+
+    // --- Client-side Auth Logic ---
+    (function () {
+      const PASSCODES = {
+        "ceo-2026": "CEO",
+        "cmo-2026": "CMO",
+        "cto-2026": "CTO",
+        "guest-pass": "Guest"
+      };
+
+      const overlay = document.getElementById('auth-overlay');
+      const form = document.getElementById('auth-form');
+      const passwordInput = document.getElementById('auth-password');
+      const errorMsg = document.getElementById('auth-error');
+      const guestFields = document.getElementById('guest-fields');
+      const submitBtn = document.getElementById('auth-submit-btn');
+
+      let requiresGuestDetails = false;
+
+      // Check if authenticated
+      if (sessionStorage.getItem('ai_securewatch_auth_index') === 'true') {
+        overlay.style.display = 'none';
+        document.body.classList.remove('locked');
+      }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        errorMsg.style.display = 'none';
+
+        const role = PASSCODES[passwordInput.value];
+
+        if (!role) {
+          errorMsg.textContent = "Incorrect passcode. Please try again.";
+          errorMsg.style.display = 'block';
+          passwordInput.focus();
+          return;
+        }
+
+        if (role === "Guest") {
+          // Link to the Google Form
+          if (!requiresGuestDetails) {
+            requiresGuestDetails = true;
+            guestFields.style.display = 'block';
+            passwordInput.style.display = 'none'; // Hide password input
+            submitBtn.textContent = "I have registered \u2192 Enter";
+            return;
+          }
+
+          unlock();
+        } else {
+          // Executive passes bypass registration
+          unlock();
+        }
+      });
+
+      function unlock() {
+        sessionStorage.setItem('ai_securewatch_auth_index', 'true');
+        overlay.style.opacity = '0';
+        setTimeout(() => {
+          overlay.style.display = 'none';
+          document.body.classList.remove('locked');
+        }, 300);
+      }
+    })();
   </script>
 </body>
 
