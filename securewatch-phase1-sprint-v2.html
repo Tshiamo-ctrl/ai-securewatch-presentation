@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI SecureWatch · Phase 1 Sprint</title>
+  <style>
+    :root {
+      --bg: #0C0E12;
+      --bg-elevated: #151821;
+      --bg-soft: #1E2128;
+      --card-bg: #10131A;
+      --accent: #D94028;
+      --accent-amber: #F59E0B;
+      --accent-green: #1C6E4A;
+      --accent-blue: #60A5FA;
+      --text-main: #FFFFFF;
+      --text-muted: #9CA3AF;
+      --text-soft: #6B7280;
+      --border-subtle: #3D4148;
+      --shadow-soft: 0 14px 30px rgba(0, 0, 0, 0.6);
+      --radius-lg: 18px;
+      --radius-md: 10px;
+      --radius-pill: 999px;
+      --space-1: 4px;
+      --space-2: 8px;
+      --space-3: 12px;
+      --space-4: 16px;
+      --space-5: 20px;
+      --space-6: 24px;
+      --space-8: 32px;
+      --space-10: 40px;
+      --space-12: 48px;
+      --space-16: 64px;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .shell {
+      min-height: 100vh;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: var(--space-6) var(--space-4) var(--space-12);
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+      margin-bottom: var(--space-5);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+
+    .logo-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 9px;
+      background-color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05);
+    }
+
+    .logo-mark svg {
+      width: 18px;
+      height: 18px;
+      color: white;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .logo-text span:first-child {
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+    }
+
+    .logo-text span:last-child {
+      font-weight: 650;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: 0.8rem;
+      color: var(--text-soft);
+    }
+
+    nav a {
+      padding: 6px 10px;
+      border-radius: var(--radius-pill);
+      border: 1px solid transparent;
+    }
+
+    nav a:hover {
+      border-color: var(--accent);
+      background-color: var(--bg-soft);
+      color: var(--text-main);
+    }
+
+    @media (max-width: 720px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        flex-wrap: wrap;
+        row-gap: var(--space-1);
+      }
+    }
+
+    .hero {
+      background-color: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+      margin-bottom: var(--space-5);
+    }
+
+    @media (max-width: 640px) {
+      .hero {
+        padding: var(--space-5);
+      }
+    }
+
+    .hero-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border-subtle);
+      background-color: var(--bg-soft);
+      font-size: 0.75rem;
+      color: var(--text-soft);
+      margin-bottom: var(--space-3);
+    }
+
+    .hero-label span.badge {
+      padding: 2px 8px;
+      border-radius: var(--radius-pill);
+      background: rgba(34, 197, 94, 0.16);
+      color: #bbf7d0;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 1.6rem + 1vw, 2.5rem);
+      line-height: 1.15;
+      margin-bottom: var(--space-3);
+    }
+
+    .hero h1 span.accent {
+      color: var(--accent);
+    }
+
+    .hero p {
+      font-size: 0.96rem;
+      max-width: 46rem;
+      color: var(--text-muted);
+      margin-bottom: var(--space-4);
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--space-3);
+    }
+
+    .metric {
+      padding: var(--space-3) var(--space-4);
+      border-radius: var(--radius-md);
+      background-color: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .metric-label {
+      font-size: 0.75rem;
+      color: var(--text-soft);
+      margin-bottom: 4px;
+    }
+
+    .metric-value {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .metric-note {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    section.block {
+      background-color: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5) var(--space-5);
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.65);
+      margin-bottom: var(--space-4);
+    }
+
+    @media (max-width: 640px) {
+      section.block {
+        padding: var(--space-4);
+      }
+    }
+
+    .kicker {
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+      margin-bottom: var(--space-2);
+    }
+
+    .block-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: var(--space-4);
+      margin-bottom: var(--space-3);
+      flex-wrap: wrap;
+    }
+
+    .block-header h2 {
+      font-size: 1.25rem;
+      letter-spacing: 0.02em;
+    }
+
+    .block-header span.tag {
+      font-size: 0.8rem;
+      color: var(--accent-amber);
+    }
+
+    .block-body {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: var(--space-3);
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin-top: var(--space-2);
+      font-size: 0.78rem;
+      color: var(--text-soft);
+    }
+
+    .pill {
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border-subtle);
+      padding: 4px 10px;
+    }
+
+    .timeline-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: var(--space-3);
+      margin-top: var(--space-2);
+    }
+
+    .timeline-card {
+      padding: var(--space-4);
+      border-radius: var(--radius-md);
+      background-color: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .timeline-label {
+      font-size: 0.78rem;
+      color: var(--text-soft);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      margin-bottom: 4px;
+    }
+
+    .timeline-title {
+      font-size: 0.98rem;
+      margin-bottom: 4px;
+    }
+
+    .timeline-focus {
+      font-size: 0.8rem;
+      color: var(--accent-blue);
+      margin-bottom: var(--space-2);
+    }
+
+    .timeline-list {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      list-style: disc;
+      padding-left: 1rem;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: var(--space-5);
+    }
+
+    @media (max-width: 800px) {
+      .two-col {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .list-item-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .list-item-body {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+    }
+
+    .swimlanes {
+      margin-top: var(--space-3);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+      overflow: auto;
+      background-color: var(--bg-elevated);
+    }
+
+    .swimlane-header,
+    .swimlane-row {
+      display: grid;
+      grid-template-columns: 1.6fr repeat(4, minmax(100px, 1fr));
+      font-size: 0.78rem;
+    }
+
+    .swimlane-header {
+      background-color: var(--bg-soft);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-soft);
+    }
+
+    .swimlane-header div,
+    .swimlane-row div {
+      padding: 8px 10px;
+      border-right: 1px solid var(--border-subtle);
+      white-space: nowrap;
+    }
+
+    .swimlane-row {
+      background-color: var(--bg-elevated);
+    }
+
+    .swimlane-row:nth-child(even) {
+      background-color: var(--card-bg);
+    }
+
+    .swimlane-owner {
+      border-radius: var(--radius-pill);
+      padding: 2px 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .swimlane-owner.R {
+      background: rgba(34, 197, 94, 0.15);
+      color: #bbf7d0;
+    }
+
+    .swimlane-owner.A {
+      background: rgba(248, 113, 113, 0.16);
+      color: #fecaca;
+    }
+
+    .swimlane-owner.C {
+      background: rgba(59, 130, 246, 0.16);
+      color: #bfdbfe;
+    }
+
+    .swimlane-owner.I {
+      background: rgba(148, 163, 184, 0.16);
+      color: #e5e7eb;
+    }
+
+    .swimlane-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin-top: var(--space-3);
+      font-size: 0.75rem;
+      color: var(--text-soft);
+    }
+
+    .swimlane-legend span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .legend-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .legend-dot.R {
+      background: rgba(34, 197, 94, 0.22);
+    }
+
+    .legend-dot.A {
+      background: rgba(248, 113, 113, 0.22);
+    }
+
+    .legend-dot.C {
+      background: rgba(59, 130, 246, 0.22);
+    }
+
+    .legend-dot.I {
+      background: rgba(148, 163, 184, 0.22);
+    }
+
+    .benefit-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: var(--space-4);
+      margin-top: var(--space-2);
+    }
+
+    .benefit-card {
+      border-radius: var(--radius-md);
+      background-color: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      padding: var(--space-4);
+    }
+
+    .benefit-kicker {
+      font-size: 0.75rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+      margin-bottom: 4px;
+    }
+
+    .benefit-name {
+      font-size: 0.98rem;
+      margin-bottom: 4px;
+    }
+
+    .benefit-body {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: var(--space-2);
+    }
+
+    .benefit-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 0.8rem;
+      color: var(--text-soft);
+    }
+
+    .benefit-meta span strong {
+      color: var(--accent-amber);
+    }
+
+    .status-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin-top: var(--space-2);
+      font-size: 0.78rem;
+      color: var(--text-soft);
+    }
+
+    .status-pill {
+      border-radius: var(--radius-pill);
+      padding: 3px 9px;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .status-pill.critical {
+      border-color: rgba(239, 68, 68, 0.9);
+      color: #fecaca;
+    }
+
+    .status-pill.ready {
+      border-color: rgba(34, 197, 94, 0.9);
+      color: #bbf7d0;
+    }
+
+    footer {
+      margin-top: var(--space-4);
+      font-size: 0.8rem;
+      color: var(--text-soft);
+      text-align: left;
+    }
+
+    /* --- Auth Overlay Styles --- */
+    #auth-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--bg);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.3s ease;
+    }
+
+    .auth-container {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+      width: 100%;
+      max-width: 400px;
+      box-shadow: var(--shadow-soft);
+      text-align: center;
+      margin: 0 var(--space-4);
+    }
+
+    .auth-container h2 {
+      margin-bottom: var(--space-2);
+      font-size: 1.5rem;
+    }
+
+    .auth-container p {
+      color: var(--text-muted);
+      margin-bottom: var(--space-4);
+      font-size: 0.95rem;
+      line-height: 1.4;
+    }
+
+    .auth-input {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+      background-color: var(--bg-elevated);
+      color: var(--text-main);
+      margin-bottom: var(--space-3);
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .auth-input:focus {
+      border-color: var(--accent);
+    }
+
+    .auth-btn {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: var(--radius-md);
+      background-color: var(--accent);
+      color: white;
+      border: none;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .auth-btn:hover {
+      background-color: #e65038;
+    }
+
+    .auth-error {
+      color: rgba(248, 113, 113, 0.9);
+      font-size: 0.85rem;
+      margin-top: var(--space-3);
+      display: none;
+    }
+
+    body.locked {
+      overflow: hidden;
+    }
+  </style>
+</head>
+
+<body class="locked">
+  <!-- Client-side Auth Overlay -->
+  <div id="auth-overlay">
+    <div class="auth-container">
+      <div class="logo-mark" style="margin: 0 auto 20px; width: 48px; height: 48px; border-radius: 12px;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"
+          stroke-linejoin="round" style="width: 24px; height: 24px;">
+          <rect x="3" y="5" width="8" height="14" rx="2"></rect>
+          <rect x="13" y="5" width="8" height="7" rx="2"></rect>
+          <path d="M13 15h8l-4 4-4-4z"></path>
+        </svg>
+      </div>
+      <h2>Secure Access</h2>
+      <p>Please enter the passphrase to view this Phase 1 Sprint presentation.</p>
+      <form id="auth-form">
+        <input type="password" id="auth-password" class="auth-input" placeholder="Passphrase" required autofocus>
+        <button type="submit" class="auth-btn">Unlock</button>
+        <div id="auth-error" class="auth-error">Incorrect passphrase. Please try again.</div>
+      </form>
+    </div>
+  </div>
+
+  <div class="shell">
+    <header>
+      <div class="brand">
+        <div class="logo-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"
+            stroke-linejoin="round">
+            <rect x="3" y="5" width="8" height="14" rx="2"></rect>
+            <rect x="13" y="5" width="8" height="7" rx="2"></rect>
+            <path d="M13 15h8l-4 4-4-4z"></path>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <span>Pre-approval intelligence</span>
+          <span>AI SECUREWATCH</span>
+        </div>
+      </div>
+      <nav aria-label="Section navigation">
+        <a href="#timeline">Timeline</a>
+        <a href="#roles">Roles</a>
+        <a href="#benefits">Benefits</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="#enterprise">Enterprise</a>
+        <a href="#yc">YC & traction</a>
+      </nav>
+    </header>
+
+    <section class="hero" id="overview">
+      <div class="hero-label">
+        <span class="badge">Phase 1 sprint</span>
+        <span>2–3 weeks · Pilot hardening & YC-ready story</span>
+      </div>
+      <h1>From prototype to <span class="accent">pilot-ready reconciliation layer</span>.</h1>
+      <p>
+        This sprint takes the proven vendor-population and fraud engine behind the Technomobile and construction pilots
+        and hardens it into a repeatable paid pilot offer: stable ingestion, tuned findings, analyst QA, POPIA-safe data
+        handling, and a clear narrative for enterprise buyers and Y Combinator.
+      </p>
+      <div class="metrics">
+        <div class="metric">
+          <div class="metric-label">Live forensic proof</div>
+          <div class="metric-value">23 ghost vendors · R1.9M</div>
+          <div class="metric-note">Technomobile CC pilot from Sage 200 exports.</div>
+        </div>
+        <div class="metric">
+          <div class="metric-label">Pitch deck example</div>
+          <div class="metric-value">127 entities · R2.3M</div>
+          <div class="metric-note">Construction firm out-of-master spend in 2 weeks.</div>
+        </div>
+        <div class="metric">
+          <div class="metric-label">Commercial model</div>
+          <div class="metric-value">R25k–R50k pilot</div>
+          <div class="metric-note">Time-boxed pilots credited to annual licences.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="timeline">
+      <div class="kicker">Sprint timeline</div>
+      <div class="block-header">
+        <h2>What gets done, and when.</h2>
+        <span class="tag">2–3 week timebox · chunky, not granular</span>
+      </div>
+      <div class="block-body">
+        Each week focuses on a different risk: Week 1 stabilises the engine and data pipeline, Week 2 locks POPIA and
+        QA, and Week 3 converts that into a client and YC-ready offer.
+      </div>
+      <div class="timeline-grid" aria-label="Phase 1 timeline">
+        <article class="timeline-card">
+          <div class="timeline-label">Week 1</div>
+          <div class="timeline-title">Engine & data pipeline</div>
+          <div class="timeline-focus">Owner: Product & Engineering</div>
+          <ul class="timeline-list">
+            <li>Lock AP + vendor-master data specs and loaders.</li>
+            <li>Automate AP–master anti-join and exposure calculations.</li>
+            <li>Implement masterintegrity module and false-positive filters.</li>
+          </ul>
+        </article>
+        <article class="timeline-card">
+          <div class="timeline-label">Week 2</div>
+          <div class="timeline-title">POPIA, QA & reporting</div>
+          <div class="timeline-focus">Owner: Product & FSG</div>
+          <ul class="timeline-list">
+            <li>Draft POPIA note and data-flow diagram with FSG.</li>
+            <li>Define analyst QA checklist and definition of done.</li>
+            <li>Standardise two-part findings report and dashboard.</li>
+          </ul>
+        </article>
+        <article class="timeline-card">
+          <div class="timeline-label">Week 3</div>
+          <div class="timeline-title">Pilot offer, enterprise & YC</div>
+          <div class="timeline-focus">Owner: CMO & Founder</div>
+          <ul class="timeline-list">
+            <li>Ship pilot one-pager and anonymised case snippets.</li>
+            <li>Document Stage 2–3 API/enterprise roadmap.</li>
+            <li>Prepare YC memo, metrics snapshot and video script.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="block" id="roles">
+      <div class="kicker">Roles & accountability</div>
+      <div class="block-header">
+        <h2>Who owns what across CMO, BA, Product, Tech & FSG.</h2>
+        <span class="tag">RACI-style view for Phase 1 outcomes</span>
+      </div>
+      <div class="block-body">
+        Rows are key Phase 1 outcomes; columns are the core lenses and delivery partners. Use this grid when planning
+        each week and in check-ins.
+      </div>
+      <div class="swimlanes" aria-label="RACI matrix for Phase 1 outcomes">
+        <div class="swimlane-header">
+          <div>Outcome</div>
+          <div>CMO / GTM</div>
+          <div>Senior BA</div>
+          <div>Product / Eng</div>
+          <div>FSG / Client</div>
+        </div>
+        <div class="swimlane-row">
+          <div>Standard AP + vendor-master data pipeline</div>
+          <div><span class="swimlane-owner C">C</span></div>
+          <div><span class="swimlane-owner C">C</span></div>
+          <div><span class="swimlane-owner R">R</span> <span class="swimlane-owner A">A</span></div>
+          <div><span class="swimlane-owner I">I</span></div>
+        </div>
+        <div class="swimlane-row">
+          <div>masterintegrity module & tuned detection</div>
+          <div><span class="swimlane-owner I">I</span></div>
+          <div><span class="swimlane-owner C">C</span></div>
+          <div><span class="swimlane-owner R">R</span> <span class="swimlane-owner A">A</span></div>
+          <div><span class="swimlane-owner C">C</span></div>
+        </div>
+        <div class="swimlane-row">
+          <div>Analyst QA checklist & report template</div>
+          <div><span class="swimlane-owner C">C</span></div>
+          <div><span class="swimlane-owner R">R</span></div>
+          <div><span class="swimlane-owner R">R</span></div>
+          <div><span class="swimlane-owner C">C</span></div>
+        </div>
+        <div class="swimlane-row">
+          <div>POPIA note & data-processing appendix</div>
+          <div><span class="swimlane-owner C">C</span></div>
+          <div><span class="swimlane-owner C">C</span></div>
+          <div><span class="swimlane-owner I">I</span></div>
+          <div><span class="swimlane-owner R">R</span> <span class="swimlane-owner A">A</span></div>
+        </div>
+        <div class="swimlane-row">
+          <div>Pilot one-pager & case snippets</div>
+          <div><span class="swimlane-owner R">R</span> <span class="swimlane-owner A">A</span></div>
+          <div><span class="swimlane-owner C">C</span></div>
+          <div><span class="swimlane-owner C">C</span></div>
+          <div><span class="swimlane-owner I">I</span></div>
+        </div>
+        <div class="swimlane-row">
+          <div>First paid pilot signed</div>
+          <div><span class="swimlane-owner R">R</span></div>
+          <div><span class="swimlane-owner C">C</span></div>
+          <div><span class="swimlane-owner C">C</span></div>
+          <div><span class="swimlane-owner A">A</span></div>
+        </div>
+      </div>
+      <div class="swimlane-legend">
+        <span><span class="legend-dot R"></span>R = Responsible</span>
+        <span><span class="legend-dot A"></span>A = Accountable</span>
+        <span><span class="legend-dot C"></span>C = Consulted</span>
+        <span><span class="legend-dot I"></span>I = Informed</span>
+      </div>
+    </section>
+
+    <section class="block" id="benefits">
+      <div class="kicker">Benefits & owners</div>
+      <div class="block-header">
+        <h2>Who owns which benefit, and how we prove it.</h2>
+        <span class="tag">Aligned to the business case & benefits plan</span>
+      </div>
+      <div class="block-body">
+        Each card links Phase 1 work to a measurable benefit and a named owner. This mirrors the formal business case
+        and benefits-realisation approach so it can drop into board or audit packs.
+      </div>
+      <div class="benefit-grid" aria-label="Benefit owner map">
+        <article class="benefit-card">
+          <div class="benefit-kicker">Financial</div>
+          <h3 class="benefit-name">Reduced fraud & duplicate payments</h3>
+          <p class="benefit-body">Detect ghost vendors, duplicate suppliers, and anomalous payment patterns early enough
+            to prevent or recover material losses.</p>
+          <div class="benefit-meta">
+            <span><strong>Primary owner:</strong> Client CFO / Group Finance</span>
+            <span><strong>Supported by:</strong> AI SecureWatch Product · FSG Forensics</span>
+            <span><strong>Measured by:</strong> value of ghost-vendor exposure surfaced; recovered amounts; reduced
+              future out-of-master spend.</span>
+          </div>
+        </article>
+        <article class="benefit-card">
+          <div class="benefit-kicker">Governance</div>
+          <h3 class="benefit-name">Stronger audit & board assurance</h3>
+          <p class="benefit-body">Give audit committees a system-independent view of every entity actually paid, closing
+            the sampling and known-vendor gaps.</p>
+          <div class="benefit-meta">
+            <span><strong>Primary owner:</strong> Client Head of Internal Audit / CAE</span>
+            <span><strong>Supported by:</strong> AI SecureWatch BA lead · FSG Engagement Partner</span>
+            <span><strong>Measured by:</strong> audit findings on vendor-population completeness; reduction in high-risk
+              findings over time.</span>
+          </div>
+        </article>
+        <article class="benefit-card">
+          <div class="benefit-kicker">Compliance</div>
+          <h3 class="benefit-name">POPIA-safe forensic analytics</h3>
+          <p class="benefit-body">Show that sensitive vendor and employee data is processed lawfully, minimally, and
+            with clear retention and deletion controls.</p>
+          <div class="benefit-meta">
+            <span><strong>Primary owner:</strong> FSG POPIA specialist / client DPO</span>
+            <span><strong>Supported by:</strong> AI SecureWatch Product & Engineering</span>
+            <span><strong>Measured by:</strong> POPIA review sign-off; absence of data-handling objections from
+              legal/compliance.</span>
+          </div>
+        </article>
+        <article class="benefit-card">
+          <div class="benefit-kicker">Commercial</div>
+          <h3 class="benefit-name">Pilot-to-licence conversion</h3>
+          <p class="benefit-body">Turn a single pilot into a repeatable revenue motion: credited pilot fees, annual
+            licences, and partner-led resell.</p>
+          <div class="benefit-meta">
+            <span><strong>Primary owner:</strong> AI SecureWatch Founder / CMO</span>
+            <span><strong>Supported by:</strong> FSG sales team · early champion client</span>
+            <span><strong>Measured by:</strong> pilot conversion rate; annual licence value; referenceability (case
+              studies, quotes).</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="block" id="roadmap">
+      <div class="kicker">Product roadmap</div>
+      <div class="block-header">
+        <h2>Where Phase 1 sits in the build-out.</h2>
+        <span class="tag">Stage 1 pilots → Stage 2 licences → Stage 3 partner resell</span>
+      </div>
+      <div class="block-body">
+        This mirrors your business plan: harden the pilot motion, then industrialise the platform and expand through
+        partners. YC and enterprise buyers both want to see this line of sight.
+      </div>
+      <div class="timeline-grid" aria-label="AI SecureWatch roadmap">
+        <article class="timeline-card">
+          <div class="timeline-label">Stage 1</div>
+          <div class="timeline-title">Paid pilots (now)</div>
+          <div class="timeline-focus">Goal: prove value & close first 3–5 clients</div>
+          <ul class="timeline-list">
+            <li>Run time-boxed pilots (12–36 months AP) with analyst-reviewed reports.</li>
+            <li>Quantify ghost vendors, duplicates and anomaly exposure per client.</li>
+            <li>Secure written references and anonymised case studies where justified.</li>
+          </ul>
+        </article>
+        <article class="timeline-card">
+          <div class="timeline-label">Stage 2</div>
+          <div class="timeline-title">Annual licences</div>
+          <div class="timeline-focus">Goal: recurring monitoring & ARR</div>
+          <ul class="timeline-list">
+            <li>Industrialise the engine into a hardened, multi-entity platform.</li>
+            <li>Introduce quarterly or monthly reconciliation cycles per entity.</li>
+            <li>Expose dashboards, alerts, exports and findings APIs into audit & GRC.</li>
+          </ul>
+        </article>
+        <article class="timeline-card">
+          <div class="timeline-label">Stage 3</div>
+          <div class="timeline-title">Partner resell & white-label</div>
+          <div class="timeline-focus">Goal: scale via forensic & audit partners</div>
+          <ul class="timeline-list">
+            <li>Formalise co-sell and revenue-share with firms like FSG and audit practices.</li>
+            <li>Offer white-label vendor-assurance services on top of the platform.</li>
+            <li>Add advanced modules (entity resolution, live ERP feeds, bank reconciliation) where demand and ROI
+              justify.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="block" id="enterprise">
+      <div class="kicker">API & enterprise</div>
+      <div class="block-header">
+        <h2>How this becomes an enterprise-grade layer.</h2>
+        <span class="tag">Designed for banks, SOEs & complex AP environments</span>
+      </div>
+      <div class="block-body">
+        Phase 1 deliberately stays file-based to minimise integration friction. For larger, multi-ERP enterprises, your
+        roadmap already calls for standard ingestion pipelines, direct ERP connectivity, and interfaces into audit and
+        GRC systems; this section makes that evolution explicit without overselling today&apos;s stack.
+      </div>
+      <div class="benefit-grid" aria-label="Enterprise API packages">
+        <article class="benefit-card">
+          <div class="benefit-kicker">Package</div>
+          <h3 class="benefit-name">Ingestion API</h3>
+          <p class="benefit-body">Read-only endpoints or managed connectors that accept AP and vendor-master data from
+            SAP, Oracle, Sage and other ERPs on a schedule.</p>
+          <div class="benefit-meta">
+            <span><strong>Stage:</strong> Stage 2 roadmap (post-pilot)</span>
+            <span><strong>For:</strong> Clients with multiple ERPs or shared-services centres who want automation
+              instead of manual exports.</span>
+          </div>
+        </article>
+        <article class="benefit-card">
+          <div class="benefit-kicker">Package</div>
+          <h3 class="benefit-name">Findings & evidence API</h3>
+          <p class="benefit-body">Secure feeds exposing confirmed findings, vendor flags and evidence chains for
+            ingestion into audit management, case management or GRC platforms.</p>
+          <div class="benefit-meta">
+            <span><strong>Stage:</strong> Stage 2–3 roadmap</span>
+            <span><strong>For:</strong> Internal Audit, Forensics and Risk teams who want findings inside existing
+              tooling.</span>
+          </div>
+        </article>
+        <article class="benefit-card">
+          <div class="benefit-kicker">Package</div>
+          <h3 class="benefit-name">Bank & registry integrations</h3>
+          <p class="benefit-body">Optional modules for bank-statement reconciliation and CIPC or other registry lookups
+            to enrich vendor risk and confirm actual cash outflows.</p>
+          <div class="benefit-meta">
+            <span><strong>Stage:</strong> Stage 3 roadmap</span>
+            <span><strong>For:</strong> High-risk sectors or post-incident reviews where bank-level tracing and director
+              checks are mandatory.</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="block" id="yc">
+      <div class="kicker">YC & traction</div>
+      <div class="block-header">
+        <h2>What YC and serious clients see at a glance.</h2>
+        <span class="tag">Evidence-first story, not feature claims</span>
+      </div>
+      <div class="block-body">
+        The same artefacts that de-risk a pilot for a CFO or CAE also answer YC&apos;s core questions: what problem
+        you&apos;re solving, why now, what you&apos;ve already proven, and how you scale.
+      </div>
+      <div class="two-col">
+        <div>
+          <ul class="list">
+            <li>
+              <div class="list-item-title">Problem & wedge</div>
+              <div class="list-item-body">Most organisations cannot answer &ldquo;who exactly received money in the last
+                12–36 months?&rdquo; because ERP controls, audit sampling and TPRM all assume the vendor master is
+                complete.</div>
+            </li>
+            <li>
+              <div class="list-item-title">Solution</div>
+              <div class="list-item-body">A system-independent reconciliation layer that compares AP payment files with
+                vendor masters to surface every entity that received money but is not in the master, plus high-risk
+                patterns inside the master itself.</div>
+            </li>
+            <li>
+              <div class="list-item-title">Why now</div>
+              <div class="list-item-body">Boards are demanding financial ground truth post-scandals; AI makes
+                full-population reconciliation practical; growing ERP complexity guarantees permanent blind spots.</div>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <ul class="list">
+            <li>
+              <div class="list-item-title">Traction & pipeline</div>
+              <div class="list-item-body">1 live Sage 200 pilot (Technomobile), 1 anonymised construction pilot in deck,
+                40+ discovery calls, 10+ hot leads, and an FSG co-sell partnership targeting government, SOEs and
+                financial services.</div>
+            </li>
+            <li>
+              <div class="list-item-title">Defensibility</div>
+              <div class="list-item-body">System independence, full-population reconciliation (no sampling), human
+                analyst on every flag, and a forensic partner that can act on findings.</div>
+            </li>
+            <li>
+              <div class="list-item-title">This sprint&apos;s YC output</div>
+              <div class="list-item-body">YC memo and metrics snapshot, a short founder video script, and this sprint
+                site as a live artefact showing you can move from prototype to repeatable pilot delivery.</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      Drop this file into a GitHub repository, enable GitHub Pages, and you have a clean, mobile-responsive Phase 1
+      sprint site you can use with founders, partners, enterprise clients and YC.
+    </footer>
+  </div>
+
+  <script>
+    // Highlight nav on scroll (lightweight)
+    const navLinks = Array.from(document.querySelectorAll('nav a'));
+    const sections = navLinks.map(l => document.querySelector(l.getAttribute('href'))).filter(Boolean);
+
+    const onScroll = () => {
+      const offset = window.innerHeight * 0.2;
+      let activeId = null;
+      for (const section of sections) {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= offset && rect.bottom > offset) {
+          activeId = '#' + section.id;
+          break;
+        }
+      }
+      navLinks.forEach(link => {
+        if (link.getAttribute('href') === activeId) {
+          link.style.borderColor = getComputedStyle(document.documentElement).getPropertyValue('--accent');
+          link.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--bg-soft');
+          link.style.color = getComputedStyle(document.documentElement).getPropertyValue('--text-main');
+        } else {
+          link.style.borderColor = 'transparent';
+          link.style.backgroundColor = 'transparent';
+          link.style.color = getComputedStyle(document.documentElement).getPropertyValue('--text-soft');
+        }
+      });
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // --- Client-side Auth Logic ---
+    (function () {
+      // NOTE: Since this is purely client-side on GitHub Pages, the password is in the source code.
+      // This is "security by obscurity" and keeps out casual viewers, but is not fully secure against technical users.
+      const correctPassword = "phase1"; // <- CHANGE THIS TO YOUR DESIRED PASSWORD
+
+      const overlay = document.getElementById('auth-overlay');
+      const form = document.getElementById('auth-form');
+      const passwordInput = document.getElementById('auth-password');
+      const errorMsg = document.getElementById('auth-error');
+
+      // Check if already authenticated in this session
+      if (sessionStorage.getItem('ai_securewatch_auth') === 'true') {
+        overlay.style.display = 'none';
+        document.body.classList.remove('locked');
+      }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (passwordInput.value === correctPassword) {
+          sessionStorage.setItem('ai_securewatch_auth', 'true');
+          overlay.style.opacity = '0';
+          setTimeout(() => {
+            overlay.style.display = 'none';
+            document.body.classList.remove('locked');
+          }, 300);
+        } else {
+          errorMsg.style.display = 'block';
+          passwordInput.value = '';
+          passwordInput.focus();
+        }
+      });
+    })();
+  </script>
+</body>
+
+</html>

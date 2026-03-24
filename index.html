@@ -6,7 +6,7 @@
   <title>AI SecureWatch – Brand, Market & Landscape | Milgrand Tshiamo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description"
-    content="Independent brand, market and competitive landscape view of AI SecureWatch by Milgrand Tshiamo, focused on ghost vendors and payment reality.">
+    content="Independent brand, market and competitive landscape view of AI SecureWatch by Milgrand Tshiamo, focused on hallucinations and payment reality.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -83,7 +83,8 @@
       color: var(--color-text);
       background-color: var(--color-bg);
       -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
+      overflow: hidden;
+      /* Prevent page-level scrolling */
     }
 
     /* Ambient Background Glow */
@@ -125,10 +126,23 @@
       text-decoration: none;
     }
 
-    main {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: var(--space-8) var(--space-4) var(--space-12);
+    main.slider {
+      display: flex;
+      height: 100vh;
+      width: 100vw;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      padding-top: 100px;
+      -ms-overflow-style: none;
+      /* IE and Edge */
+      scrollbar-width: none;
+      /* Firefox */
+    }
+
+    main.slider::-webkit-scrollbar {
+      display: none;
     }
 
     /* --- Animations --- */
@@ -173,21 +187,27 @@
 
     /* Minimal Header */
     header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: transparent;
+      padding: var(--space-6) max(var(--space-4), calc((100vw - var(--max-width)) / 2));
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: var(--space-4);
-      margin-bottom: var(--space-16);
-      border-bottom: 1px solid var(--color-border);
-      padding-bottom: var(--space-6);
       animation: fadeInDown 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      pointer-events: none;
     }
+    .logo-mark { pointer-events: auto; }
+    #slide-title { pointer-events: auto; }
 
     .logo-mark {
       display: inline-flex;
       align-items: center;
       gap: var(--space-3);
-      group: logo;
       transition: transform 0.3s ease;
     }
 
@@ -351,9 +371,50 @@
       color: var(--color-text-muted);
     }
 
-    /* General Sections */
-    section {
-      margin-bottom: var(--space-24);
+    /* General Sections & Slider */
+    section,
+    .hero,
+    footer {
+      flex: 0 0 100vw;
+      height: calc(100vh - 100px);
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+      overflow-y: auto;
+      padding: var(--space-8) max(var(--space-4), calc((100vw - var(--max-width)) / 2));
+      margin-bottom: 0;
+      position: relative;
+    }
+
+    .slider-controls {
+      position: fixed;
+      bottom: var(--space-6);
+      right: var(--space-8);
+      display: flex;
+      gap: var(--space-4);
+      z-index: 100;
+    }
+
+    .slide-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--color-border);
+      color: var(--color-text);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      backdrop-filter: blur(8px);
+    }
+
+    .slide-btn:hover {
+      background: var(--color-accent);
+      border-color: var(--color-accent);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 14px rgba(255, 69, 0, 0.3);
     }
 
     .section-header {
@@ -613,6 +674,89 @@
       background: var(--color-accent-soft);
     }
 
+    /* RACI & Swimlane specific */
+    .raci-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .raci-r {
+      background: rgba(34, 197, 94, 0.2);
+      color: #bbf7d0;
+      box-shadow: 0 0 10px rgba(34, 197, 94, 0.1);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+    }
+
+    .raci-a {
+      background: rgba(248, 113, 113, 0.2);
+      color: #fecaca;
+      box-shadow: 0 0 10px rgba(248, 113, 113, 0.1);
+      border: 1px solid rgba(248, 113, 113, 0.3);
+    }
+
+    .raci-c {
+      background: rgba(59, 130, 246, 0.2);
+      color: #bfdbfe;
+      box-shadow: 0 0 10px rgba(59, 130, 246, 0.1);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+    }
+
+    .raci-i {
+      background: rgba(148, 163, 184, 0.2);
+      color: #e5e7eb;
+      box-shadow: 0 0 10px rgba(148, 163, 184, 0.1);
+      border: 1px solid rgba(148, 163, 184, 0.3);
+    }
+
+    .swimlane-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-4);
+      margin-top: var(--space-6);
+    }
+
+    .swimlane-legend span {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      color: var(--color-text-muted);
+    }
+
+    .timeline-list {
+      list-style: none;
+      padding: 0;
+      margin: var(--space-4) 0 0 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .timeline-list li {
+      position: relative;
+      padding-left: 1.25rem;
+      font-size: 0.95rem;
+      color: var(--color-text-muted);
+    }
+
+    .timeline-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.55rem;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--color-accent);
+    }
+
     .note {
       font-size: 0.9rem;
       color: var(--color-text-muted);
@@ -626,14 +770,14 @@
     /* Footer */
     footer {
       border-top: 1px solid var(--color-border);
-      margin-top: var(--space-24);
-      padding-top: var(--space-10);
       font-size: 0.9rem;
       color: var(--color-text-muted);
       display: flex;
       flex-direction: column;
       gap: var(--space-2);
       text-align: center;
+      justify-content: center;
+      align-items: center;
     }
 
     footer strong {
@@ -685,23 +829,17 @@
 </head>
 
 <body>
-  <main>
-    <header>
-      <div class="logo-mark">
-        <div class="logo-shape" aria-hidden="true"></div>
-        <div>
-          <div class="logo-text-main">AI SecureWatch</div>
-          <div class="logo-text-sub">Brand · Market · Landscape</div>
-        </div>
+  <header>
+    <div class="logo-mark">
+      <div class="logo-shape" aria-hidden="true"></div>
+      <div>
+        <div class="logo-text-main">AI SecureWatch</div>
+        <div class="logo-text-sub">Brand · Market · Landscape</div>
       </div>
-      <nav>
-        <a href="#brand">Brand</a>
-        <a href="#problem">Problem</a>
-        <a href="#market">Market</a>
-        <a href="#landscape">Landscape</a>
-        <a href="#positioning">Positioning</a>
-      </nav>
-    </header>
+    </div>
+    <div id="slide-title" style="font-family: 'Outfit', sans-serif; font-size: 1.1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-text-muted);">Brand Narrative</div>
+  </header>
+  <main class="slider">
 
     <section class="hero" id="brand">
       <div class="reveal">
@@ -710,7 +848,7 @@
           Making payment reality <span>visible.</span>
         </h1>
         <p class="hero-lede">
-          AI SecureWatch reconciles 100% of payment transactions against the vendor master to reveal ghost vendors and
+          AI SecureWatch reconciles 100% of payment transactions against the vendor master to reveal hallucinations and
           other entities that receive money but never appear as approved suppliers. A system‑independent view of who
           actually got paid.
         </p>
@@ -719,7 +857,7 @@
       <div class="hero-meta reveal delay-2">
         <div class="meta-item">
           <strong>Use case focus</strong>
-          <span>Ghost vendors, shadow entities, out‑of‑master spend</span>
+          <span>Hallucinations, shadow entities, out‑of‑master spend</span>
         </div>
         <div class="meta-item">
           <strong>Primary buyers</strong>
@@ -757,7 +895,7 @@
         <div class="panel panel-grey reveal delay-3">
           <h3>Picture 2: Payment Reality</h3>
           <p>
-            The bank account reveals shadow entities and ghost vendors collecting multi-million dollar payouts entirely
+            The bank account reveals shadow entities and hallucinations collecting multi-million dollar payouts entirely
             off the radar. These legitimate-looking recipients sit completely outside formal procurement, TPRM
             workflows, and master files.
           </p>
@@ -773,7 +911,8 @@
         </div>
         <div class="stat-card reveal delay-2">
           <div class="stat-label">Loss Exposure</div>
-          <p>Ghost vendor schemes and social‑engineering frauds continue to hit public bodies and enterprises with heavy
+          <p>Hallucination schemes and social‑engineering frauds continue to hit public bodies and enterprises with
+            heavy
             financial losses.</p>
         </div>
       </div>
@@ -852,7 +991,7 @@
             <tr>
               <td>Fraud Analytics</td>
               <td>FraudNet, Active Intel, FSG Forensics</td>
-              <td>Detecting ghost vendors, anomalous payments; cases.</td>
+              <td>Detecting hallucinations, anomalous payments; cases.</td>
               <td>Productised, repeatable reconciliation service standardising out‑of‑master exposure.</td>
             </tr>
           </tbody>
@@ -892,31 +1031,405 @@
       </div>
     </section>
 
+    <!-- ==== SPRINT PLAN INTEGRATION ==== -->
+
+    <section id="sprint" style="margin-top: var(--space-16);">
+      <div class="section-header reveal">
+        <div class="section-label">Phase 1 Sprint</div>
+        <h2>From prototype to pilot-ready layer</h2>
+      </div>
+
+      <p class="reveal delay-1">
+        This sprint takes the proven vendor-population and fraud engine behind the Technomobile and construction pilots
+        and hardens it into a repeatable paid pilot offer: stable ingestion, tuned findings, analyst QA, POPIA-safe data
+        handling, and a clear narrative for enterprise buyers and Y Combinator.
+      </p>
+
+      <div class="grid-3" style="margin-top: var(--space-8);">
+        <div class="stat-card reveal delay-1">
+          <div class="stat-label">Live forensic proof</div>
+          <div class="stat-value" style="font-size: 1.5rem;">23 hallucinations <br>
+            <span style="font-size: 1.2rem; color: var(--color-accent);">R1.9M</span>
+          </div>
+          <p>Technomobile CC pilot from Sage 200 exports.</p>
+        </div>
+        <div class="stat-card reveal delay-2">
+          <div class="stat-label">Pitch deck example</div>
+          <div class="stat-value" style="font-size: 1.5rem;">127 entities <br>
+            <span style="font-size: 1.2rem; color: var(--color-accent);">R2.3M</span>
+          </div>
+          <p>Construction firm out-of-master spend in 2 weeks.</p>
+        </div>
+        <div class="stat-card reveal delay-3">
+          <div class="stat-label">Commercial model</div>
+          <div class="stat-value" style="font-size: 1.5rem;">R25k–R50k</div>
+          <p>Time-boxed pilots credited to annual licences.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="timeline">
+      <div class="section-header reveal">
+        <div class="section-label">Sprint Timeline</div>
+        <h2>What gets done, and when</h2>
+      </div>
+      <p class="reveal delay-1">
+        Each week focuses on a different risk: Week 1 stabilises the engine and data pipeline, Week 2 locks POPIA and
+        QA, and Week 3 converts that into a client and YC-ready offer.
+      </p>
+
+      <div class="grid-3" style="margin-top: var(--space-8);">
+        <div class="stat-card reveal delay-1">
+          <div class="stat-label" style="color: var(--color-text);">Week 1</div>
+          <h3 style="margin: 0 0 var(--space-2); font-size: 1.2rem;">Engine & Pipeline</h3>
+          <p style="font-size: 0.85rem; color: var(--color-accent); font-weight: 600; text-transform: uppercase;">Owner:
+            Alex Miller (Product) & Dev Team</p>
+          <ul class="timeline-list">
+            <li>Lock AP + vendor-master data specs and loaders.</li>
+            <li>Automate AP–master anti-join and exposure calculations.</li>
+            <li>Implement masterintegrity module and false-positive filters.</li>
+          </ul>
+        </div>
+        <div class="stat-card reveal delay-2">
+          <div class="stat-label" style="color: var(--color-text);">Week 2</div>
+          <h3 style="margin: 0 0 var(--space-2); font-size: 1.2rem;">POPIA, QA & Reporting</h3>
+          <p style="font-size: 0.85rem; color: var(--color-accent); font-weight: 600; text-transform: uppercase;">Owner:
+            Alex Miller (Product) & Ayesha Khan (FSG)</p>
+          <ul class="timeline-list">
+            <li>Draft POPIA note and data-flow diagram with FSG.</li>
+            <li>Define analyst QA checklist and definition of done.</li>
+            <li>Standardise two-part findings report and dashboard.</li>
+          </ul>
+        </div>
+        <div class="stat-card reveal delay-3">
+          <div class="stat-label" style="color: var(--color-text);">Week 3</div>
+          <h3 style="margin: 0 0 var(--space-2); font-size: 1.2rem;">Offer, Enterprise & YC</h3>
+          <p style="font-size: 0.85rem; color: var(--color-accent); font-weight: 600; text-transform: uppercase;">Owner:
+            Milgrand Tshiamo (Founder / GTM)</p>
+          <ul class="timeline-list">
+            <li>Ship pilot one-pager and anonymised case snippets.</li>
+            <li>Document Stage 2–3 API/enterprise roadmap.</li>
+            <li>Prepare YC memo, metrics snapshot and video script.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="roles">
+      <div class="section-header reveal">
+        <div class="section-label">Accountability</div>
+        <h2>Who owns what across the team</h2>
+      </div>
+      <p class="reveal delay-1">
+        RACI-style view for Phase 1 outcomes. Rows are key Phase 1 outcomes; columns are the core lenses and delivery
+        partners.
+      </p>
+
+      <div class="table-wrapper reveal delay-2">
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 40%;">Outcome</th>
+              <th>CMO / GTM</th>
+              <th>Senior BA</th>
+              <th>Product / Eng</th>
+              <th>FSG / Client</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Standard AP + vendor-master data pipeline</td>
+              <td><span class="raci-pill raci-c">C</span></td>
+              <td><span class="raci-pill raci-c">C</span></td>
+              <td><span class="raci-pill raci-r">R</span> <span class="raci-pill raci-a">A</span></td>
+              <td><span class="raci-pill raci-i">I</span></td>
+            </tr>
+            <tr>
+              <td>masterintegrity module & tuned detection</td>
+              <td><span class="raci-pill raci-i">I</span></td>
+              <td><span class="raci-pill raci-c">C</span></td>
+              <td><span class="raci-pill raci-r">R</span> <span class="raci-pill raci-a">A</span></td>
+              <td><span class="raci-pill raci-c">C</span></td>
+            </tr>
+            <tr>
+              <td>Analyst QA checklist & report template</td>
+              <td><span class="raci-pill raci-c">C</span></td>
+              <td><span class="raci-pill raci-r">R</span></td>
+              <td><span class="raci-pill raci-r">R</span></td>
+              <td><span class="raci-pill raci-c">C</span></td>
+            </tr>
+            <tr>
+              <td>POPIA note & data-processing appendix</td>
+              <td><span class="raci-pill raci-c">C</span></td>
+              <td><span class="raci-pill raci-c">C</span></td>
+              <td><span class="raci-pill raci-i">I</span></td>
+              <td><span class="raci-pill raci-r">R</span> <span class="raci-pill raci-a">A</span></td>
+            </tr>
+            <tr>
+              <td>Pilot one-pager & case snippets</td>
+              <td><span class="raci-pill raci-r">R</span> <span class="raci-pill raci-a">A</span></td>
+              <td><span class="raci-pill raci-c">C</span></td>
+              <td><span class="raci-pill raci-c">C</span></td>
+              <td><span class="raci-pill raci-i">I</span></td>
+            </tr>
+            <tr>
+              <td>First paid pilot signed</td>
+              <td><span class="raci-pill raci-r">R</span></td>
+              <td><span class="raci-pill raci-c">C</span></td>
+              <td><span class="raci-pill raci-c">C</span></td>
+              <td><span class="raci-pill raci-a">A</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="swimlane-legend reveal delay-3">
+        <span><span class="raci-pill raci-r">R</span> Responsible</span>
+        <span><span class="raci-pill raci-a">A</span> Accountable</span>
+        <span><span class="raci-pill raci-c">C</span> Consulted</span>
+        <span><span class="raci-pill raci-i">I</span> Informed</span>
+      </div>
+    </section>
+
+    <section id="benefits">
+      <div class="section-header reveal">
+        <div class="section-label">Benefits & Owners</div>
+        <h2>Who owns which benefit, and how we prove it</h2>
+      </div>
+
+      <div class="contrast-panels" style="margin-top: var(--space-6);">
+        <div class="panel reveal delay-1"
+          style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--color-border); color: var(--color-text);">
+          <div class="stat-label">Financial</div>
+          <h3 style="color: var(--color-text);">Reduced fraud & duplicate payments</h3>
+          <p style="color: var(--color-text-muted);">Detect hallucinations, duplicate suppliers, and anomalous payment
+            patterns early enough to prevent or recover material losses.</p>
+          <hr style="border-color: rgba(255,255,255,0.1); margin: var(--space-4) 0;">
+          <ul class="minimal-list">
+            <li><strong>Primary owner:</strong> Sarah Jenkins (Client CFO / Group Finance)</li>
+            <li><strong>Measured by:</strong> value of hallucination exposure surfaced; recovered amounts.</li>
+          </ul>
+        </div>
+
+        <div class="panel reveal delay-2"
+          style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--color-border); color: var(--color-text);">
+          <div class="stat-label">Governance</div>
+          <h3 style="color: var(--color-text);">Stronger audit & board assurance</h3>
+          <p style="color: var(--color-text-muted);">Give audit committees a system-independent view of every entity
+            actually paid, closing the sampling and known-vendor gaps.</p>
+          <hr style="border-color: rgba(255,255,255,0.1); margin: var(--space-4) 0;">
+          <ul class="minimal-list">
+            <li><strong>Primary owner:</strong> David Chen (Client Head of Internal Audit / CAE)</li>
+            <li><strong>Measured by:</strong> audit findings on vendor-population completeness.</li>
+          </ul>
+        </div>
+
+        <div class="panel reveal delay-3"
+          style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--color-border); color: var(--color-text);">
+          <div class="stat-label">Compliance</div>
+          <h3 style="color: var(--color-text);">POPIA-safe forensic analytics</h3>
+          <p style="color: var(--color-text-muted);">Show that sensitive vendor and employee data is processed lawfully,
+            minimally, and with clear retention and deletion controls.</p>
+          <hr style="border-color: rgba(255,255,255,0.1); margin: var(--space-4) 0;">
+          <ul class="minimal-list">
+            <li><strong>Primary owner:</strong> Ayesha Khan (FSG POPIA Specialist) / Client DPO</li>
+            <li><strong>Measured by:</strong> POPIA review sign-off.</li>
+          </ul>
+        </div>
+
+        <div class="panel reveal delay-4"
+          style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--color-border); color: var(--color-text);">
+          <div class="stat-label">Commercial</div>
+          <h3 style="color: var(--color-text);">Pilot-to-licence conversion</h3>
+          <p style="color: var(--color-text-muted);">Turn a single pilot into a repeatable revenue motion: credited
+            pilot fees, annual licences, and partner-led resell.</p>
+          <hr style="border-color: rgba(255,255,255,0.1); margin: var(--space-4) 0;">
+          <ul class="minimal-list">
+            <li><strong>Primary owner:</strong> Milgrand Tshiamo (Founder / CMO)</li>
+            <li><strong>Measured by:</strong> pilot conversion rate; annual licence value.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="roadmap">
+      <div class="section-header reveal">
+        <div class="section-label">Product Roadmap</div>
+        <h2>Where Phase 1 sits in the build-out</h2>
+      </div>
+      <p class="reveal delay-1">
+        This mirrors your business plan: harden the pilot motion, then industrialise the platform and expand through
+        partners. YC and enterprise buyers both want to see this line of sight.
+      </p>
+
+      <div class="grid-3" style="margin-top: var(--space-8);">
+        <div class="stat-card reveal delay-1" style="border-top: 3px solid var(--color-text-muted);">
+          <div class="stat-label" style="color: var(--color-text);">Stage 1</div>
+          <h3 style="margin: 0 0 var(--space-2); font-size: 1.2rem;">Paid pilots (now)</h3>
+          <p style="font-size: 0.85rem; color: var(--color-text-muted); font-weight: 600;">Prove value & close first 3–5
+            clients</p>
+          <ul class="timeline-list" style="margin-top: var(--space-4);">
+            <li>Run time-boxed pilots (12–36 months AP) with analyst-reviewed reports.</li>
+            <li>Quantify hallucinations and anomaly exposure per client.</li>
+          </ul>
+        </div>
+        <div class="stat-card reveal delay-2" style="border-top: 3px solid var(--color-accent);">
+          <div class="stat-label" style="color: var(--color-text);">Stage 2</div>
+          <h3 style="margin: 0 0 var(--space-2); font-size: 1.2rem;">Annual licences</h3>
+          <p style="font-size: 0.85rem; color: var(--color-text-muted); font-weight: 600;">Recurring monitoring & ARR
+          </p>
+          <ul class="timeline-list" style="margin-top: var(--space-4);">
+            <li>Industrialise the engine into a hardened, multi-entity platform.</li>
+            <li>Expose dashboards, alerts, exports and findings APIs.</li>
+          </ul>
+        </div>
+        <div class="stat-card reveal delay-3" style="border-top: 3px solid #3b82f6;">
+          <div class="stat-label" style="color: var(--color-text);">Stage 3</div>
+          <h3 style="margin: 0 0 var(--space-2); font-size: 1.2rem;">Partner resell</h3>
+          <p style="font-size: 0.85rem; color: var(--color-text-muted); font-weight: 600;">Scale via forensic & audit
+            partners</p>
+          <ul class="timeline-list" style="margin-top: var(--space-4);">
+            <li>Formalise co-sell and revenue-share with firms like FSG.</li>
+            <li>Offer white-label vendor-assurance services.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="yc">
+      <div class="section-header reveal">
+        <div class="section-label">YC & Traction</div>
+        <h2>What YC and serious clients see at a glance</h2>
+      </div>
+
+      <div class="grid-2" style="margin-top: var(--space-8);">
+        <div class="reveal delay-1">
+          <h3 style="color: var(--color-text); font-size: 1.3rem; margin-bottom: var(--space-3);">Problem & Wedge</h3>
+          <p style="color: var(--color-text-muted);">Most organisations cannot answer “who exactly received money in the
+            last 12–36 months?” because ERP controls, audit sampling and TPRM all assume the vendor master is complete.
+          </p>
+
+          <h3
+            style="color: var(--color-text); font-size: 1.3rem; margin-top: var(--space-6); margin-bottom: var(--space-3);">
+            Solution</h3>
+          <p style="color: var(--color-text-muted);">A system-independent reconciliation layer that compares AP payment
+            files with vendor masters to surface every entity that received money but is not in the master, plus
+            high-risk patterns inside the master itself.</p>
+        </div>
+
+        <div class="stat-card reveal delay-2">
+          <div class="stat-label">Traction & pipeline</div>
+          <ul class="minimal-list" style="margin-top: var(--space-2);">
+            <li>1 live Sage 200 pilot (Technomobile)</li>
+            <li>1 anonymised construction pilot in deck</li>
+            <li>40+ discovery calls, 10+ hot leads</li>
+            <li>FSG co-sell partnership targeting government, SOEs and financial services.</li>
+          </ul>
+
+          <div class="stat-label" style="margin-top: var(--space-6);">Defensibility</div>
+          <ul class="minimal-list" style="margin-top: var(--space-2);">
+            <li>System independence & full-population reconciliation.</li>
+            <li>Human analyst on every flag.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
     <footer class="reveal">
       <div><strong>Prepared by Milgrand Tshiamo</strong> · Johannesburg, South Africa</div>
       <div>Created for discussion purposes to refine the brand and go‑to‑market narrative.</div>
     </footer>
   </main>
 
+  <div class="slider-controls">
+    <button id="prevBtn" class="slide-btn" aria-label="Previous">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+    </button>
+    <button id="nextBtn" class="slide-btn" aria-label="Next">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </button>
+  </div>
   <script>
-    // Intersection Observer for scroll animations
-    const observerOptions = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.15
-    };
+    const slider = document.querySelector('main.slider');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const slideTitle = document.getElementById('slide-title');
 
-    const observer = new IntersectionObserver((entries, observer) => {
+    const titles = {
+      'brand': 'Brand Narrative',
+      'problem': 'The Blind Spot',
+      'landscape': 'Landscape',
+      'positioning': 'Positioning',
+      'sprint': 'Phase 1 Sprint',
+      'timeline': 'Sprint Timeline',
+      'roles': 'Accountability',
+      'benefits': 'Benefits & Owners',
+      'roadmap': 'Product Roadmap',
+      'yc': 'YC & Traction'
+    };
+    
+    const scrollSlide = (dir) => {
+        if (!slider) return;
+        slider.scrollBy({ left: dir * window.innerWidth, behavior: 'smooth' });
+    }
+
+    if (prevBtn && nextBtn && slider) {
+      prevBtn.addEventListener('click', () => scrollSlide(-1));
+      nextBtn.addEventListener('click', () => scrollSlide(1));
+      
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') scrollSlide(1);
+        if (e.key === 'ArrowLeft') scrollSlide(-1);
+      });
+
+      let isScrolling = false;
+      slider.addEventListener('wheel', (e) => {
+        if (Math.abs(e.deltaY) > 20) {
+          // Check if we reached top/bottom of vertical scroll inside a section
+          const target = e.target.closest('section') || e.target.closest('.hero');
+          if (target) {
+            const atBottom = target.scrollHeight - Math.ceil(target.scrollTop) <= target.clientHeight + 5;
+            const atTop = target.scrollTop <= 5;
+            if ((e.deltaY > 0 && atBottom) || (e.deltaY < 0 && atTop)) {
+              e.preventDefault();
+              if (isScrolling) return;
+              isScrolling = true;
+              scrollSlide(e.deltaY > 0 ? 1 : -1);
+              setTimeout(() => { isScrolling = false; }, 800);
+            }
+          } else {
+             e.preventDefault();
+             if (isScrolling) return;
+             isScrolling = true;
+             scrollSlide(e.deltaY > 0 ? 1 : -1);
+             setTimeout(() => { isScrolling = false; }, 800);
+          }
+        }
+      }, { passive: false });
+    }
+
+    // Intersection Observer for scroll animations and title updates
+    const titleObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && slideTitle && titles[entry.target.id]) {
+          slideTitle.textContent = titles[entry.target.id];
+        }
+      });
+    }, { root: slider, threshold: 0.5 });
+    
+    document.querySelectorAll('main > section').forEach(sec => titleObserver.observe(sec));
+
+    const revealObserver = new IntersectionObserver((entries, obs) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('in-view');
-          observer.unobserve(entry.target);
+          obs.unobserve(entry.target);
         }
       });
-    }, observerOptions);
+    }, { root: slider, threshold: 0.15 });
 
     document.querySelectorAll('.reveal').forEach(el => {
-      observer.observe(el);
+      revealObserver.observe(el);
     });
   </script>
 </body>
