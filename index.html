@@ -946,13 +946,13 @@
 
         <!-- Hidden guest form link -->
         <div id="guest-fields" style="display: none; text-align: center;">
-          <p style="font-size: 0.9rem; margin-bottom: 16px; color: var(--color-accent);">Guest Passcode accepted. To
-            continue, you must register via our secure form.</p>
+          <p style="font-size: 0.9rem; margin-bottom: 16px; color: var(--color-accent);">Guest Passcode accepted. Please
+            complete the registration form to receive your Verified Passcode.</p>
           <a href="https://forms.gle/t7KEVyRsKz1e54ae6" target="_blank" rel="noopener noreferrer" class="auth-btn"
-            style="display: inline-block; text-decoration: none; margin-bottom: 12px; background-color: #2563eb; color: #fff;">Open
-            Registration Form</a>
-          <p style="font-size: 0.8rem; color: var(--color-text-muted); margin-bottom: 16px;">(Opens in a new tab. Please
-            complete it before continuing.)</p>
+            style="display: inline-block; text-decoration: none; margin-bottom: 16px; background-color: #2563eb; color: #fff;">1.
+            Open Registration Form</a>
+          <input type="text" id="guest-verification-code" class="auth-input" placeholder="2. Enter Verified Passcode"
+            style="margin-bottom: 16px;">
         </div>
 
         <button type="submit" id="auth-submit-btn" class="auth-btn">Unlock</button>
@@ -1615,11 +1615,18 @@
             requiresGuestDetails = true;
             guestFields.style.display = 'block';
             passwordInput.style.display = 'none'; // Hide password input
-            submitBtn.textContent = "I have registered \u2192 Enter";
+            submitBtn.textContent = "Verify & Enter";
             return;
           }
 
-          unlock();
+          const verificationInput = document.getElementById('guest-verification-code');
+          if (verificationInput.value.trim().toLowerCase() === "verified-guest") {
+            unlock();
+          } else {
+            errorMsg.textContent = "Incorrect verified passcode. Please complete the Google form to get the code.";
+            errorMsg.style.display = 'block';
+            verificationInput.focus();
+          }
         } else {
           // Executive passes bypass registration
           unlock();
