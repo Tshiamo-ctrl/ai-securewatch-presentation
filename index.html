@@ -1173,7 +1173,7 @@
       </div>
     </section>
 
-    <!-- SLIDE: Landscape - Executive Summary & Wedge -->
+    <!-- SLIDE: Landscape - Vendor Population Assurance -->
     <section id="landscape">
       <div class="section-header reveal">
         <div class="section-label">Landscape</div>
@@ -1213,12 +1213,7 @@
       <div class="table-wrapper reveal delay-2">
         <table style="min-width: 800px;">
           <thead>
-            <tr>
-              <th>Player</th>
-              <th>Core Focus</th>
-              <th>Overlap</th>
-              <th>The Gap</th>
-            </tr>
+            <tr><th>Player</th><th>Core Focus</th><th>Overlap</th><th>The Gap</th></tr>
           </thead>
           <tbody>
             <tr>
@@ -1321,5 +1316,796 @@
       </div>
     </section>
 
-
     <section id="positioning">
+      <div class="section-header reveal">
+        <div class="section-label">Positioning</div>
+        <h2>GTM angle and Brand signals</h2>
+      </div>
+
+      <div class="grid-2">
+        <div class="reveal delay-1">
+          <h3>Brand idea: “Ground truth for payments”</h3>
+          <p>
+            The most distinctive idea is the focus on “financial reality” — a complete, system‑independent picture of
+            every entity that actually received payment in the last 12 months.
+          </p>
+          <div style="margin-top:var(--space-6);">
+            <span class="pill">Who actually got paid?</span>
+            <span class="pill">System independent</span>
+            <span class="pill">Targeted assurance</span>
+          </div>
+        </div>
+
+        <div class="stat-card reveal delay-2">
+          <div class="stat-label">Conversation Structure</div>
+          <ul class="minimal-list" style="margin-top: var(--space-4);">
+            <li>Establish that current controls can be bypassed without system breaches using recent fraud cases.</li>
+            <li>Ask whether the organisation can produce a list of all entities that received payments last year.</li>
+            <li>Position a low‑friction pilot that answers that question instantly.</li>
+            <li>Show how this slots cleanly into existing internal audit and forensic workflows.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==== SPRINT PLAN INTEGRATION ==== -->
+
+    <section id="sprint" style="margin-top: var(--space-16);">
+      <div class="section-header reveal">
+        <div class="section-label">Phase 1 Sprint</div>
+        <h2>From prototype to pilot-ready layer</h2>
+      </div>
+
+      <p class="reveal delay-1">
+        This sprint takes the proven vendor-population and fraud engine behind the Technomobile and construction pilots
+        and hardens it into a repeatable paid pilot offer: stable ingestion, tuned findings, analyst QA, POPIA-safe data
+        handling, and a clear narrative for enterprise buyers and Y Combinator.
+      </p>
+
+      <div class="grid-3" style="margin-top: var(--space-8);">
+        <div class="stat-card reveal delay-1">
+          <div class="stat-label">Live forensic proof</div>
+          <div class="stat-value" style="font-size: 1.5rem;">23 hallucinations <br>
+            <span style="font-size: 1.2rem; color: var(--color-accent);">R1.9M</span>
+          </div>
+          <p>Technomobile CC pilot from Sage 200 exports.</p>
+        </div>
+        <div class="stat-card reveal delay-2">
+          <div class="stat-label">Pitch deck example</div>
+          <div class="stat-value" style="font-size: 1.5rem;">127 entities <br>
+            <span style="font-size: 1.2rem; color: var(--color-accent);">R2.3M</span>
+          </div>
+          <p>Construction firm out-of-master spend in 2 weeks.</p>
+        </div>
+        <div class="stat-card reveal delay-3">
+          <div class="stat-label">Commercial model</div>
+          <div class="stat-value" style="font-size: 1.5rem;">R25k–R50k</div>
+          <p>Time-boxed pilots credited to annual licences.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="timeline">
+      <div class="section-header reveal">
+        <div class="section-label">Sprint Timeline</div>
+        <h2>What gets done, and when</h2>
+      </div>
+      <p class="reveal delay-1">
+        Each week focuses on a different risk: Week 1 stabilises the engine and data pipeline, Week 2 locks POPIA and
+        QA, and Week 3 converts that into a client and YC-ready offer.
+      </p>
+
+      <div class="grid-3" style="margin-top: var(--space-8);">
+        <div class="stat-card reveal delay-1">
+          <div class="stat-label" style="color: var(--color-text);">Week 1</div>
+          <h3 style="margin: 0 0 var(--space-2); font-size: 1.2rem;">Engine & Pipeline</h3>
+          <p style="font-size: 0.85rem; color: var(--color-accent); font-weight: 600; text-transform: uppercase;">Owner:
+            Alex Miller (Product) & Dev Team</p>
+          <ul class="timeline-list">
+            <li>Lock AP + vendor-master data specs and loaders.</li>
+            <li>Automate AP–master anti-join and exposure calculations.</li>
+            <li>Implement masterintegrity module and false-positive filters.</li>
+          </ul>
+        </div>
+        <div class="stat-card reveal delay-2">
+          <div class="stat-label" style="color: var(--color-text);">Week 2</div>
+          <h3 style="margin: 0 0 var(--space-2); font-size: 1.2rem;">POPIA, QA & Reporting</h3>
+          <p style="font-size: 0.85rem; color: var(--color-accent); font-weight: 600; text-transform: uppercase;">Owner:
+            Alex Miller (Product) & Ayesha Khan (FSG)</p>
+          <ul class="timeline-list">
+            <li>Draft POPIA note and data-flow diagram with FSG.</li>
+            <li>Define analyst QA checklist and definition of done.</li>
+            <li>Standardise two-part findings report and dashboard.</li>
+          </ul>
+        </div>
+        <div class="stat-card reveal delay-3">
+          <div class="stat-label" style="color: var(--color-text);">Week 3</div>
+          <h3 style="margin: 0 0 var(--space-2); font-size: 1.2rem;">Offer, Enterprise & YC</h3>
+          <p style="font-size: 0.85rem; color: var(--color-accent); font-weight: 600; text-transform: uppercase;">Owner:
+            Milgrand Tshiamo (Founder / GTM)</p>
+          <ul class="timeline-list">
+            <li>Ship pilot one-pager and anonymised case snippets.</li>
+            <li>Document Stage 2–3 API/enterprise roadmap.</li>
+            <li>Prepare YC memo, metrics snapshot and video script.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="roles">
+      <div class="section-header reveal">
+        <div class="section-label">Accountability</div>
+        <h2>Who owns what across the team</h2>
+      </div>
+      <p class="reveal delay-1">
+        RACI-style view for Phase 1 outcomes. Rows are key Phase 1 outcomes; columns are the core lenses and delivery
+        partners.
+      </p>
+
+      <div class="table-wrapper reveal delay-2">
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 40%;">Outcome</th>
+              <th>CMO / GTM</th>
+              <th>Senior BA</th>
+              <th>Product / Eng</th>
+              <th>FSG / Client</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Standard AP + vendor-master data pipeline</td>
+              <td><span class="raci-pill raci-c">C</span></td>
+              <td><span class="raci-pill raci-c">C</span></td>
+              <td><span class="raci-pill raci-r">R</span> <span class="raci-pill raci-a">A</span></td>
+              <td><span class="raci-pill raci-i">I</span></td>
+            </tr>
+            <tr>
+              <td>masterintegrity module & tuned detection</td>
+              <td><span class="raci-pill raci-i">I</span></td>
+              <td><span class="raci-pill raci-c">C</span></td>
+              <td><span class="raci-pill raci-r">R</span> <span class="raci-pill raci-a">A</span></td>
+              <td><span class="raci-pill raci-c">C</span></td>
+            </tr>
+            <tr>
+              <td>Analyst QA checklist & report template</td>
+              <td><span class="raci-pill raci-c">C</span></td>
+              <td><span class="raci-pill raci-r">R</span></td>
+              <td><span class="raci-pill raci-r">R</span></td>
+              <td><span class="raci-pill raci-c">C</span></td>
+            </tr>
+            <tr>
+              <td>POPIA note & data-processing appendix</td>
+              <td><span class="raci-pill raci-c">C</span></td>
+              <td><span class="raci-pill raci-c">C</span></td>
+              <td><span class="raci-pill raci-i">I</span></td>
+              <td><span class="raci-pill raci-r">R</span> <span class="raci-pill raci-a">A</span></td>
+            </tr>
+            <tr>
+              <td>Pilot one-pager & case snippets</td>
+              <td><span class="raci-pill raci-r">R</span> <span class="raci-pill raci-a">A</span></td>
+              <td><span class="raci-pill raci-c">C</span></td>
+              <td><span class="raci-pill raci-c">C</span></td>
+              <td><span class="raci-pill raci-i">I</span></td>
+            </tr>
+            <tr>
+              <td>First paid pilot signed</td>
+              <td><span class="raci-pill raci-r">R</span></td>
+              <td><span class="raci-pill raci-c">C</span></td>
+              <td><span class="raci-pill raci-c">C</span></td>
+              <td><span class="raci-pill raci-a">A</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="swimlane-legend reveal delay-3">
+        <span><span class="raci-pill raci-r">R</span> Responsible</span>
+        <span><span class="raci-pill raci-a">A</span> Accountable</span>
+        <span><span class="raci-pill raci-c">C</span> Consulted</span>
+        <span><span class="raci-pill raci-i">I</span> Informed</span>
+      </div>
+    </section>
+
+    <section id="benefits">
+      <div class="section-header reveal">
+        <div class="section-label">Benefits & Owners</div>
+        <h2>Who owns which benefit, and how we prove it</h2>
+      </div>
+
+      <div class="contrast-panels" style="margin-top: var(--space-6);">
+        <div class="panel reveal delay-1"
+          style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--color-border); color: var(--color-text);">
+          <div class="stat-label">Financial</div>
+          <h3 style="color: var(--color-text);">Reduced fraud & duplicate payments</h3>
+          <p style="color: var(--color-text-muted);">Detect hallucinations, duplicate suppliers, and anomalous payment
+            patterns early enough to prevent or recover material losses.</p>
+          <hr style="border-color: rgba(255,255,255,0.1); margin: var(--space-4) 0;">
+          <ul class="minimal-list">
+            <li><strong>Primary owner:</strong> Sarah Jenkins (Client CFO / Group Finance)</li>
+            <li><strong>Measured by:</strong> value of hallucination exposure surfaced; recovered amounts.</li>
+          </ul>
+        </div>
+
+        <div class="panel reveal delay-2"
+          style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--color-border); color: var(--color-text);">
+          <div class="stat-label">Governance</div>
+          <h3 style="color: var(--color-text);">Stronger audit & board assurance</h3>
+          <p style="color: var(--color-text-muted);">Give audit committees a system-independent view of every entity
+            actually paid, closing the sampling and known-vendor gaps.</p>
+          <hr style="border-color: rgba(255,255,255,0.1); margin: var(--space-4) 0;">
+          <ul class="minimal-list">
+            <li><strong>Primary owner:</strong> David Chen (Client Head of Internal Audit / CAE)</li>
+            <li><strong>Measured by:</strong> audit findings on vendor-population completeness.</li>
+          </ul>
+        </div>
+
+        <div class="panel reveal delay-3"
+          style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--color-border); color: var(--color-text);">
+          <div class="stat-label">Compliance</div>
+          <h3 style="color: var(--color-text);">POPIA-safe forensic analytics</h3>
+          <p style="color: var(--color-text-muted);">Show that sensitive vendor and employee data is processed lawfully,
+            minimally, and with clear retention and deletion controls.</p>
+          <hr style="border-color: rgba(255,255,255,0.1); margin: var(--space-4) 0;">
+          <ul class="minimal-list">
+            <li><strong>Primary owner:</strong> Ayesha Khan (FSG POPIA Specialist) / Client DPO</li>
+            <li><strong>Measured by:</strong> POPIA review sign-off.</li>
+          </ul>
+        </div>
+
+        <div class="panel reveal delay-4"
+          style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--color-border); color: var(--color-text);">
+          <div class="stat-label">Commercial</div>
+          <h3 style="color: var(--color-text);">Pilot-to-licence conversion</h3>
+          <p style="color: var(--color-text-muted);">Turn a single pilot into a repeatable revenue motion: credited
+            pilot fees, annual licences, and partner-led resell.</p>
+          <hr style="border-color: rgba(255,255,255,0.1); margin: var(--space-4) 0;">
+          <ul class="minimal-list">
+            <li><strong>Primary owner:</strong> Milgrand Tshiamo (Founder / CMO)</li>
+            <li><strong>Measured by:</strong> pilot conversion rate; annual licence value.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="roadmap">
+      <div class="section-header reveal">
+        <div class="section-label">Product Roadmap</div>
+        <h2>Where Phase 1 sits in the build-out</h2>
+      </div>
+      <p class="reveal delay-1">
+        This mirrors your business plan: harden the pilot motion, then industrialise the platform and expand through
+        partners. YC and enterprise buyers both want to see this line of sight.
+      </p>
+
+      <div class="grid-3" style="margin-top: var(--space-8);">
+        <div class="stat-card reveal delay-1" style="border-top: 3px solid var(--color-text-muted);">
+          <div class="stat-label" style="color: var(--color-text);">Stage 1</div>
+          <h3 style="margin: 0 0 var(--space-2); font-size: 1.2rem;">Paid pilots (now)</h3>
+          <p style="font-size: 0.85rem; color: var(--color-text-muted); font-weight: 600;">Prove value & close first 3–5
+            clients</p>
+          <ul class="timeline-list" style="margin-top: var(--space-4);">
+            <li>Run time-boxed pilots (12–36 months AP) with analyst-reviewed reports.</li>
+            <li>Quantify hallucinations and anomaly exposure per client.</li>
+          </ul>
+        </div>
+        <div class="stat-card reveal delay-2" style="border-top: 3px solid var(--color-accent);">
+          <div class="stat-label" style="color: var(--color-text);">Stage 2</div>
+          <h3 style="margin: 0 0 var(--space-2); font-size: 1.2rem;">Annual licences</h3>
+          <p style="font-size: 0.85rem; color: var(--color-text-muted); font-weight: 600;">Recurring monitoring & ARR
+          </p>
+          <ul class="timeline-list" style="margin-top: var(--space-4);">
+            <li>Industrialise the engine into a hardened, multi-entity platform.</li>
+            <li>Expose dashboards, alerts, exports and findings APIs.</li>
+          </ul>
+        </div>
+        <div class="stat-card reveal delay-3" style="border-top: 3px solid #3b82f6;">
+          <div class="stat-label" style="color: var(--color-text);">Stage 3</div>
+          <h3 style="margin: 0 0 var(--space-2); font-size: 1.2rem;">Partner resell</h3>
+          <p style="font-size: 0.85rem; color: var(--color-text-muted); font-weight: 600;">Scale via forensic & audit
+            partners</p>
+          <ul class="timeline-list" style="margin-top: var(--space-4);">
+            <li>Formalise co-sell and revenue-share with firms like FSG.</li>
+            <li>Offer white-label vendor-assurance services.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="yc">
+      <div class="section-header reveal">
+        <div class="section-label">YC & Traction</div>
+        <h2>What YC and serious clients see at a glance</h2>
+      </div>
+
+      <div class="grid-2" style="margin-top: var(--space-8);">
+        <div class="reveal delay-1">
+          <h3 style="color: var(--color-text); font-size: 1.3rem; margin-bottom: var(--space-3);">Problem & Wedge</h3>
+          <p style="color: var(--color-text-muted);">Most organisations cannot answer “who exactly received money in the
+            last 12–36 months?” because ERP controls, audit sampling and TPRM all assume the vendor master is complete.
+          </p>
+
+          <h3
+            style="color: var(--color-text); font-size: 1.3rem; margin-top: var(--space-6); margin-bottom: var(--space-3);">
+            Solution</h3>
+          <p style="color: var(--color-text-muted);">A system-independent reconciliation layer that compares AP payment
+            files with vendor masters to surface every entity that received money but is not in the master, plus
+            high-risk patterns inside the master itself.</p>
+        </div>
+
+        <div class="stat-card reveal delay-2">
+          <div class="stat-label">Traction & pipeline</div>
+          <ul class="minimal-list" style="margin-top: var(--space-2);">
+            <li>1 live Sage 200 pilot (Technomobile)</li>
+            <li>1 anonymised construction pilot in deck</li>
+            <li>40+ discovery calls, 10+ hot leads</li>
+            <li>FSG co-sell partnership targeting government, SOEs and financial services.</li>
+          </ul>
+
+          <div class="stat-label" style="margin-top: var(--space-6);">Defensibility</div>
+          <ul class="minimal-list" style="margin-top: var(--space-2);">
+            <li>System independence & full-population reconciliation.</li>
+            <li>Human analyst on every flag.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- === OPPORTUNITY ANALYSIS SECTION === -->
+
+    <!-- SLIDE: Opportunity Intro -->
+    <section id="opportunity">
+      <div class="section-header reveal">
+        <div class="section-label">Opportunity Analysis</div>
+        <h2>The R500B+ blind spot no tool addresses</h2>
+      </div>
+      <p class="reveal delay-1" style="max-width: 70ch;">Every organisation with complex AP cannot answer: <em>"Who actually received payment last year?"</em> Existing tools see only what they were designed to see. <strong style="color: var(--color-text);">AI SecureWatch is the first system-independent vendor population assurance layer.</strong></p>
+      <div class="grid-3" style="margin-top: var(--space-6);">
+        <div class="stat-card reveal delay-2" style="border-top: 3px solid var(--color-accent);">
+          <div class="stat-label">Market Position</div>
+          <div class="stat-value" style="font-size: 1.6rem;">Pre-Seed<br><span style="font-size: 1rem; color: var(--color-text-muted);">Pilot Stage</span></div>
+          <p>Validated pilot (Technomobile) delivered R1.4M in findings. Pipeline of 40+ discovery calls.</p>
+        </div>
+        <div class="stat-card reveal delay-3" style="border-top: 3px solid #3b82f6;">
+          <div class="stat-label">Immediate Target</div>
+          <div class="stat-value" style="font-size: 1.6rem;">3&ndash;5<br><span style="font-size: 1rem; color: var(--color-text-muted);">Pilots by end-2026</span></div>
+          <p>127 shadow entities, R2.3M exposure, 2-week delivery cycle. Quantified proof for Series A.</p>
+        </div>
+        <div class="stat-card reveal delay-4" style="border-top: 3px solid #10b981;">
+          <div class="stat-label">Series A Milestone</div>
+          <div class="stat-value" style="font-size: 1.6rem;">R640k<br><span style="font-size: 1rem; color: var(--color-text-muted);">ARR by Q4 2026</span></div>
+          <p>Path to R2M+ ARR by 2028. 80% pilot-to-license conversion. 50:1+ LTV:CAC.</p>
+        </div>
+      </div>
+      <div class="grid-2" style="margin-top: var(--space-6);">
+        <div class="stat-card reveal delay-2">
+          <div class="stat-label">TAM (South Africa)</div>
+          <div class="stat-value">R1.6T</div>
+          <p>2,000+ complex-AP organisations across financial services, government, construction, manufacturing, retail.</p>
+        </div>
+        <div class="stat-card reveal delay-3">
+          <div class="stat-label">SAM &rarr; SOM</div>
+          <div class="stat-value">R50&ndash;75B &rarr; R640k</div>
+          <p>800 orgs with active audit/risk mandate. Year 1: R260&ndash;640k ARR from 4&ndash;8 pilot clients.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE: TAM / SAM / SOM -->
+    <section id="tam">
+      <div class="section-header reveal">
+        <div class="section-label">Market Sizing</div>
+        <h2>TAM / SAM / SOM breakdown</h2>
+      </div>
+      <p class="reveal delay-1">Priority markets: South Africa (immediate), sub-Saharan Africa (12&ndash;24m), APAC (24&ndash;36m).</p>
+      <div class="table-wrapper reveal delay-2">
+        <table style="min-width: 750px;">
+          <thead><tr><th>Segment</th><th>Organisations</th><th>Avg AP Payables</th><th>Calculation</th><th>Segment TAM</th></tr></thead>
+          <tbody>
+            <tr><td>Financial Services</td><td>150</td><td>R2.5&ndash;5B</td><td>150 &times; R3.5B</td><td><strong style="color: var(--color-text);">R525B</strong></td></tr>
+            <tr><td>Government &amp; SOEs</td><td>200+</td><td>R1.5&ndash;3B</td><td>200 &times; R2B</td><td><strong style="color: var(--color-text);">R400B</strong></td></tr>
+            <tr><td>Construction &amp; Engineering</td><td>300+</td><td>R800M&ndash;2B</td><td>300 &times; R1.2B</td><td><strong style="color: var(--color-text);">R360B</strong></td></tr>
+            <tr><td>Manufacturing</td><td>200+</td><td>R1&ndash;2B</td><td>200 &times; R1.3B</td><td><strong style="color: var(--color-text);">R260B</strong></td></tr>
+            <tr><td>Retail &amp; Logistics</td><td>100+</td><td>R500M&ndash;1B</td><td>100 &times; R750M</td><td><strong style="color: var(--color-text);">R75B</strong></td></tr>
+            <tr style="background: rgba(255,69,0,0.05);"><td><strong style="color: var(--color-text);">TOTAL SA TAM</strong></td><td colspan="3"></td><td><strong style="color: var(--color-accent); font-size: 1.1rem;">~R1.6T</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="grid-3" style="margin-top: var(--space-6);">
+        <div class="stat-card reveal delay-3" style="border-left: 3px solid var(--color-accent);"><div class="stat-label">SAM Filter 1</div><p style="font-size: 0.9rem; margin: 0;">500K+ AP transactions/annum &rarr; <strong style="color: var(--color-text);">~2,000 orgs</strong></p></div>
+        <div class="stat-card reveal delay-4" style="border-left: 3px solid #3b82f6;"><div class="stat-label">SAM Filter 2</div><p style="font-size: 0.9rem; margin: 0;">IA + CFO budget authority &rarr; <strong style="color: var(--color-text);">~1,500 orgs</strong></p></div>
+        <div class="stat-card reveal delay-4" style="border-left: 3px solid #10b981;"><div class="stat-label">SAM Filter 3</div><p style="font-size: 0.9rem; margin: 0;">Active regulatory/IA review &rarr; <strong style="color: var(--color-text);">~800 orgs</strong> / R50&ndash;75B SAM</p></div>
+      </div>
+    </section>
+
+    <!-- SLIDE: Fraud & Waste Baseline -->
+    <section id="fraud-baseline">
+      <div class="section-header reveal">
+        <div class="section-label">Market Validation</div>
+        <h2>The fraud baseline is systemic — not anomalous</h2>
+      </div>
+      <div class="grid-2" style="margin-top: var(--space-4);">
+        <div class="reveal delay-1">
+          <h3 style="font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted); margin-bottom: var(--space-4);">Industry Prevalence</h3>
+          <ul class="minimal-list">
+            <li><strong style="color: var(--color-text);">60% of orgs</strong> lack a complete 3P vendor list <span style="color: var(--color-text-muted); font-size: 0.85rem;">(Ponemon)</span></li>
+            <li><strong style="color: var(--color-text);">20&ndash;40% of spend</strong> outside procurement control <span style="color: var(--color-text-muted); font-size: 0.85rem;">(industry benchmark)</span></li>
+            <li><strong style="color: var(--color-text);">40&ndash;60% of vendor masters</strong> contain duplicates/fraud entries <span style="color: var(--color-text-muted); font-size: 0.85rem;">(client data)</span></li>
+            <li><strong style="color: var(--color-text);">1.7% median fraud loss</strong> as % of revenue <span style="color: var(--color-text-muted); font-size: 0.85rem;">(ACFE)</span></li>
+          </ul>
+          <div class="note" style="margin-top: var(--space-6);">At 100 orgs penetrated (R75M payables avg., 2.5&ndash;3% exposure): <strong style="color: var(--color-text);">R190&ndash;230M</strong> discovered annually.</div>
+        </div>
+        <div class="reveal delay-2">
+          <h3 style="font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted); margin-bottom: var(--space-4);">Technomobile Pilot Proof</h3>
+          <div class="table-wrapper" style="margin-top: 0;">
+            <table style="min-width: 280px;">
+              <thead><tr><th>Metric</th><th>Finding</th></tr></thead>
+              <tbody>
+                <tr><td>AP Recipients</td><td>432 suppliers, 2,149 txns (R73.4M)</td></tr>
+                <tr><td>Shadow Vendors</td><td><strong style="color: var(--color-accent);">23 out-of-system entities</strong></td></tr>
+                <tr><td>Ghost Exposure</td><td><strong style="color: var(--color-accent);">R1.9M</strong> (2.6%)</td></tr>
+                <tr><td>Duplicate Vendor</td><td>R1.4M (single-character diff)</td></tr>
+                <tr><td>Total Out-of-Master</td><td><strong style="color: var(--color-accent);">R2.3M</strong></td></tr>
+                <tr><td>Delivery Speed</td><td><strong style="color: #10b981;">2 weeks</strong></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE: Revenue Model -->
+    <section id="revenue-model">
+      <div class="section-header reveal">
+        <div class="section-label">Commercial Model</div>
+        <h2>Pilot &rarr; License &rarr; Partner</h2>
+      </div>
+      <div class="grid-3" style="margin-top: var(--space-6);">
+        <div class="stat-card reveal delay-1" style="border-top: 3px solid var(--color-text-muted);">
+          <div class="stat-label">Stage 1 — Entry</div>
+          <h3 style="font-size: 1.1rem; margin: var(--space-2) 0;">Paid Pilot</h3>
+          <div class="stat-value" style="font-size: 1.5rem;">R25k&ndash;50k</div>
+          <ul class="timeline-list" style="margin-top: var(--space-3);">
+            <li>12&ndash;36 months AP + vendor master</li>
+            <li>Findings in 2&ndash;3 weeks</li>
+            <li>100% credited to Stage 2</li>
+            <li><strong style="color: var(--color-text);">GM: 70&ndash;75%</strong></li>
+          </ul>
+        </div>
+        <div class="stat-card reveal delay-2" style="border-top: 3px solid var(--color-accent);">
+          <div class="stat-label">Stage 2 — Recurring</div>
+          <h3 style="font-size: 1.1rem; margin: var(--space-2) 0;">Annual License</h3>
+          <div class="stat-value" style="font-size: 1.5rem;">R140k avg.</div>
+          <ul class="timeline-list" style="margin-top: var(--space-3);">
+            <li>Quarterly reconciliation runs</li>
+            <li>Trend analysis + alerting</li>
+            <li>Board audit cycle integration</li>
+            <li><strong style="color: var(--color-text);">GM: 80&ndash;85%</strong></li>
+          </ul>
+        </div>
+        <div class="stat-card reveal delay-3" style="border-top: 3px solid #3b82f6;">
+          <div class="stat-label">Stage 3 — Scale</div>
+          <h3 style="font-size: 1.1rem; margin: var(--space-2) 0;">Partner Resell</h3>
+          <div class="stat-value" style="font-size: 1.5rem;">60/40 Split</div>
+          <ul class="timeline-list" style="margin-top: var(--space-3);">
+            <li>FSG co-sell; Big Four white-label</li>
+            <li>40% of partner-sourced revenue</li>
+            <li>Unlocks govt/SOE channel</li>
+            <li><strong style="color: var(--color-text);">5&ndash;10 engagements in 12m</strong></li>
+          </ul>
+        </div>
+      </div>
+      <div class="grid-2" style="margin-top: var(--space-6);">
+        <div class="stat-card reveal delay-2">
+          <div class="stat-label">3-Year LTV per Client</div>
+          <div class="stat-value" style="font-size: 1.8rem; color: #10b981;">R373k</div>
+          <ul class="timeline-list" style="margin-top: var(--space-2);"><li>Pilot R28k + 3 &times; R115k license contribution</li></ul>
+        </div>
+        <div class="stat-card reveal delay-3">
+          <div class="stat-label">LTV:CAC Ratio</div>
+          <div class="stat-value" style="font-size: 1.8rem; color: #f59e0b;">47:1 &rarr; 75:1</div>
+          <ul class="timeline-list" style="margin-top: var(--space-2);"><li>CAC R5&ndash;8k &bull; Payback: 2&ndash;4 weeks &bull; SaaS bench: &gt;3:1 healthy, &gt;10:1 exceptional</li></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE: Financial Projections -->
+    <section id="projections">
+      <div class="section-header reveal">
+        <div class="section-label">Financial Projections</div>
+        <h2>Path to Series A: 18&ndash;24 months</h2>
+      </div>
+      <div class="table-wrapper reveal delay-2">
+        <table style="min-width: 800px;">
+          <thead><tr><th>Period</th><th>Pilots</th><th>Pilot Rev</th><th>License Customers</th><th>License Rev</th><th>Cumulative ARR</th></tr></thead>
+          <tbody>
+            <tr><td>Q2&ndash;Q3 2026</td><td>3</td><td>R120k</td><td>1</td><td>R140k</td><td><strong>R260k</strong></td></tr>
+            <tr><td>Q4 2026</td><td>2</td><td>R80k</td><td>4</td><td>R560k</td><td><strong style="color: var(--color-accent);">R640k &larr; Series A</strong></td></tr>
+            <tr><td>H1 2027</td><td>4</td><td>R160k</td><td>8</td><td>R1.12M</td><td><strong>R1.28M</strong></td></tr>
+            <tr><td>H2 2027</td><td>5</td><td>R200k</td><td>12</td><td>R1.68M</td><td><strong>R1.88M</strong></td></tr>
+            <tr><td>FY 2028</td><td>12&ndash;15</td><td>R480&ndash;600k</td><td>20&ndash;25</td><td>R2.8&ndash;3.5M</td><td><strong style="color: #10b981;">~R3.7M</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="grid-3" style="margin-top: var(--space-6);">
+        <div class="stat-card reveal delay-3"><div class="stat-label">Gross Margin</div><ul class="timeline-list" style="margin-top: var(--space-2);"><li>2026: <strong style="color: var(--color-text);">65%</strong></li><li>2027: <strong style="color: var(--color-text);">68%</strong></li><li>2028: <strong style="color: var(--color-text);">70%+</strong></li></ul></div>
+        <div class="stat-card reveal delay-4"><div class="stat-label">Operating Costs</div><ul class="timeline-list" style="margin-top: var(--space-2);"><li>2026 (6m): R550k</li><li>2027: R1.63M</li><li>2028: R2.72M</li></ul></div>
+        <div class="stat-card reveal delay-4" style="border-top: 3px solid var(--color-accent);"><div class="stat-label">Breakeven</div><div class="stat-value" style="font-size: 1.5rem;">Q4 2028</div><p style="font-size: 0.9rem; margin: 0;">18&ndash;24 month runway</p></div>
+      </div>
+    </section>
+
+    <!-- SLIDE: Go-to-Market -->
+    <section id="gtm-channels">
+      <div class="section-header reveal">
+        <div class="section-label">Go-to-Market</div>
+        <h2>Buyer personas, channels &amp; trigger events</h2>
+      </div>
+      <div class="table-wrapper reveal delay-2">
+        <table style="min-width: 750px;">
+          <thead><tr><th>Buyer</th><th>Pain Point</th><th>Channel</th><th>Cycle</th><th>Pilot Fee</th></tr></thead>
+          <tbody>
+            <tr><td>Head of IA / CAE</td><td>Sampling gap; full-population blind spot</td><td>Direct + LinkedIn + referral</td><td>6&ndash;12 wk</td><td>R35&ndash;50k</td></tr>
+            <tr><td>CFO / Finance Exec</td><td>Quantified exposure; board reporting</td><td>CEO-led + co-sell</td><td>8&ndash;16 wk</td><td>R25&ndash;40k</td></tr>
+            <tr><td>TPRM / Risk Leader</td><td>Unknown vendor population</td><td>LinkedIn + events</td><td>10&ndash;14 wk</td><td>R35&ndash;50k</td></tr>
+            <tr><td>Audit Committee</td><td>Post-M&amp;A control evidence</td><td>Through IA Head</td><td>12&ndash;20 wk</td><td>R50k+</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="grid-2" style="margin-top: var(--space-6);">
+        <div class="reveal delay-3">
+          <div class="stat-label" style="margin-bottom: var(--space-3);">Trigger-Event Playbook</div>
+          <ul class="minimal-list">
+            <li><strong style="color: var(--color-text);">M&amp;A announcements</strong> &mdash; post-merger vendor master chaos</li>
+            <li><strong style="color: var(--color-text);">Fraud scandals</strong> &mdash; GEMS R268M, OCJ R225M, Transnet (Mar 2026)</li>
+            <li><strong style="color: var(--color-text);">IA leadership changes</strong> &mdash; new CAE seeks quick wins</li>
+            <li><strong style="color: var(--color-text);">SOE restructures</strong> &mdash; SAA, Transnet, SOE Act reforms</li>
+          </ul>
+        </div>
+        <div class="stat-card reveal delay-4">
+          <div class="stat-label">Channel Mix (Year 1 &rarr; 2)</div>
+          <ul class="timeline-list" style="margin-top: var(--space-2);">
+            <li>Founder-led: 3&ndash;5 &rarr; 5&ndash;7 pilots @ R2&ndash;3k CAC</li>
+            <li>FSG co-sell: 1&ndash;2 &rarr; 3&ndash;5 @ R5&ndash;8k CAC</li>
+            <li>Big 4 referral: 0 &rarr; 1&ndash;3 @ R5&ndash;10k CAC</li>
+            <li>LinkedIn: 0 &rarr; 0&ndash;2 @ R15&ndash;25k CAC</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE: Series A Thesis & Risks -->
+    <section id="series-a-thesis">
+      <div class="section-header reveal">
+        <div class="section-label">Investor Thesis</div>
+        <h2>Series A narrative, risks &amp; live pipeline</h2>
+      </div>
+      <div class="grid-2" style="margin-top: var(--space-4);">
+        <div class="reveal delay-1">
+          <div class="stat-label" style="margin-bottom: var(--space-3);">Proof Points</div>
+          <ul class="minimal-list">
+            <li><strong style="color: var(--color-text);">Market Validation</strong> &mdash; 127 shadow entities, R2.3M exposure, 2-week delivery, Big-4-blind finding</li>
+            <li><strong style="color: var(--color-text);">Repeatable Model</strong> &mdash; 80% conversion, 50:1+ LTV:CAC, unit-level profitability from Day 1</li>
+            <li><strong style="color: var(--color-text);">Channel Validation</strong> &mdash; FSG co-sell live; BDO warm; GEMS/OCJ/Transnet urgency active</li>
+            <li><strong style="color: var(--color-text);">Defensibility</strong> &mdash; system independence + analyst QA + FSG forensic layer</li>
+          </ul>
+          <div class="stat-label" style="margin-top: var(--space-6); margin-bottom: var(--space-3);">Live Pipeline (March 2026)</div>
+          <ul class="minimal-list">
+            <li><strong style="color: var(--color-text);">Live Pilot:</strong> Technomobile CC</li>
+            <li><strong style="color: var(--color-text);">Hot (13):</strong> Fio Capital, MultiChoice, Absa, SAA, Transnet, Standard Bank, GEMS, OCJ, BDO+</li>
+            <li><strong style="color: var(--color-text);">Partners (8):</strong> FSG (live), Grant Thornton, Nexia SABT, DBSA, Public Protector SA+</li>
+          </ul>
+        </div>
+        <div class="reveal delay-2">
+          <div class="stat-label" style="margin-bottom: var(--space-3);">Key Risks &amp; Mitigations</div>
+          <div class="table-wrapper" style="margin-top: 0;">
+            <table style="min-width: 280px;">
+              <thead><tr><th>Risk</th><th>Mitigation</th></tr></thead>
+              <tbody>
+                <tr><td>Slower conversion</td><td>100% fee creditability; board urgency; quarterly check-ins</td></tr>
+                <tr><td>Big 4 builds in-house</td><td>Partner (referral/white-label); lock annual licenses pre-2028</td></tr>
+                <tr><td>ERP embeds reconciliation</td><td>First-mover + analyst QA moat; continuous licensing by 2027</td></tr>
+                <tr><td>POPIA compliance</td><td>POPIA-ready from Day 1; annual audits; retention in contracts</td></tr>
+                <tr><td>Key person risk</td><td>Playbooks in code; 2nd analyst hire Q1 2027</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="grid-2" style="margin-top: var(--space-4); gap: var(--space-3);">
+            <div class="stat-card" style="padding: var(--space-4);"><div class="stat-label">Conservative 3yr</div><div class="stat-value" style="font-size: 1.4rem;">R1.4M</div><p style="font-size: 0.8rem; margin: 0;">60% conv., R35k avg</p></div>
+            <div class="stat-card" style="padding: var(--space-4); border-top: 2px solid var(--color-accent);"><div class="stat-label">Base Case 3yr</div><div class="stat-value" style="font-size: 1.4rem;">R2.8M</div><p style="font-size: 0.8rem; margin: 0;">80% conv., R40k avg</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="reveal">
+      <div><strong>Prepared by Milgrand Tshiamo</strong> · Johannesburg, South Africa</div>
+      <div>Created for discussion purposes to refine the brand and go‑to‑market narrative.</div>
+    </footer>
+  </main>
+
+  <div class="slider-controls">
+    <button id="prevBtn" class="slide-btn" aria-label="Previous">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+    </button>
+    <button id="nextBtn" class="slide-btn" aria-label="Next">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg>
+    </button>
+  </div>
+  <script>
+    const slider = document.querySelector('main.slider');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const slideTitle = document.getElementById('slide-title');
+
+    const titles = {
+      'brand': 'Brand Narrative',
+      'brand-positioning': 'Brand Promise',
+      'personas': 'Target Personas',
+      'problem': 'The Blind Spot',
+      'market': 'Market Insight',
+      'landscape': 'Landscape',
+      'competitors': 'Competitive Intel',
+      'whitespace': 'White Space',
+      'differentiators': 'Moat & Defensibility',
+      'positioning': 'Positioning',
+      'sprint': 'Phase 1 Sprint',
+      'timeline': 'Sprint Timeline',
+      'roles': 'Accountability',
+      'benefits': 'Benefits & Owners',
+      'roadmap': 'Product Roadmap',
+      'yc': 'YC & Traction',
+      'opportunity': 'Opportunity Analysis',
+      'tam': 'Market Sizing',
+      'fraud-baseline': 'Market Validation',
+      'revenue-model': 'Commercial Model',
+      'projections': 'Financial Projections',
+      'gtm-channels': 'Go-to-Market',
+      'series-a-thesis': 'Investor Thesis'
+    };
+
+    const scrollSlide = (dir) => {
+      if (!slider) return;
+      slider.scrollBy({ left: dir * window.innerWidth, behavior: 'smooth' });
+    }
+
+    if (prevBtn && nextBtn && slider) {
+      prevBtn.addEventListener('click', () => scrollSlide(-1));
+      nextBtn.addEventListener('click', () => scrollSlide(1));
+
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') scrollSlide(1);
+        if (e.key === 'ArrowLeft') scrollSlide(-1);
+      });
+
+      let isScrolling = false;
+      slider.addEventListener('wheel', (e) => {
+        if (Math.abs(e.deltaY) > 20) {
+          // Check if we reached top/bottom of vertical scroll inside a section
+          const target = e.target.closest('section') || e.target.closest('.hero');
+          if (target) {
+            const atBottom = target.scrollHeight - Math.ceil(target.scrollTop) <= target.clientHeight + 5;
+            const atTop = target.scrollTop <= 5;
+            if ((e.deltaY > 0 && atBottom) || (e.deltaY < 0 && atTop)) {
+              e.preventDefault();
+              if (isScrolling) return;
+              isScrolling = true;
+              scrollSlide(e.deltaY > 0 ? 1 : -1);
+              setTimeout(() => { isScrolling = false; }, 800);
+            }
+          } else {
+            e.preventDefault();
+            if (isScrolling) return;
+            isScrolling = true;
+            scrollSlide(e.deltaY > 0 ? 1 : -1);
+            setTimeout(() => { isScrolling = false; }, 800);
+          }
+        }
+      }, { passive: false });
+    }
+
+    // Intersection Observer for scroll animations and title updates
+    const titleObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && slideTitle && titles[entry.target.id]) {
+          slideTitle.textContent = titles[entry.target.id];
+        }
+      });
+    }, { root: slider, threshold: 0.5 });
+
+    document.querySelectorAll('main > section').forEach(sec => titleObserver.observe(sec));
+
+    const revealObserver = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { root: slider, threshold: 0.15 });
+
+    document.querySelectorAll('.reveal').forEach(el => {
+      revealObserver.observe(el);
+    });
+
+    // --- Client-side Auth Logic ---
+    (function () {
+      const PASSCODES = {
+        "ceo-2026": "CEO",
+        "cmo-2026": "CMO",
+        "cto-2026": "CTO",
+        "guest-pass": "Guest"
+      };
+
+      const overlay = document.getElementById('auth-overlay');
+      const form = document.getElementById('auth-form');
+      const passwordInput = document.getElementById('auth-password');
+      const errorMsg = document.getElementById('auth-error');
+      const guestFields = document.getElementById('guest-fields');
+      const submitBtn = document.getElementById('auth-submit-btn');
+
+      let requiresGuestDetails = false;
+
+      // Check if authenticated
+      if (sessionStorage.getItem('ai_securewatch_auth_index') === 'true') {
+        overlay.style.display = 'none';
+        document.body.classList.remove('locked');
+      }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        errorMsg.style.display = 'none';
+
+        const role = PASSCODES[passwordInput.value];
+
+        if (!role) {
+          errorMsg.textContent = "Incorrect passcode. Please try again.";
+          errorMsg.style.display = 'block';
+          passwordInput.focus();
+          return;
+        }
+
+        if (role === "Guest") {
+          // Link to the Google Form
+          if (!requiresGuestDetails) {
+            requiresGuestDetails = true;
+            guestFields.style.display = 'block';
+            passwordInput.style.display = 'none'; // Hide password input
+            submitBtn.textContent = "Verify & Enter";
+            return;
+          }
+
+          const verificationInput = document.getElementById('guest-verification-code');
+          if (verificationInput.value.trim().toLowerCase() === "verified-guest") {
+            unlock();
+          } else {
+            errorMsg.textContent = "Incorrect verified passcode. Please complete the Google form to get the code.";
+            errorMsg.style.display = 'block';
+            verificationInput.focus();
+          }
+        } else {
+          // Executive passes bypass registration
+          unlock();
+        }
+      });
+
+      function unlock() {
+        sessionStorage.setItem('ai_securewatch_auth_index', 'true');
+        overlay.style.opacity = '0';
+        setTimeout(() => {
+          overlay.style.display = 'none';
+          document.body.classList.remove('locked');
+        }, 300);
+      }
+    })();
+  </script>
+</body>
+
+</html>
