@@ -929,6 +929,74 @@
     body.locked {
       overflow: hidden !important;
     }
+
+    /* Slide dropdown navigator */
+    #slide-nav-wrapper { position: relative; z-index: 100; }
+
+    #slide-dropdown {
+      display: none;
+      position: absolute;
+      top: calc(100% + 8px);
+      right: 0;
+      background: rgba(12, 14, 18, 0.96);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      padding: 8px 0;
+      min-width: 260px;
+      max-height: 70vh;
+      overflow-y: auto;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255,255,255,0.15) transparent;
+    }
+
+    #slide-dropdown.open { display: block; }
+
+    #slide-dropdown .nav-group-label {
+      padding: 10px 20px 4px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--color-accent);
+      pointer-events: none;
+    }
+
+    #slide-dropdown .nav-item {
+      display: block;
+      padding: 8px 20px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--color-text-muted);
+      cursor: pointer;
+      transition: all 0.15s ease;
+      text-decoration: none;
+      border: none;
+      background: none;
+      width: 100%;
+      text-align: left;
+    }
+
+    #slide-dropdown .nav-item:hover {
+      background: rgba(255,255,255,0.06);
+      color: var(--color-text);
+    }
+
+    #slide-dropdown .nav-item.active {
+      color: var(--color-text);
+      background: rgba(255, 69, 0, 0.08);
+      border-left: 2px solid var(--color-accent);
+    }
+
+    #slide-dropdown .nav-divider {
+      height: 1px;
+      background: rgba(255,255,255,0.06);
+      margin: 6px 16px;
+    }
   </style>
 </head>
 
@@ -966,12 +1034,18 @@
       <div class="logo-shape" aria-hidden="true"></div>
       <div>
         <div class="logo-text-main">AI SecureWatch</div>
-        <div class="logo-text-sub">Brand · Market · Landscape</div>
+        <div class="logo-text-sub">Vendor Population Assurance</div>
       </div>
     </div>
-    <div id="slide-title"
-      style="font-family: 'Outfit', sans-serif; font-size: 1.1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-text-muted);">
-      Brand Narrative</div>
+    <div id="slide-nav-wrapper" style="position: relative;">
+      <div id="slide-title"
+        style="font-family: 'Outfit', sans-serif; font-size: 1.1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-text-muted); cursor: pointer; display: flex; align-items: center; gap: 6px; user-select: none;"
+        onclick="document.getElementById('slide-dropdown').classList.toggle('open')">
+        <span id="slide-title-text">Brand Narrative</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="opacity: 0.5; flex-shrink: 0;"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div id="slide-dropdown"></div>
+    </div>
   </header>
   <main class="slider">
 
@@ -1652,6 +1726,201 @@
       </div>
     </section>
 
+    <!-- === PRODUCT ARCHITECTURE SECTION === -->
+
+    <!-- SLIDE: Three-Tier Product Matrix -->
+    <section id="product-matrix">
+      <div class="section-header reveal">
+        <div class="section-label">Product Architecture</div>
+        <h2>Three tiers. Every buyer covered.</h2>
+      </div>
+      <p class="reveal delay-1" style="max-width: 75ch;">AI SecureWatch is not a one-size-fits-all tool. Whether you are a mid-market manufacturer needing continuous visibility, an enterprise integrating multiple ERPs, or a public entity recovering irregular expenditure &mdash; we provide the exact layer of financial reality you need.</p>
+
+      <div class="grid-3" style="margin-top: var(--space-6);">
+        <div class="stat-card reveal delay-1" style="border-top: 3px solid #60A5FA;">
+          <div class="stat-label" style="color: #60A5FA;">Tier 1</div>
+          <h3 style="font-size: 1.15rem; margin: var(--space-2) 0;">SecureWatch Essentials</h3>
+          <p style="font-size: 0.9rem; color: var(--color-text-muted); margin-bottom: var(--space-3);">SME &amp; Mid-Market</p>
+          <div class="stat-value" style="font-size: 1.3rem;">$5,000<span style="font-size: 0.85rem; color: var(--color-text-muted);"> pilot</span></div>
+          <p style="font-size: 0.85rem; margin-top: var(--space-2);">$5,000&ndash;$1,000/mo subscription. 95% automated. Volume-based ARR. 24-hour turnaround.</p>
+          <div class="note" style="margin-top: var(--space-4); font-size: 0.85rem; border-left-color: #60A5FA;">
+            <strong>ICP:</strong> Single ERP (Sage 200), &lt;500 suppliers, under R250M payables.
+          </div>
+        </div>
+
+        <div class="stat-card reveal delay-2" style="border-top: 3px solid #D94028;">
+          <div class="stat-label" style="color: #D94028;">Tier 2 &mdash; Flagship</div>
+          <h3 style="font-size: 1.15rem; margin: var(--space-2) 0;">SecureWatch Enterprise</h3>
+          <p style="font-size: 0.9rem; color: var(--color-text-muted); margin-bottom: var(--space-3);">Enterprise &amp; Audit Committees</p>
+          <div class="stat-value" style="font-size: 1.3rem;">R200k&ndash;350k<span style="font-size: 0.85rem; color: var(--color-text-muted);"> /year</span></div>
+          <p style="font-size: 0.85rem; margin-top: var(--space-2);">R25k&ndash;R50k pilot. 80% automated + 20% analyst QA. Multi-tenant dashboards. API integrations.</p>
+          <div class="note" style="margin-top: var(--space-4); font-size: 0.85rem; border-left-color: #D94028;">
+            <strong>ICP:</strong> Financial services, post-M&amp;A enterprises, government. Multiple ERPs, 1,000+ suppliers.
+          </div>
+        </div>
+
+        <div class="stat-card reveal delay-3" style="border-top: 3px solid #F59E0B;">
+          <div class="stat-label" style="color: #F59E0B;">Tier 3 &mdash; Recovery</div>
+          <h3 style="font-size: 1.15rem; margin: var(--space-2) 0;">SecureWatch Value-Share</h3>
+          <p style="font-size: 0.9rem; color: var(--color-text-muted); margin-bottom: var(--space-3);">Performance &amp; Recovery</p>
+          <div class="stat-value" style="font-size: 1.3rem;">10&ndash;15%<span style="font-size: 0.85rem; color: var(--color-text-muted);"> of recovered</span></div>
+          <p style="font-size: 0.85rem; margin-top: var(--space-2);">R5k/mo baseline + gain share. Co-delivered with FSG Forensics. Zero upfront risk for the client.</p>
+          <div class="note" style="margin-top: var(--space-4); font-size: 0.85rem; border-left-color: #F59E0B;">
+            <strong>ICP:</strong> Distressed SOEs, municipalities under SIU investigation, historic audit recoveries.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE: SecureWatch Essentials (Base SaaS Detail) -->
+    <section id="base-saas">
+      <div class="section-header reveal">
+        <div class="section-label">Tier 1 Deep Dive</div>
+        <h2>SecureWatch Essentials &mdash; high-velocity SME capture</h2>
+      </div>
+
+      <div class="grid-2" style="margin-top: var(--space-4);">
+        <div class="reveal delay-1">
+          <h3 style="font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted); margin-bottom: var(--space-4);">Product Specification</h3>
+          <ul class="minimal-list">
+            <li><strong style="color: var(--color-text);">Entry:</strong> $5,000 pilot &mdash; 12-month AP scan, up to 10,000 transactions. Frictionless loss-leader to prove value.</li>
+            <li><strong style="color: var(--color-text);">Subscription:</strong> $5,000&ndash;$1,000/mo (billed annually). Automated monthly anti-join reconciliation + standard dashboard.</li>
+            <li><strong style="color: var(--color-text);">Delivery:</strong> 95% automated. Client uploads CSVs. Engine flags anomalies. Minimal human QA.</li>
+            <li><strong style="color: var(--color-text);">Turnaround:</strong> 24 hours from data upload to findings report.</li>
+          </ul>
+        </div>
+
+        <div class="reveal delay-2">
+          <h3 style="font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted); margin-bottom: var(--space-4);">Unit Economics &amp; GTM</h3>
+          <div class="stat-card" style="border-left: 3px solid #60A5FA; margin-bottom: var(--space-4);">
+            <div class="stat-label">Revenue Model</div>
+            <p style="font-size: 0.95rem; margin: 0;">Volume-based ARR. High automation = high margin at scale. Target: 50&ndash;100 SME accounts generating $300k&ndash;$1.2M ARR within 24 months.</p>
+          </div>
+          <div class="stat-card" style="border-left: 3px solid #1C6E4A;">
+            <div class="stat-label">Sales Channel</div>
+            <p style="font-size: 0.95rem; margin: 0;">Inbound LinkedIn + product-led growth (PLG). Self-serve onboarding portal (roadmap Q3 2026). Fully automated data validation pipeline to keep the $5,000 pilot profitable.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE: SecureWatch Enterprise (Flagship Detail) -->
+    <section id="enterprise-license">
+      <div class="section-header reveal">
+        <div class="section-label">Tier 2 Deep Dive</div>
+        <h2>SecureWatch Enterprise &mdash; the flagship</h2>
+      </div>
+
+      <div class="grid-2" style="margin-top: var(--space-4);">
+        <div class="reveal delay-1">
+          <h3 style="font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted); margin-bottom: var(--space-4);">Product Specification</h3>
+          <ul class="minimal-list">
+            <li><strong style="color: var(--color-text);">Pilot:</strong> R25k&ndash;R50k ($1,300&ndash;$2,600+). Forensic analyst review required &mdash; $5,000 unviable at this complexity (Technomobile lesson).</li>
+            <li><strong style="color: var(--color-text);">License:</strong> R200k&ndash;R350k/year. Continuous quarterly/monthly monitoring, multi-tenant dashboards, analyst-reviewed reports.</li>
+            <li><strong style="color: var(--color-text);">Delivery:</strong> 80% automated engine + 20% analyst QA. Dual-ledger false positive filtering. Complex accounting structure mapping.</li>
+            <li><strong style="color: var(--color-text);">Integrations:</strong> API connections (audit.ai roadmap), exportable analyst audit trail for board/audit committee evidence.</li>
+          </ul>
+        </div>
+
+        <div class="reveal delay-2">
+          <h3 style="font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted); margin-bottom: var(--space-4);">Target &amp; Validation</h3>
+          <div class="stat-card" style="border-left: 3px solid #D94028; margin-bottom: var(--space-4);">
+            <div class="stat-label">Ideal Customer</div>
+            <p style="font-size: 0.95rem; margin: 0;">Financial services (Fio Capital, Absa), national government departments, large post-M&amp;A enterprises. Multiple ERPs, 1,000+ suppliers, complex procurement bypasses.</p>
+          </div>
+          <div class="stat-card" style="border-left: 3px solid #1E40AF;">
+            <div class="stat-label">GTM</div>
+            <p style="font-size: 0.95rem; margin: 0;">Founder-led (Sean) &mdash; direct enterprise outreach pushing for R5M ARR. Board-presentation sales cycle. Audit committee as the budget holder. 8&ndash;16 week sales cycles.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE: SecureWatch Value-Share (Recovery Detail) -->
+    <section id="value-share">
+      <div class="section-header reveal">
+        <div class="section-label">Tier 3 Deep Dive</div>
+        <h2>SecureWatch Value-Share &mdash; we find the money, we take a cut</h2>
+      </div>
+
+      <div class="grid-2" style="margin-top: var(--space-4);">
+        <div class="reveal delay-1">
+          <h3 style="font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted); margin-bottom: var(--space-4);">Product Specification</h3>
+          <ul class="minimal-list">
+            <li><strong style="color: var(--color-text);">Access:</strong> R5k/mo baseline covering compute and data ingestion. Zero upfront risk for the client.</li>
+            <li><strong style="color: var(--color-text);">Performance Fee:</strong> 10&ndash;15% of all recovered funds &mdash; duplicate payments reversed, ghost vendor funds clawed back.</li>
+            <li><strong style="color: var(--color-text);">Co-delivery:</strong> Exclusively with FSG Forensics. SecureWatch surfaces the exposure (e.g., R1.4M duplicates); FSG handles legal/investigative recovery. 60/40 fee split.</li>
+            <li><strong style="color: var(--color-text);">Contract safeguard:</strong> Fee triggered upon identification and verification of duplicate payments, not solely upon legal recovery.</li>
+          </ul>
+        </div>
+
+        <div class="reveal delay-2">
+          <h3 style="font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted); margin-bottom: var(--space-4);">Target &amp; Channel</h3>
+          <div class="stat-card" style="border-left: 3px solid #F59E0B; margin-bottom: var(--space-4);">
+            <div class="stat-label">Ideal Customer</div>
+            <p style="font-size: 0.95rem; margin: 0;">Distressed SOEs (GEMS, Transnet, OCJ), municipalities under SIU investigation, enterprises undergoing historic audits with no upfront budget.</p>
+          </div>
+          <div class="stat-card" style="border-left: 3px solid #B85C0A;">
+            <div class="stat-label">GTM</div>
+            <p style="font-size: 0.95rem; margin: 0;">Handed entirely to FSG Forensics to hunt in the public sector. AI SecureWatch provides the engine; FSG provides forensic credibility and legal recovery muscle.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE: Executive Trade-offs & Technical Feasibility -->
+    <section id="exec-tradeoffs">
+      <div class="section-header reveal">
+        <div class="section-label">Decision Trade-offs</div>
+        <h2>Pricing gates, technical gaps &amp; GTM focus</h2>
+      </div>
+
+      <div class="grid-2" style="margin-top: var(--space-4);">
+        <div class="reveal delay-1">
+          <h3 style="font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted); margin-bottom: var(--space-4);">The Pricing Resolution</h3>
+          <div class="stat-card" style="border-left: 3px solid #D94028; margin-bottom: var(--space-4);">
+            <div class="stat-label" style="color: #D94028;">The Friction</div>
+            <p style="font-size: 0.95rem; margin: 0;">The $5,000 pilot drives massive top-of-funnel &mdash; but on a messy enterprise ERP it will bankrupt delivery. <strong style="color: var(--color-text);">Resolution:</strong> $5,000 is strictly gated to Essentials tier. Max 1 ERP, &le;500 suppliers. MultiChoice or Absa asking for $5,000? Immediately disqualified &mdash; redirected to Enterprise scoping track.</p>
+          </div>
+          <div class="stat-card" style="border-left: 3px solid #1E40AF;">
+            <div class="stat-label">GTM Focus Split</div>
+            <ul class="timeline-list" style="margin-top: var(--space-2);">
+              <li><strong style="color: var(--color-text);">Sean (founder-led):</strong> Enterprise License &rarr; push for R5M ARR</li>
+              <li><strong style="color: var(--color-text);">FSG Forensics:</strong> Value-Share model &rarr; hunt in public sector</li>
+              <li><strong style="color: var(--color-text);">Inbound/PLG:</strong> Base SaaS ($5,000 pilot) &rarr; LinkedIn + automated growth post Q3 2026</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="reveal delay-2">
+          <h3 style="font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted); margin-bottom: var(--space-4);">Technical Feasibility Gaps</h3>
+          <div class="table-wrapper" style="margin-top: 0;">
+            <table style="min-width: 280px;">
+              <thead><tr><th>Tier</th><th>Gap</th><th>Requirement</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td style="color: #60A5FA;">Essentials</td>
+                  <td>No self-serve portal</td>
+                  <td>Automated CSV validation pipeline. $5,000 pilot must need &lt;1hr manual time.</td>
+                </tr>
+                <tr>
+                  <td style="color: #D94028;">Enterprise</td>
+                  <td>No audit trail export</td>
+                  <td>Exportable analyst log (who reviewed, why dismissed). <code>masterintegrity.py</code> rewrite + live ERP connectors.</td>
+                </tr>
+                <tr>
+                  <td style="color: #F59E0B;">Value-Share</td>
+                  <td>Non-payment risk</td>
+                  <td>Contracts: fee on identification, not only legal recovery. Engine tuning: prioritise exact/fuzzy duplicate payments.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
 
     <!-- === OPPORTUNITY ANALYSIS SECTION === -->
 
@@ -2015,7 +2284,7 @@
     const titleObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting && slideTitle && titles[entry.target.id]) {
-          slideTitle.textContent = titles[entry.target.id];
+          // Title updated by dropdown navigator
         }
       });
     }, { root: slider, threshold: 0.5 });
@@ -2105,6 +2374,110 @@
         }, 300);
       }
     })();
+
+    // --- Slide Dropdown Navigator ---
+    (function() {
+      const navGroups = [
+        { label: 'Brand & Narrative', items: [
+          { id: 'brand', title: 'Brand Narrative' },
+          { id: 'brand-positioning', title: 'Brand Promise' },
+          { id: 'personas', title: 'Target Personas' },
+        ]},
+        { label: 'Problem & Market', items: [
+          { id: 'problem', title: 'The Blind Spot' },
+          { id: 'market', title: 'Market Insight' },
+        ]},
+        { label: 'Competitive Landscape', items: [
+          { id: 'landscape', title: 'Landscape' },
+          { id: 'competitors', title: 'Competitive Intel' },
+          { id: 'whitespace', title: 'White Space' },
+          { id: 'differentiators', title: 'Moat & Defensibility' },
+        ]},
+        { label: 'Strategy & Execution', items: [
+          { id: 'positioning', title: 'Positioning' },
+          { id: 'sprint', title: 'Phase 1 Sprint' },
+          { id: 'timeline', title: 'Sprint Timeline' },
+          { id: 'roles', title: 'Accountability' },
+          { id: 'benefits', title: 'Benefits & Owners' },
+          { id: 'roadmap', title: 'Product Roadmap' },
+          { id: 'yc', title: 'YC & Traction' },
+        ]},
+        { label: 'Product Architecture', items: [
+          { id: 'product-matrix', title: 'Three-Tier Overview' },
+          { id: 'base-saas', title: 'SecureWatch Essentials' },
+          { id: 'enterprise-license', title: 'SecureWatch Enterprise' },
+          { id: 'value-share', title: 'Value-Share Model' },
+          { id: 'exec-tradeoffs', title: 'Decision Trade-offs' },
+        ]},
+        { label: 'Opportunity Analysis', items: [
+          { id: 'opportunity', title: 'Opportunity Overview' },
+          { id: 'tam', title: 'Market Sizing (TAM)' },
+          { id: 'fraud-baseline', title: 'Market Validation' },
+          { id: 'revenue-model', title: 'Commercial Model' },
+          { id: 'projections', title: 'Financial Projections' },
+          { id: 'gtm-channels', title: 'Go-to-Market' },
+          { id: 'series-a-thesis', title: 'Investor Thesis' },
+        ]},
+      ];
+
+      const dropdown = document.getElementById('slide-dropdown');
+      const titleText = document.getElementById('slide-title-text');
+      const slider = document.querySelector('main.slider');
+
+      // Build dropdown HTML
+      navGroups.forEach((group, gi) => {
+        if (gi > 0) dropdown.innerHTML += '<div class="nav-divider"></div>';
+        dropdown.innerHTML += '<div class="nav-group-label">' + group.label + '</div>';
+        group.items.forEach(item => {
+          dropdown.innerHTML += '<button class="nav-item" data-target="' + item.id + '">' + item.title + '</button>';
+        });
+      });
+
+      // Click handler for nav items
+      dropdown.addEventListener('click', function(e) {
+        const btn = e.target.closest('.nav-item');
+        if (!btn) return;
+        const targetId = btn.dataset.target;
+        const targetEl = document.getElementById(targetId);
+        if (targetEl && slider) {
+          targetEl.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+          dropdown.classList.remove('open');
+        }
+      });
+
+      // Close dropdown when clicking outside
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('#slide-nav-wrapper')) {
+          dropdown.classList.remove('open');
+        }
+      });
+
+      // Close on Escape
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') dropdown.classList.remove('open');
+      });
+
+      // Update active state and title text on scroll
+      const allNavItems = dropdown.querySelectorAll('.nav-item');
+      const titleMap = {};
+      navGroups.forEach(g => g.items.forEach(item => { titleMap[item.id] = item.title; }));
+
+      const navObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && titleMap[entry.target.id]) {
+            titleText.textContent = titleMap[entry.target.id];
+            allNavItems.forEach(ni => {
+              ni.classList.toggle('active', ni.dataset.target === entry.target.id);
+            });
+          }
+        });
+      }, { root: slider, threshold: 0.5 });
+
+      document.querySelectorAll('main > section, main > .hero').forEach(sec => {
+        if (sec.id) navObserver.observe(sec);
+      });
+    })();
+
   </script>
 </body>
 
