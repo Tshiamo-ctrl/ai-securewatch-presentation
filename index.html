@@ -396,20 +396,22 @@
       flex-direction: column;
       justify-content: flex-start;
       scrollbar-width: thin;
-      scrollbar-color: rgba(255,255,255,0.1) transparent;
+      scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
     }
 
     section::-webkit-scrollbar,
     .hero::-webkit-scrollbar {
       width: 4px;
     }
+
     section::-webkit-scrollbar-track,
     .hero::-webkit-scrollbar-track {
       background: transparent;
     }
+
     section::-webkit-scrollbar-thumb,
     .hero::-webkit-scrollbar-thumb {
-      background: rgba(255,255,255,0.1);
+      background: rgba(255, 255, 255, 0.1);
       border-radius: 4px;
     }
 
@@ -823,31 +825,110 @@
       color: var(--color-text);
     }
 
+    /* Naming Strategy & SEO Slides */
+    .name-candidate {
+      padding: var(--space-6);
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      position: relative;
+    }
+
+    .name-candidate.primary {
+      border-color: var(--color-accent);
+      border-width: 2px;
+      box-shadow: 0 0 24px rgba(255, 69, 0, 0.08);
+    }
+
+    .name-badge {
+      display: inline-block;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      padding: 3px 10px;
+      border-radius: var(--radius-pill);
+      margin-bottom: var(--space-3);
+    }
+
+    .name-badge.recommended {
+      background: rgba(255, 69, 0, 0.15);
+      color: var(--color-accent);
+    }
+
+    .name-badge.alternative {
+      background: rgba(96, 165, 250, 0.12);
+      color: #60a5fa;
+    }
+
+    .verdict-card {
+      padding: var(--space-5);
+      background: rgba(248, 113, 113, 0.05);
+      border: 1px solid rgba(248, 113, 113, 0.18);
+      border-radius: var(--radius-md);
+      margin-top: var(--space-4);
+    }
+
+    .verdict-card h3 {
+      color: rgba(248, 113, 113, 0.9);
+      font-size: 0.95rem;
+      margin-bottom: var(--space-3);
+    }
+
     /* Responsive — Large Tablets */
     @media (max-width: 1200px) {
-      .grid-3 { grid-template-columns: repeat(2, 1fr); }
-      .stat-value { font-size: clamp(1.2rem, 1rem + 1vw, 2rem); }
+      .grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .stat-value {
+        font-size: clamp(1.2rem, 1rem + 1vw, 2rem);
+      }
     }
 
     /* Responsive — Tablets */
     @media (max-width: 900px) {
-      .contrast-panels,
-      .grid-3 { grid-template-columns: 1fr; }
-      .grid-2 { grid-template-columns: 1fr; }
-      .panel { padding: var(--space-6); }
 
-      section, .hero, footer {
+      .contrast-panels,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .panel {
+        padding: var(--space-6);
+      }
+
+      section,
+      .hero,
+      footer {
         padding: clamp(1.2rem, 3vh, 2rem) var(--space-4) var(--space-4);
       }
 
-      h2 { font-size: clamp(1.2rem, 1rem + 1.5vw, 1.6rem); }
+      h2 {
+        font-size: clamp(1.2rem, 1rem + 1.5vw, 1.6rem);
+      }
 
-      .section-header { margin-bottom: var(--space-4); }
+      .section-header {
+        margin-bottom: var(--space-4);
+      }
 
-      .table-wrapper table { font-size: 0.85rem; }
-      .table-wrapper th, .table-wrapper td { padding: 8px 12px; }
+      .table-wrapper table {
+        font-size: 0.85rem;
+      }
 
-      .stat-card { padding: var(--space-4); }
+      .table-wrapper th,
+      .table-wrapper td {
+        padding: 8px 12px;
+      }
+
+      .stat-card {
+        padding: var(--space-4);
+      }
     }
 
     /* Responsive — Mobile */
@@ -857,7 +938,9 @@
         --space-24: 4rem;
       }
 
-      :root { --header-height: 70px; }
+      :root {
+        --header-height: 70px;
+      }
 
       header {
         padding: var(--space-3) var(--space-4);
@@ -873,67 +956,163 @@
         letter-spacing: 0.08em !important;
       }
 
-      section, .hero, footer {
+      section,
+      .hero,
+      footer {
         padding: clamp(1rem, 2.5vh, 1.5rem) var(--space-3) var(--space-3);
       }
 
-      .hero-title { font-size: 2rem; }
-      .hero-kicker { font-size: 0.75rem; }
+      .hero-title {
+        font-size: 2rem;
+      }
+
+      .hero-kicker {
+        font-size: 0.75rem;
+      }
 
       .section-header {
         padding-left: var(--space-3);
         margin-bottom: var(--space-3);
       }
-      .section-label { font-size: 0.7rem; margin-bottom: var(--space-2); }
-      h2 { font-size: 1.15rem; }
 
-      .stat-card { padding: var(--space-3); }
-      .stat-value { font-size: 1.3rem; }
-      .stat-label { font-size: 0.65rem; }
+      .section-label {
+        font-size: 0.7rem;
+        margin-bottom: var(--space-2);
+      }
 
-      .minimal-list li, .timeline-list li { font-size: 0.85rem; padding-left: 1.2em; }
-      .minimal-list li::before { font-size: 0.7rem; }
+      h2 {
+        font-size: 1.15rem;
+      }
 
-      .note { padding: var(--space-3); font-size: 0.85rem; }
+      .stat-card {
+        padding: var(--space-3);
+      }
 
-      .table-wrapper table { font-size: 0.8rem; min-width: 500px !important; }
-      .table-wrapper th, .table-wrapper td { padding: 6px 8px; }
+      .stat-value {
+        font-size: 1.3rem;
+      }
 
-      .slide-btn { width: 36px; height: 36px; }
-      .slide-btn svg { width: 18px; height: 18px; }
+      .stat-label {
+        font-size: 0.65rem;
+      }
 
-      .logo-text-main { font-size: 1rem; }
-      .logo-text-sub { font-size: 0.6rem; }
-      .logo-shape { width: 28px; height: 28px; }
+      .minimal-list li,
+      .timeline-list li {
+        font-size: 0.85rem;
+        padding-left: 1.2em;
+      }
 
-      #slide-dropdown { min-width: 220px; right: -20px; }
-      #slide-dropdown .nav-item { font-size: 0.8rem; padding: 6px 16px; }
-      #slide-dropdown .nav-group-label { font-size: 0.6rem; padding: 8px 16px 3px; }
+      .minimal-list li::before {
+        font-size: 0.7rem;
+      }
+
+      .note {
+        padding: var(--space-3);
+        font-size: 0.85rem;
+      }
+
+      .table-wrapper table {
+        font-size: 0.8rem;
+        min-width: 500px !important;
+      }
+
+      .table-wrapper th,
+      .table-wrapper td {
+        padding: 6px 8px;
+      }
+
+      .slide-btn {
+        width: 36px;
+        height: 36px;
+      }
+
+      .slide-btn svg {
+        width: 18px;
+        height: 18px;
+      }
+
+      .logo-text-main {
+        font-size: 1rem;
+      }
+
+      .logo-text-sub {
+        font-size: 0.6rem;
+      }
+
+      .logo-shape {
+        width: 28px;
+        height: 28px;
+      }
+
+      #slide-dropdown {
+        min-width: 220px;
+        right: -20px;
+      }
+
+      #slide-dropdown .nav-item {
+        font-size: 0.8rem;
+        padding: 6px 16px;
+      }
+
+      #slide-dropdown .nav-group-label {
+        font-size: 0.6rem;
+        padding: 8px 16px 3px;
+      }
     }
 
     /* Responsive — Small Mobile */
     @media (max-width: 480px) {
-      :root { --header-height: 60px; }
+      :root {
+        --header-height: 60px;
+      }
 
-      header { padding: var(--space-2) var(--space-3); }
+      header {
+        padding: var(--space-2) var(--space-3);
+      }
 
-      section, .hero, footer {
+      section,
+      .hero,
+      footer {
         padding: clamp(0.75rem, 2vh, 1.2rem) var(--space-2) var(--space-2);
       }
 
-      .hero-title { font-size: 1.6rem; }
-      h2 { font-size: 1rem; }
+      .hero-title {
+        font-size: 1.6rem;
+      }
 
-      .grid-2, .grid-3 { gap: var(--space-3); }
-      .stat-card { padding: var(--space-2); }
-      .stat-value { font-size: 1.1rem; }
+      h2 {
+        font-size: 1rem;
+      }
 
-      .logo-text-sub { display: none; }
+      .grid-2,
+      .grid-3 {
+        gap: var(--space-3);
+      }
 
-      #slide-nav-wrapper { max-width: 50vw; }
-      #slide-title { font-size: 0.7rem !important; }
+      .stat-card {
+        padding: var(--space-2);
+      }
 
-      #slide-dropdown { min-width: 200px; max-height: 60vh; }
+      .stat-value {
+        font-size: 1.1rem;
+      }
+
+      .logo-text-sub {
+        display: none;
+      }
+
+      #slide-nav-wrapper {
+        max-width: 50vw;
+      }
+
+      #slide-title {
+        font-size: 0.7rem !important;
+      }
+
+      #slide-dropdown {
+        min-width: 200px;
+        max-height: 60vh;
+      }
     }
 
     /* --- Auth Overlay Styles --- */
@@ -1026,7 +1205,11 @@
     }
 
     /* Slide dropdown navigator */
-    #slide-nav-wrapper { position: relative; z-index: 200; pointer-events: auto; }
+    #slide-nav-wrapper {
+      position: relative;
+      z-index: 200;
+      pointer-events: auto;
+    }
 
     #slide-dropdown {
       display: none;
@@ -1034,7 +1217,7 @@
       top: calc(100% + 8px);
       right: 0;
       background: rgba(12, 14, 18, 0.96);
-      border: 1px solid rgba(255,255,255,0.08);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 12px;
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
@@ -1042,12 +1225,14 @@
       min-width: 260px;
       max-height: 70vh;
       overflow-y: auto;
-      box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
       scrollbar-width: thin;
-      scrollbar-color: rgba(255,255,255,0.15) transparent;
+      scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
     }
 
-    #slide-dropdown.open { display: block; }
+    #slide-dropdown.open {
+      display: block;
+    }
 
     #slide-dropdown .nav-group-label {
       padding: 10px 20px 4px;
@@ -1077,7 +1262,7 @@
     }
 
     #slide-dropdown .nav-item:hover {
-      background: rgba(255,255,255,0.06);
+      background: rgba(255, 255, 255, 0.06);
       color: var(--color-text);
     }
 
@@ -1089,7 +1274,7 @@
 
     #slide-dropdown .nav-divider {
       height: 1px;
-      background: rgba(255,255,255,0.06);
+      background: rgba(255, 255, 255, 0.06);
       margin: 6px 16px;
     }
   </style>
@@ -1137,7 +1322,10 @@
         style="font-family: 'Outfit', sans-serif; font-size: 1.1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-text-muted); cursor: pointer; display: flex; align-items: center; gap: 6px; user-select: none;"
         onclick="document.getElementById('slide-dropdown').classList.toggle('open')">
         <span id="slide-title-text">Brand Narrative</span>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="opacity: 0.5; flex-shrink: 0;"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+          stroke-linecap="round" stroke-linejoin="round" style="opacity: 0.5; flex-shrink: 0;">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
       </div>
       <div id="slide-dropdown"></div>
     </div>
@@ -1182,25 +1370,169 @@
       <div class="grid-2" style="margin-top: var(--space-6);">
         <div class="reveal delay-1">
           <div class="hero-kicker" style="margin-bottom: var(--space-4);">Core Promise</div>
-          <h3 style="font-size: clamp(1.4rem, 1.2rem + 1vw, 2rem); line-height: 1.2; margin-bottom: var(--space-6);">Two files in.<br>One complete picture out.<br>No integration required.</h3>
-          <p>A ground-truth reconciliation layer that surfaces every entity paid outside the approved vendor master — without touching the ERP, without complex deployments, delivered in 2–3 weeks.</p>
+          <h3 style="font-size: clamp(1.4rem, 1.2rem + 1vw, 2rem); line-height: 1.2; margin-bottom: var(--space-6);">Two
+            files in.<br>One complete picture out.<br>No integration required.</h3>
+          <p>A ground-truth reconciliation layer that surfaces every entity paid outside the approved vendor master —
+            without touching the ERP, without complex deployments, delivered in 2–3 weeks.</p>
           <div class="note" style="margin-top: var(--space-6); border-left-color: var(--color-accent);">
-            <strong style="color: var(--color-text);">Brand voice:</strong> Confident. Forensic-grade. Quantified — never marketing fluff. We name exact findings: <em>"23 ghost vendors. R1.9M exposure. 432 suppliers audited."</em>
+            <strong style="color: var(--color-text);">Brand voice:</strong> Confident. Forensic-grade. Quantified —
+            never marketing fluff. We name exact findings: <em>"23 ghost vendors. R1.9M exposure. 432 suppliers
+              audited."</em>
           </div>
         </div>
         <div class="reveal delay-2">
           <div class="hero-kicker" style="margin-bottom: var(--space-4);">Three Brand Pillars</div>
           <div class="stat-card" style="margin-bottom: var(--space-4); border-left: 3px solid var(--color-accent);">
             <div class="stat-label">System Independence</div>
-            <p style="font-size: 0.95rem; margin: 0;">Operates entirely outside existing tool architectures. No ERP integration. Works from exported AP files and vendor master CSVs against any ERP landscape.</p>
+            <p style="font-size: 0.95rem; margin: 0;">Operates entirely outside existing tool architectures. No ERP
+              integration. Works from exported AP files and vendor master CSVs against any ERP landscape.</p>
           </div>
           <div class="stat-card" style="margin-bottom: var(--space-4); border-left: 3px solid #1E40AF;">
             <div class="stat-label">Full-Population Assurance</div>
-            <p style="font-size: 0.95rem; margin: 0;">100% of transactions analysed, not a sample. Every payment recipient reconciled against the master — including those who should never have been paid.</p>
+            <p style="font-size: 0.95rem; margin: 0;">100% of transactions analysed, not a sample. Every payment
+              recipient reconciled against the master — including those who should never have been paid.</p>
           </div>
           <div class="stat-card" style="border-left: 3px solid #1C6E4A;">
             <div class="stat-label">Forensic-Grade Accuracy</div>
-            <p style="font-size: 0.95rem; margin: 0;">Every AI-flagged anomaly reviewed by a human analyst before delivery. Investigation-ready findings, not raw data dumps.</p>
+            <p style="font-size: 0.95rem; margin: 0;">Every AI-flagged anomaly reviewed by a human analyst before
+              delivery. Investigation-ready findings, not raw data dumps.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE: Naming & Brand Identity -->
+    <section id="naming-strategy">
+      <div class="section-header reveal">
+        <div class="section-label">Naming &amp; Brand Identity</div>
+        <h2>From concept name to market&#8209;ready brand</h2>
+      </div>
+      <div class="grid-2" style="margin-top: var(--space-6);">
+        <!-- Primary Recommendation -->
+        <div class="reveal delay-1">
+          <div class="name-candidate primary">
+            <div class="name-badge recommended">★ Primary Recommendation</div>
+            <h3
+              style="font-size: clamp(1.5rem, 1.3rem + 1vw, 2rem); margin-bottom: var(--space-3); color: var(--color-text);">
+              PayReality</h3>
+            <p style="font-size: 0.95rem; margin-bottom: var(--space-4);">Anchors directly in the canon idea of <em>"the
+                layer of financial reality you've never seen"</em> &mdash; a true view of who actually got paid.</p>
+            <ul class="minimal-list">
+              <li><strong style="color: var(--color-text);">Descriptive</strong> &mdash; buyers infer "payments +
+                reality / ground truth" without a deck. B2B naming studies show problem&#8209;linked names improve
+                product discovery and top&#8209;of&#8209;funnel volume.</li>
+              <li><strong style="color: var(--color-text);">AI naming best&#8209;practice</strong> &mdash; short,
+                pronounceable, clearly suggests the domain rather than appending "AI" to a generic word.</li>
+              <li><strong style="color: var(--color-text);">Ownable</strong> &mdash; substantially more ownable and
+                descriptive than "Check Mate", with a clear path to trademark and SEO dominance.</li>
+            </ul>
+          </div>
+        </div>
+        <!-- Alternatives + Verdict -->
+        <div class="reveal delay-2">
+          <div class="hero-kicker" style="margin-bottom: var(--space-4);">Strong Alternatives</div>
+          <div class="name-candidate" style="margin-bottom: var(--space-4);">
+            <div class="name-badge alternative">Alternative</div>
+            <h3 style="font-size: 1.25rem; margin-bottom: var(--space-2); color: var(--color-text);">VendorCensus</h3>
+            <p style="font-size: 0.9rem; margin: 0;">Signals a complete, once&#8209;off and recurring "census" of
+              vendors&thinsp;/&thinsp;payees &mdash; aligns to full&#8209;population reconciliation rather than
+              sampling.</p>
+          </div>
+          <div class="name-candidate" style="margin-bottom: var(--space-4);">
+            <div class="name-badge alternative">Alternative</div>
+            <h3 style="font-size: 1.25rem; margin-bottom: var(--space-2); color: var(--color-text);">PayeeScope</h3>
+            <p style="font-size: 0.9rem; margin: 0;">Suggests a wide&#8209;angle lens over all entities being paid
+              &mdash; maps to "system&#8209;independent view of everyone who actually received money".</p>
+          </div>
+          <div class="verdict-card">
+            <h3>&#9888; "Check Mate" &mdash; keep as motif, not brand</h3>
+            <ul class="minimal-list" style="margin: 0;">
+              <li>"Checkmate" is a generic chess noun <em>and</em> a heavily used software brand root &mdash; permanent
+                uphill SEO battle against dominant meanings and existing brands.</li>
+              <li>Adding "AI" (e.g., "CheckMate AI") pushes into conflict with CheckMate.ai and generic AI&#8209;fraud
+                expectations &mdash; does not differentiate as a reconciliation&#8209;first reality layer.</li>
+              <li>Use as campaign language: <em>"Checkmate for shadow vendors"</em> &mdash; always with the PayReality
+                name prominent in creative and copy.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="note reveal delay-3" style="margin-top: var(--space-6); border-left-color: var(--color-accent);">
+        <strong style="color: var(--color-text);">Top&#8209;line:</strong> Make PayReality (or a similar
+        reality&#8209;anchored name) the master brand. Keep "Check&nbsp;Mate" as a clever motif, not the SEO or legal
+        anchor, and build SEO/social strategy around clear, problem&#8209;linked naming rather than the AI buzzword
+        wave.
+      </div>
+    </section>
+
+    <!-- SLIDE: SEO & Social Strategy -->
+    <section id="seo-strategy">
+      <div class="section-header reveal">
+        <div class="section-label">SEO &amp; Social Playbook</div>
+        <h2>Building discoverability around PayReality</h2>
+      </div>
+      <div class="grid-2" style="margin-top: var(--space-6);">
+        <!-- SEO Foundations -->
+        <div class="reveal delay-1">
+          <div class="stat-card" style="border-left: 3px solid var(--color-accent); margin-bottom: var(--space-4);">
+            <div class="stat-label">1 &middot; Entity Clarity</div>
+            <p style="font-size: 0.95rem; margin-bottom: var(--space-3);">Use one canonical product name &mdash; <strong
+                style="color: var(--color-text);">"PayReality by AI&nbsp;SecureWatch"</strong> &mdash; consistently
+              across homepage, product pages, LinkedIn, and bios. AI&#8209;search guidance stresses consistent naming
+              helps models attach you to the right entity graph and category.</p>
+            <div class="note" style="margin: 0; padding: var(--space-3); font-size: 0.85rem;">
+              <strong style="color: var(--color-text);">H1:</strong> "PayReality &ndash; Vendor Population &amp; AP
+              Reconciliation"<br>
+              <strong style="color: var(--color-text);">Lead:</strong> "PayReality reconciles AP payment files and
+              vendor masters to reveal the full population of entities who actually received money."
+            </div>
+          </div>
+          <div class="stat-card" style="border-left: 3px solid #1E40AF;">
+            <div class="stat-label">2 &middot; Keyword Strategy</div>
+            <p style="font-size: 0.9rem; margin-bottom: var(--space-3);">Focus primary SEO around <em>problem
+                language</em>, not brand:</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+              <span class="pill">vendor population reconciliation</span>
+              <span class="pill">who actually got paid</span>
+              <span class="pill">out-of-master vendors</span>
+              <span class="pill">ghost vendor detection in AP</span>
+            </div>
+          </div>
+        </div>
+        <!-- Content & Social -->
+        <div class="reveal delay-2">
+          <div class="stat-card" style="border-left: 3px solid #1C6E4A; margin-bottom: var(--space-4);">
+            <div class="stat-label">3 &middot; Pillar Pages (3&ndash;5)</div>
+            <ul class="minimal-list" style="margin-top: var(--space-3);">
+              <li><strong style="color: var(--color-text);">Vendor Population Assurance</strong> &mdash; defining and
+                owning the category</li>
+              <li><strong style="color: var(--color-text);">Out&#8209;of&#8209;Master Payee Detection</strong> &mdash;
+                the technical how&#8209;it&#8209;works</li>
+              <li><strong style="color: var(--color-text);">AP Reconciliation for Internal Audit</strong> &mdash;
+                buyer&#8209;persona&#8209;specific content</li>
+            </ul>
+          </div>
+          <div class="stat-card" style="border-left: 3px solid #a78bfa; margin-bottom: var(--space-4);">
+            <div class="stat-label">4 &middot; LinkedIn Cadence</div>
+            <p style="font-size: 0.9rem; margin-bottom: var(--space-3);">Position PayReality as <em>"the AP reality
+                layer"</em> in founder and company headlines &mdash; clarity beats cleverness in B2B SaaS branding. Run
+              forensic&#8209;style content pairing numbers with the PayReality name:</p>
+            <div class="note"
+              style="margin: 0; padding: var(--space-3); font-size: 0.85rem; border-left-color: #a78bfa;">
+              <em>"23 ghost vendors. R1.9M exposure. What we found when we reconciled AP reality against the vendor
+                master."</em>
+            </div>
+          </div>
+          <div class="stat-card" style="border-left: 3px solid #fb923c;">
+            <div class="stat-label">5 &middot; Thought Leadership &amp; "Check&nbsp;Mate" Motif</div>
+            <ul class="minimal-list" style="margin-top: var(--space-3);">
+              <li><em>"Why 'who actually got paid' is the new audit question."</em></li>
+              <li><em>"From master data to payment reality: a guide for internal audit."</em></li>
+              <li>One explainer blog: <em>"Why we chose reality over 'checkmate' in fraud detection"</em> &mdash;
+                soft&#8209;optimise for "checkmate fraud" terms without fighting the generic SERP.</li>
+              <li>Use chess visuals and lines like <em>"Checkmate for shadow vendors"</em> as ad slogans &mdash; always
+                with PayReality prominent in creative.</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -1212,7 +1544,9 @@
         <div class="section-label">Target Segment</div>
         <h2>The blind spots we solve by persona</h2>
       </div>
-      <p class="reveal delay-1">We target complex AP environments — post-M&amp;A enterprises, government entities, construction firms, and regulated financial institutions. Each executive persona has a specific workflow gap we address.</p>
+      <p class="reveal delay-1">We target complex AP environments — post-M&amp;A enterprises, government entities,
+        construction firms, and regulated financial institutions. Each executive persona has a specific workflow gap we
+        address.</p>
       <div class="table-wrapper reveal delay-2">
         <table style="min-width: 700px;">
           <thead>
@@ -1225,18 +1559,21 @@
           <tbody>
             <tr>
               <td>Head of Internal Audit</td>
-              <td>Sample-based testing misses out-of-system payments. Controls assume the vendor master is complete.</td>
+              <td>Sample-based testing misses out-of-system payments. Controls assume the vendor master is complete.
+              </td>
               <td>Full-population reconciliation with every out-of-system entity surfaced and investigation-ready.</td>
             </tr>
             <tr>
               <td>CFO / Finance Executive</td>
               <td>No independent view of actual payment recipients versus planned controls or approved budgets.</td>
-              <td>A ground-truth layer quantifying total financial exposure — who actually got paid and what it cost.</td>
+              <td>A ground-truth layer quantifying total financial exposure — who actually got paid and what it cost.
+              </td>
             </tr>
             <tr>
               <td>TPRM / Risk Leader</td>
               <td>No visibility into unregistered recipients who lack assigned risk scores or TPRM coverage.</td>
-              <td>The complete list of out-of-master payment entities, ready to feed directly into risk assessment workflows.</td>
+              <td>The complete list of out-of-master payment entities, ready to feed directly into risk assessment
+                workflows.</td>
             </tr>
           </tbody>
         </table>
@@ -1252,7 +1589,8 @@
         </div>
         <div class="stat-card reveal delay-4" style="text-align: center;">
           <div class="stat-value" style="font-size: 1.8rem;">Enterprise</div>
-          <p style="font-size: 0.9rem; margin: 0;">Construction, financial services, and regulated industries with large AP volumes</p>
+          <p style="font-size: 0.9rem; margin: 0;">Construction, financial services, and regulated industries with large
+            AP volumes</p>
         </div>
       </div>
     </section>
@@ -1349,24 +1687,36 @@
         <h2>A new category: Vendor Population Assurance</h2>
       </div>
       <p class="reveal delay-1">
-        AI SecureWatch sits at the intersection of procurement fraud detection, vendor master integrity, and third-party risk — but occupies a distinctive wedge: <strong style="color: var(--color-text);">system-independent vendor population reconciliation</strong> that reveals every entity that actually received payment, not just those in the ERP or TPRM stack.
+        AI SecureWatch sits at the intersection of procurement fraud detection, vendor master integrity, and third-party
+        risk — but occupies a distinctive wedge: <strong style="color: var(--color-text);">system-independent vendor
+          population reconciliation</strong> that reveals every entity that actually received payment, not just those in
+        the ERP or TPRM stack.
       </p>
       <div class="grid-2" style="margin-top: var(--space-6);">
         <div class="stat-card reveal delay-2" style="border-left: 3px solid var(--color-accent);">
           <div class="stat-label">The Core Moat</div>
-          <div class="stat-value" style="font-size: 1.4rem; line-height: 1.3;">Two files in.<br>One complete picture out.</div>
-          <p>Full-population AP-to-vendor-master anti-join plus analyst-guided forensics. No integration. Delivery in 2&ndash;3 weeks.</p>
+          <div class="stat-value" style="font-size: 1.4rem; line-height: 1.3;">Two files in.<br>One complete picture
+            out.</div>
+          <p>Full-population AP-to-vendor-master anti-join plus analyst-guided forensics. No integration. Delivery in
+            2&ndash;3 weeks.</p>
         </div>
         <div class="reveal delay-3">
-          <h3 style="margin-bottom: var(--space-4); font-size: 1rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.1em;">Where incumbents stop</h3>
+          <h3
+            style="margin-bottom: var(--space-4); font-size: 1rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.1em;">
+            Where incumbents stop</h3>
           <ul class="minimal-list">
-            <li><strong style="color: var(--color-text);">Trustpair &amp; bank verification</strong> &mdash; validates known vendor bank details. Assumes the vendor exists.</li>
-            <li><strong style="color: var(--color-text);">Oversight &amp; AP analytics</strong> &mdash; continuous monitoring within existing systems and policy controls.</li>
-            <li><strong style="color: var(--color-text);">TPRM platforms</strong> &mdash; cyber risk, OAuth, digital shadow of known third parties.</li>
-            <li><strong style="color: var(--color-text);">Deloitte P2P agents</strong> &mdash; AI-enhanced fraud detection tightly coupled to P2P workflows.</li>
+            <li><strong style="color: var(--color-text);">Trustpair &amp; bank verification</strong> &mdash; validates
+              known vendor bank details. Assumes the vendor exists.</li>
+            <li><strong style="color: var(--color-text);">Oversight &amp; AP analytics</strong> &mdash; continuous
+              monitoring within existing systems and policy controls.</li>
+            <li><strong style="color: var(--color-text);">TPRM platforms</strong> &mdash; cyber risk, OAuth, digital
+              shadow of known third parties.</li>
+            <li><strong style="color: var(--color-text);">Deloitte P2P agents</strong> &mdash; AI-enhanced fraud
+              detection tightly coupled to P2P workflows.</li>
           </ul>
           <div class="note" style="margin-top: var(--space-6); border-left-color: var(--color-accent);">
-            None of the above can answer: <em>"Who actually received money from us that was never in our vendor master?"</em>
+            None of the above can answer: <em>"Who actually received money from us that was never in our vendor
+              master?"</em>
           </div>
         </div>
       </div>
@@ -1378,24 +1728,32 @@
         <div class="section-label">Competitive Intelligence</div>
         <h2>Direct &amp; adjacent competitors mapped</h2>
       </div>
-      <p class="reveal delay-1">Most competitors assume the vendor is already known. AI SecureWatch starts from the raw payment file and works backwards to surface entities that were never onboarded.</p>
+      <p class="reveal delay-1">Most competitors assume the vendor is already known. AI SecureWatch starts from the raw
+        payment file and works backwards to surface entities that were never onboarded.</p>
       <div class="table-wrapper reveal delay-2">
         <table style="min-width: 800px;">
           <thead>
-            <tr><th>Player</th><th>Core Focus</th><th>Overlap</th><th>The Gap</th></tr>
+            <tr>
+              <th>Player</th>
+              <th>Core Focus</th>
+              <th>Overlap</th>
+              <th>The Gap</th>
+            </tr>
           </thead>
           <tbody>
             <tr>
               <td>Deloitte P2P Agent</td>
               <td>AI-enhanced fraud across P2P: duplicates, shadow vendors, split POs, payment timing.</td>
               <td>Shadow vendor detection, unauthorized vendor usage.</td>
-              <td>Consulting workflow, tightly coupled to P2P. Not a standalone system-independent reconciliation layer.</td>
+              <td>Consulting workflow, tightly coupled to P2P. Not a standalone system-independent reconciliation layer.
+              </td>
             </tr>
             <tr>
               <td>Oversight</td>
               <td>AP, T&amp;E, P-Card spend monitoring. Duplicate payments, vendor master integrity.</td>
               <td>Duplicate payments and vendor-within-master anomaly detection.</td>
-              <td>Monitors within existing systems. Does not reconcile AP file vs master to reveal entirely missing payees.</td>
+              <td>Monitors within existing systems. Does not reconcile AP file vs master to reveal entirely missing
+                payees.</td>
             </tr>
             <tr>
               <td>Trustpair</td>
@@ -1413,7 +1771,8 @@
               <td>TPRM Platforms</td>
               <td>Digital shadow, OAuth, cyber risk of known third parties.</td>
               <td>Shadow vendor / third-party discovery at the digital layer.</td>
-              <td>Focused on cyber risk of digital services, not financial payment recipients. No AP-to-master reconciliation.</td>
+              <td>Focused on cyber risk of digital services, not financial payment recipients. No AP-to-master
+                reconciliation.</td>
             </tr>
           </tbody>
         </table>
@@ -1426,32 +1785,39 @@
         <div class="section-label">White Space</div>
         <h2>Five under-served zones to own</h2>
       </div>
-      <p class="reveal delay-1">No mapped competitor markets a dedicated <em>vendor population assurance</em> offering. These zones are available to name and dominate.</p>
+      <p class="reveal delay-1">No mapped competitor markets a dedicated <em>vendor population assurance</em> offering.
+        These zones are available to name and dominate.</p>
       <div class="grid-3" style="margin-top: var(--space-6);">
         <div class="stat-card reveal delay-1">
           <div class="stat-label" style="color: #a78bfa;">Category Definition</div>
           <h3 style="font-size: 1.05rem; margin-bottom: var(--space-2);">Vendor Population Assurance</h3>
-          <p style="font-size: 0.9rem;">Name and own the category. The reconciliation layer that answers "Who actually got paid?" for boards and audit committees &mdash; a framing no incumbent uses.</p>
+          <p style="font-size: 0.9rem;">Name and own the category. The reconciliation layer that answers "Who actually
+            got paid?" for boards and audit committees &mdash; a framing no incumbent uses.</p>
         </div>
         <div class="stat-card reveal delay-2">
           <div class="stat-label" style="color: #34d399;">Post-M&amp;A Audits</div>
           <h3 style="font-size: 1.05rem; margin-bottom: var(--space-2);">Vendor-Master Consolidation</h3>
-          <p style="font-size: 0.9rem;">Big Four integration audits sample, never reconcile the full vendor population. A file-only, system-independent post-M&amp;A product that no one offers today.</p>
+          <p style="font-size: 0.9rem;">Big Four integration audits sample, never reconcile the full vendor population.
+            A file-only, system-independent post-M&amp;A product that no one offers today.</p>
         </div>
         <div class="stat-card reveal delay-3">
           <div class="stat-label" style="color: #fb923c;">Public Sector</div>
           <h3 style="font-size: 1.05rem; margin-bottom: var(--space-2);">PFMA / Irregular Expenditure</h3>
-          <p style="font-size: 0.9rem;">SOEs and government entities facing supplier-collusion scandals need to prove every payment recipient was reviewed. A repeatable PFMA-aligned offering for SIU and Auditor-General investigations.</p>
+          <p style="font-size: 0.9rem;">SOEs and government entities facing supplier-collusion scandals need to prove
+            every payment recipient was reviewed. A repeatable PFMA-aligned offering for SIU and Auditor-General
+            investigations.</p>
         </div>
         <div class="stat-card reveal delay-2">
           <div class="stat-label" style="color: #60a5fa;">AML Bridge</div>
           <h3 style="font-size: 1.05rem; margin-bottom: var(--space-2);">AP Fraud &times; Financial Crime</h3>
-          <p style="font-size: 0.9rem;">CAMS teams see vendor-side fraud as an AML blind spot. No competitor unifies AP reconciliation with relationship graphs and employee-vendor link analysis.</p>
+          <p style="font-size: 0.9rem;">CAMS teams see vendor-side fraud as an AML blind spot. No competitor unifies AP
+            reconciliation with relationship graphs and employee-vendor link analysis.</p>
         </div>
         <div class="stat-card reveal delay-3">
           <div class="stat-label" style="color: #f472b6;">Audit-Grade Evidence</div>
           <h3 style="font-size: 1.05rem; margin-bottom: var(--space-2);">Board &amp; Audit Committee Packs</h3>
-          <p style="font-size: 0.9rem;">No commodity product delivers: <em>"847 AP recipients, 127 not in master, R2.3M off-master spend, in 2 weeks from AP exports."</em> A white-label opportunity for Big Four co-sell.</p>
+          <p style="font-size: 0.9rem;">No commodity product delivers: <em>"847 AP recipients, 127 not in master, R2.3M
+              off-master spend, in 2 weeks from AP exports."</em> A white-label opportunity for Big Four co-sell.</p>
         </div>
       </div>
     </section>
@@ -1462,24 +1828,37 @@
         <div class="section-label">Moat &amp; Defensibility</div>
         <h2>Why this is hard to replicate</h2>
       </div>
-      <p class="reveal delay-1">The main competitive risk is incumbents adding AP-to-master anti-join as a module. Defensibility rests on hard-won engine tuning, a focused GTM, and positioning as <em>complementary infrastructure</em> &mdash; not a competing control system.</p>
+      <p class="reveal delay-1">The main competitive risk is incumbents adding AP-to-master anti-join as a module.
+        Defensibility rests on hard-won engine tuning, a focused GTM, and positioning as <em>complementary
+          infrastructure</em> &mdash; not a competing control system.</p>
       <div class="grid-2" style="margin-top: var(--space-6);">
         <div class="reveal delay-2">
-          <h3 style="font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted); margin-bottom: var(--space-4);">Core Differentiators</h3>
+          <h3
+            style="font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted); margin-bottom: var(--space-4);">
+            Core Differentiators</h3>
           <ul class="minimal-list">
-            <li><strong style="color: var(--color-text);">System-independent, file-only</strong> &mdash; works from exported AP files without ERP integration. 100% historic population reconciliation across any ERP landscape.</li>
-            <li><strong style="color: var(--color-text);">Full-population anti-join</strong> &mdash; every entity that received payment but is absent from the master, quantified. No sampling.</li>
-            <li><strong style="color: var(--color-text);">Analyst-validated forensic output</strong> &mdash; every AI flag reviewed by an analyst before delivery. Investigation-ready, zero false-positive fatigue.</li>
-            <li><strong style="color: var(--color-text);">Quantified proof points</strong> &mdash; 432 suppliers, R73.4M payables, 23 ghost vendors, R1.9M exposure surfaced from a single AP export in under 2 weeks.</li>
+            <li><strong style="color: var(--color-text);">System-independent, file-only</strong> &mdash; works from
+              exported AP files without ERP integration. 100% historic population reconciliation across any ERP
+              landscape.</li>
+            <li><strong style="color: var(--color-text);">Full-population anti-join</strong> &mdash; every entity that
+              received payment but is absent from the master, quantified. No sampling.</li>
+            <li><strong style="color: var(--color-text);">Analyst-validated forensic output</strong> &mdash; every AI
+              flag reviewed by an analyst before delivery. Investigation-ready, zero false-positive fatigue.</li>
+            <li><strong style="color: var(--color-text);">Quantified proof points</strong> &mdash; 432 suppliers, R73.4M
+              payables, 23 ghost vendors, R1.9M exposure surfaced from a single AP export in under 2 weeks.</li>
           </ul>
         </div>
         <div class="stat-card reveal delay-3" style="border-top: 3px solid var(--color-accent);">
           <div class="stat-label">Defensibility Levers</div>
           <ul class="minimal-list" style="margin-top: var(--space-4);">
-            <li>Hard-won <strong style="color: var(--color-text);">engine tuning</strong> from real pilots &mdash; Sage 200 dual-ledger patterns, known-corporate filtering.</li>
-            <li>Focused GTM on <strong style="color: var(--color-text);">post-M&amp;A, public-sector scandal, and forensic-audit</strong> buyers incumbents do not serve directly.</li>
-            <li><strong style="color: var(--color-text);">Partner embedding</strong> &mdash; FSG Forensics (60/40 revenue split) and potential Big Four white-label distribution.</li>
-            <li>Frame incumbents as <strong style="color: var(--color-text);">consumers of SecureWatch outputs</strong> &mdash; the shared ground-truth layer they trust downstream.</li>
+            <li>Hard-won <strong style="color: var(--color-text);">engine tuning</strong> from real pilots &mdash; Sage
+              200 dual-ledger patterns, known-corporate filtering.</li>
+            <li>Focused GTM on <strong style="color: var(--color-text);">post-M&amp;A, public-sector scandal, and
+                forensic-audit</strong> buyers incumbents do not serve directly.</li>
+            <li><strong style="color: var(--color-text);">Partner embedding</strong> &mdash; FSG Forensics (60/40
+              revenue split) and potential Big Four white-label distribution.</li>
+            <li>Frame incumbents as <strong style="color: var(--color-text);">consumers of SecureWatch outputs</strong>
+              &mdash; the shared ground-truth layer they trust downstream.</li>
           </ul>
         </div>
       </div>
@@ -1829,15 +2208,20 @@
         <div class="section-label">Product Architecture</div>
         <h2>Three tiers. Every buyer covered.</h2>
       </div>
-      <p class="reveal delay-1" style="max-width: 75ch;">AI SecureWatch is not a one-size-fits-all tool. Whether you are a mid-market manufacturer needing continuous visibility, an enterprise integrating multiple ERPs, or a public entity recovering irregular expenditure &mdash; we provide the exact layer of financial reality you need.</p>
+      <p class="reveal delay-1" style="max-width: 75ch;">AI SecureWatch is not a one-size-fits-all tool. Whether you are
+        a mid-market manufacturer needing continuous visibility, an enterprise integrating multiple ERPs, or a public
+        entity recovering irregular expenditure &mdash; we provide the exact layer of financial reality you need.</p>
 
       <div class="grid-3" style="margin-top: var(--space-6);">
         <div class="stat-card reveal delay-1" style="border-top: 3px solid #60A5FA;">
           <div class="stat-label" style="color: #60A5FA;">Tier 1</div>
           <h3 style="font-size: 1.15rem; margin: var(--space-2) 0;">SecureWatch Essentials</h3>
-          <p style="font-size: 0.9rem; color: var(--color-text-muted); margin-bottom: var(--space-3);">SME &amp; Mid-Market</p>
-          <div class="stat-value" style="font-size: 1.3rem;">R95k<span style="font-size: 0.85rem; color: var(--color-text-muted);"> pilot</span></div>
-          <p style="font-size: 0.85rem; margin-top: var(--space-2);">R9.5k&ndash;R19k/mo subscription. 95% automated. Volume-based ARR. 24-hour turnaround.</p>
+          <p style="font-size: 0.9rem; color: var(--color-text-muted); margin-bottom: var(--space-3);">SME &amp;
+            Mid-Market</p>
+          <div class="stat-value" style="font-size: 1.3rem;">R95k<span
+              style="font-size: 0.85rem; color: var(--color-text-muted);"> pilot</span></div>
+          <p style="font-size: 0.85rem; margin-top: var(--space-2);">R9.5k&ndash;R19k/mo subscription. 95% automated.
+            Volume-based ARR. 24-hour turnaround.</p>
           <div class="note" style="margin-top: var(--space-4); font-size: 0.85rem; border-left-color: #60A5FA;">
             <strong>ICP:</strong> Single ERP (Sage 200), &lt;500 suppliers, under R250M payables.
           </div>
@@ -1846,20 +2230,27 @@
         <div class="stat-card reveal delay-2" style="border-top: 3px solid #D94028;">
           <div class="stat-label" style="color: #D94028;">Tier 2 &mdash; Flagship</div>
           <h3 style="font-size: 1.15rem; margin: var(--space-2) 0;">SecureWatch Enterprise</h3>
-          <p style="font-size: 0.9rem; color: var(--color-text-muted); margin-bottom: var(--space-3);">Enterprise &amp; Audit Committees</p>
-          <div class="stat-value" style="font-size: 1.3rem;">R200k&ndash;350k<span style="font-size: 0.85rem; color: var(--color-text-muted);"> /year</span></div>
-          <p style="font-size: 0.85rem; margin-top: var(--space-2);">R25k&ndash;R50k pilot. 80% automated + 20% analyst QA. Multi-tenant dashboards. API integrations.</p>
+          <p style="font-size: 0.9rem; color: var(--color-text-muted); margin-bottom: var(--space-3);">Enterprise &amp;
+            Audit Committees</p>
+          <div class="stat-value" style="font-size: 1.3rem;">R200k&ndash;350k<span
+              style="font-size: 0.85rem; color: var(--color-text-muted);"> /year</span></div>
+          <p style="font-size: 0.85rem; margin-top: var(--space-2);">R25k&ndash;R50k pilot. 80% automated + 20% analyst
+            QA. Multi-tenant dashboards. API integrations.</p>
           <div class="note" style="margin-top: var(--space-4); font-size: 0.85rem; border-left-color: #D94028;">
-            <strong>ICP:</strong> Financial services, post-M&amp;A enterprises, government. Multiple ERPs, 1,000+ suppliers.
+            <strong>ICP:</strong> Financial services, post-M&amp;A enterprises, government. Multiple ERPs, 1,000+
+            suppliers.
           </div>
         </div>
 
         <div class="stat-card reveal delay-3" style="border-top: 3px solid #F59E0B;">
           <div class="stat-label" style="color: #F59E0B;">Tier 3 &mdash; Recovery</div>
           <h3 style="font-size: 1.15rem; margin: var(--space-2) 0;">SecureWatch Value-Share</h3>
-          <p style="font-size: 0.9rem; color: var(--color-text-muted); margin-bottom: var(--space-3);">Performance &amp; Recovery</p>
-          <div class="stat-value" style="font-size: 1.3rem;">10&ndash;15%<span style="font-size: 0.85rem; color: var(--color-text-muted);"> of recovered</span></div>
-          <p style="font-size: 0.85rem; margin-top: var(--space-2);">R5k/mo baseline + gain share. Co-delivered with FSG Forensics. Zero upfront risk for the client.</p>
+          <p style="font-size: 0.9rem; color: var(--color-text-muted); margin-bottom: var(--space-3);">Performance &amp;
+            Recovery</p>
+          <div class="stat-value" style="font-size: 1.3rem;">10&ndash;15%<span
+              style="font-size: 0.85rem; color: var(--color-text-muted);"> of recovered</span></div>
+          <p style="font-size: 0.85rem; margin-top: var(--space-2);">R5k/mo baseline + gain share. Co-delivered with FSG
+            Forensics. Zero upfront risk for the client.</p>
           <div class="note" style="margin-top: var(--space-4); font-size: 0.85rem; border-left-color: #F59E0B;">
             <strong>ICP:</strong> Distressed SOEs, municipalities under SIU investigation, historic audit recoveries.
           </div>
@@ -1876,24 +2267,34 @@
 
       <div class="grid-2" style="margin-top: var(--space-4);">
         <div class="reveal delay-1">
-          <h3 style="font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted); margin-bottom: var(--space-4);">Product Specification</h3>
+          <h3
+            style="font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted); margin-bottom: var(--space-4);">
+            Product Specification</h3>
           <ul class="minimal-list">
-            <li><strong style="color: var(--color-text);">Entry:</strong> R95k pilot &mdash; 12-month AP scan, up to 10,000 transactions. Frictionless loss-leader to prove value.</li>
-            <li><strong style="color: var(--color-text);">Subscription:</strong> R9.5k&ndash;R19k/mo (billed annually). Automated monthly anti-join reconciliation + standard dashboard.</li>
-            <li><strong style="color: var(--color-text);">Delivery:</strong> 95% automated. Client uploads CSVs. Engine flags anomalies. Minimal human QA.</li>
-            <li><strong style="color: var(--color-text);">Turnaround:</strong> 24 hours from data upload to findings report.</li>
+            <li><strong style="color: var(--color-text);">Entry:</strong> R95k pilot &mdash; 12-month AP scan, up to
+              10,000 transactions. Frictionless loss-leader to prove value.</li>
+            <li><strong style="color: var(--color-text);">Subscription:</strong> R9.5k&ndash;R19k/mo (billed annually).
+              Automated monthly anti-join reconciliation + standard dashboard.</li>
+            <li><strong style="color: var(--color-text);">Delivery:</strong> 95% automated. Client uploads CSVs. Engine
+              flags anomalies. Minimal human QA.</li>
+            <li><strong style="color: var(--color-text);">Turnaround:</strong> 24 hours from data upload to findings
+              report.</li>
           </ul>
         </div>
 
         <div class="reveal delay-2">
-          <h3 style="font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted); margin-bottom: var(--space-4);">Unit Economics &amp; GTM</h3>
+          <h3
+            style="font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted); margin-bottom: var(--space-4);">
+            Unit Economics &amp; GTM</h3>
           <div class="stat-card" style="border-left: 3px solid #60A5FA; margin-bottom: var(--space-4);">
             <div class="stat-label">Revenue Model</div>
-            <p style="font-size: 0.95rem; margin: 0;">Volume-based ARR. High automation = high margin at scale. Target: 50&ndash;100 SME accounts generating R5.7M&ndash;R22.8M ARR within 24 months.</p>
+            <p style="font-size: 0.95rem; margin: 0;">Volume-based ARR. High automation = high margin at scale. Target:
+              50&ndash;100 SME accounts generating R5.7M&ndash;R22.8M ARR within 24 months.</p>
           </div>
           <div class="stat-card" style="border-left: 3px solid #1C6E4A;">
             <div class="stat-label">Sales Channel</div>
-            <p style="font-size: 0.95rem; margin: 0;">Inbound LinkedIn + product-led growth (PLG). Self-serve onboarding portal (roadmap Q3 2026). Fully automated data validation pipeline to keep the R95k pilot profitable.</p>
+            <p style="font-size: 0.95rem; margin: 0;">Inbound LinkedIn + product-led growth (PLG). Self-serve onboarding
+              portal (roadmap Q3 2026). Fully automated data validation pipeline to keep the R95k pilot profitable.</p>
           </div>
         </div>
       </div>
@@ -1908,24 +2309,36 @@
 
       <div class="grid-2" style="margin-top: var(--space-4);">
         <div class="reveal delay-1">
-          <h3 style="font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted); margin-bottom: var(--space-4);">Product Specification</h3>
+          <h3
+            style="font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted); margin-bottom: var(--space-4);">
+            Product Specification</h3>
           <ul class="minimal-list">
-            <li><strong style="color: var(--color-text);">Pilot:</strong> R25k&ndash;R50k Forensic analyst review required &mdash; R95k Essentials pilot unviable at this complexity (Technomobile lesson).</li>
-            <li><strong style="color: var(--color-text);">License:</strong> R200k&ndash;R350k/year. Continuous quarterly/monthly monitoring, multi-tenant dashboards, analyst-reviewed reports.</li>
-            <li><strong style="color: var(--color-text);">Delivery:</strong> 80% automated engine + 20% analyst QA. Dual-ledger false positive filtering. Complex accounting structure mapping.</li>
-            <li><strong style="color: var(--color-text);">Integrations:</strong> API connections (audit.ai roadmap), exportable analyst audit trail for board/audit committee evidence.</li>
+            <li><strong style="color: var(--color-text);">Pilot:</strong> R25k&ndash;R50k Forensic analyst review
+              required &mdash; R95k Essentials pilot unviable at this complexity (Technomobile lesson).</li>
+            <li><strong style="color: var(--color-text);">License:</strong> R200k&ndash;R350k/year. Continuous
+              quarterly/monthly monitoring, multi-tenant dashboards, analyst-reviewed reports.</li>
+            <li><strong style="color: var(--color-text);">Delivery:</strong> 80% automated engine + 20% analyst QA.
+              Dual-ledger false positive filtering. Complex accounting structure mapping.</li>
+            <li><strong style="color: var(--color-text);">Integrations:</strong> API connections (audit.ai roadmap),
+              exportable analyst audit trail for board/audit committee evidence.</li>
           </ul>
         </div>
 
         <div class="reveal delay-2">
-          <h3 style="font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted); margin-bottom: var(--space-4);">Target &amp; Validation</h3>
+          <h3
+            style="font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted); margin-bottom: var(--space-4);">
+            Target &amp; Validation</h3>
           <div class="stat-card" style="border-left: 3px solid #D94028; margin-bottom: var(--space-4);">
             <div class="stat-label">Ideal Customer</div>
-            <p style="font-size: 0.95rem; margin: 0;">Financial services (Fio Capital, Absa), national government departments, large post-M&amp;A enterprises. Multiple ERPs, 1,000+ suppliers, complex procurement bypasses.</p>
+            <p style="font-size: 0.95rem; margin: 0;">Financial services (Fio Capital, Absa), national government
+              departments, large post-M&amp;A enterprises. Multiple ERPs, 1,000+ suppliers, complex procurement
+              bypasses.</p>
           </div>
           <div class="stat-card" style="border-left: 3px solid #1E40AF;">
             <div class="stat-label">GTM</div>
-            <p style="font-size: 0.95rem; margin: 0;">Founder-led (Sean) &mdash; direct enterprise outreach pushing for R5M ARR. Board-presentation sales cycle. Audit committee as the budget holder. 8&ndash;16 week sales cycles.</p>
+            <p style="font-size: 0.95rem; margin: 0;">Founder-led (Sean) &mdash; direct enterprise outreach pushing for
+              R5M ARR. Board-presentation sales cycle. Audit committee as the budget holder. 8&ndash;16 week sales
+              cycles.</p>
           </div>
         </div>
       </div>
@@ -1940,24 +2353,35 @@
 
       <div class="grid-2" style="margin-top: var(--space-4);">
         <div class="reveal delay-1">
-          <h3 style="font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted); margin-bottom: var(--space-4);">Product Specification</h3>
+          <h3
+            style="font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted); margin-bottom: var(--space-4);">
+            Product Specification</h3>
           <ul class="minimal-list">
-            <li><strong style="color: var(--color-text);">Access:</strong> R5k/mo baseline covering compute and data ingestion. Zero upfront risk for the client.</li>
-            <li><strong style="color: var(--color-text);">Performance Fee:</strong> 10&ndash;15% of all recovered funds &mdash; duplicate payments reversed, ghost vendor funds clawed back.</li>
-            <li><strong style="color: var(--color-text);">Co-delivery:</strong> Exclusively with FSG Forensics. SecureWatch surfaces the exposure (e.g., R1.4M duplicates); FSG handles legal/investigative recovery. 60/40 fee split.</li>
-            <li><strong style="color: var(--color-text);">Contract safeguard:</strong> Fee triggered upon identification and verification of duplicate payments, not solely upon legal recovery.</li>
+            <li><strong style="color: var(--color-text);">Access:</strong> R5k/mo baseline covering compute and data
+              ingestion. Zero upfront risk for the client.</li>
+            <li><strong style="color: var(--color-text);">Performance Fee:</strong> 10&ndash;15% of all recovered funds
+              &mdash; duplicate payments reversed, ghost vendor funds clawed back.</li>
+            <li><strong style="color: var(--color-text);">Co-delivery:</strong> Exclusively with FSG Forensics.
+              SecureWatch surfaces the exposure (e.g., R1.4M duplicates); FSG handles legal/investigative recovery.
+              60/40 fee split.</li>
+            <li><strong style="color: var(--color-text);">Contract safeguard:</strong> Fee triggered upon identification
+              and verification of duplicate payments, not solely upon legal recovery.</li>
           </ul>
         </div>
 
         <div class="reveal delay-2">
-          <h3 style="font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted); margin-bottom: var(--space-4);">Target &amp; Channel</h3>
+          <h3
+            style="font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted); margin-bottom: var(--space-4);">
+            Target &amp; Channel</h3>
           <div class="stat-card" style="border-left: 3px solid #F59E0B; margin-bottom: var(--space-4);">
             <div class="stat-label">Ideal Customer</div>
-            <p style="font-size: 0.95rem; margin: 0;">Distressed SOEs (GEMS, Transnet, OCJ), municipalities under SIU investigation, enterprises undergoing historic audits with no upfront budget.</p>
+            <p style="font-size: 0.95rem; margin: 0;">Distressed SOEs (GEMS, Transnet, OCJ), municipalities under SIU
+              investigation, enterprises undergoing historic audits with no upfront budget.</p>
           </div>
           <div class="stat-card" style="border-left: 3px solid #B85C0A;">
             <div class="stat-label">GTM</div>
-            <p style="font-size: 0.95rem; margin: 0;">Handed entirely to FSG Forensics to hunt in the public sector. AI SecureWatch provides the engine; FSG provides forensic credibility and legal recovery muscle.</p>
+            <p style="font-size: 0.95rem; margin: 0;">Handed entirely to FSG Forensics to hunt in the public sector. AI
+              SecureWatch provides the engine; FSG provides forensic credibility and legal recovery muscle.</p>
           </div>
         </div>
       </div>
@@ -1972,26 +2396,42 @@
 
       <div class="grid-2" style="margin-top: var(--space-4);">
         <div class="reveal delay-1">
-          <h3 style="font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted); margin-bottom: var(--space-4);">The Pricing Resolution</h3>
+          <h3
+            style="font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted); margin-bottom: var(--space-4);">
+            The Pricing Resolution</h3>
           <div class="stat-card" style="border-left: 3px solid #D94028; margin-bottom: var(--space-4);">
             <div class="stat-label" style="color: #D94028;">The Friction</div>
-            <p style="font-size: 0.95rem; margin: 0;">The R95k pilot drives massive top-of-funnel &mdash; but on a messy enterprise ERP it will bankrupt delivery. <strong style="color: var(--color-text);">Resolution:</strong> R95k is strictly gated to Essentials tier. Max 1 ERP, &le;500 suppliers. MultiChoice or Absa asking for R95k? Immediately disqualified &mdash; redirected to Enterprise scoping track.</p>
+            <p style="font-size: 0.95rem; margin: 0;">The R95k pilot drives massive top-of-funnel &mdash; but on a messy
+              enterprise ERP it will bankrupt delivery. <strong style="color: var(--color-text);">Resolution:</strong>
+              R95k is strictly gated to Essentials tier. Max 1 ERP, &le;500 suppliers. MultiChoice or Absa asking for
+              R95k? Immediately disqualified &mdash; redirected to Enterprise scoping track.</p>
           </div>
           <div class="stat-card" style="border-left: 3px solid #1E40AF;">
             <div class="stat-label">GTM Focus Split</div>
             <ul class="timeline-list" style="margin-top: var(--space-2);">
-              <li><strong style="color: var(--color-text);">Sean (founder-led):</strong> Enterprise License &rarr; push for R5M ARR</li>
-              <li><strong style="color: var(--color-text);">FSG Forensics:</strong> Value-Share model &rarr; hunt in public sector</li>
-              <li><strong style="color: var(--color-text);">Inbound/PLG:</strong> Base SaaS (R95k pilot) &rarr; LinkedIn + automated growth post Q3 2026</li>
+              <li><strong style="color: var(--color-text);">Sean (founder-led):</strong> Enterprise License &rarr; push
+                for R5M ARR</li>
+              <li><strong style="color: var(--color-text);">FSG Forensics:</strong> Value-Share model &rarr; hunt in
+                public sector</li>
+              <li><strong style="color: var(--color-text);">Inbound/PLG:</strong> Base SaaS (R95k pilot) &rarr; LinkedIn
+                + automated growth post Q3 2026</li>
             </ul>
           </div>
         </div>
 
         <div class="reveal delay-2">
-          <h3 style="font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted); margin-bottom: var(--space-4);">Technical Feasibility Gaps</h3>
+          <h3
+            style="font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted); margin-bottom: var(--space-4);">
+            Technical Feasibility Gaps</h3>
           <div class="table-wrapper" style="margin-top: 0;">
             <table style="min-width: 280px;">
-              <thead><tr><th>Tier</th><th>Gap</th><th>Requirement</th></tr></thead>
+              <thead>
+                <tr>
+                  <th>Tier</th>
+                  <th>Gap</th>
+                  <th>Requirement</th>
+                </tr>
+              </thead>
               <tbody>
                 <tr>
                   <td style="color: #60A5FA;">Essentials</td>
@@ -2001,12 +2441,14 @@
                 <tr>
                   <td style="color: #D94028;">Enterprise</td>
                   <td>No audit trail export</td>
-                  <td>Exportable analyst log (who reviewed, why dismissed). <code>masterintegrity.py</code> rewrite + live ERP connectors.</td>
+                  <td>Exportable analyst log (who reviewed, why dismissed). <code>masterintegrity.py</code> rewrite +
+                    live ERP connectors.</td>
                 </tr>
                 <tr>
                   <td style="color: #F59E0B;">Value-Share</td>
                   <td>Non-payment risk</td>
-                  <td>Contracts: fee on identification, not only legal recovery. Engine tuning: prioritise exact/fuzzy duplicate payments.</td>
+                  <td>Contracts: fee on identification, not only legal recovery. Engine tuning: prioritise exact/fuzzy
+                    duplicate payments.</td>
                 </tr>
               </tbody>
             </table>
@@ -2025,21 +2467,27 @@
         <div class="section-label">Opportunity Analysis</div>
         <h2>The R500B+ blind spot no tool addresses</h2>
       </div>
-      <p class="reveal delay-1" style="max-width: 70ch;">Every organisation with complex AP cannot answer: <em>"Who actually received payment last year?"</em> Existing tools see only what they were designed to see. <strong style="color: var(--color-text);">AI SecureWatch is the first system-independent vendor population assurance layer.</strong></p>
+      <p class="reveal delay-1" style="max-width: 70ch;">Every organisation with complex AP cannot answer: <em>"Who
+          actually received payment last year?"</em> Existing tools see only what they were designed to see. <strong
+          style="color: var(--color-text);">AI SecureWatch is the first system-independent vendor population assurance
+          layer.</strong></p>
       <div class="grid-3" style="margin-top: var(--space-6);">
         <div class="stat-card reveal delay-2" style="border-top: 3px solid var(--color-accent);">
           <div class="stat-label">Market Position</div>
-          <div class="stat-value" style="font-size: 1.6rem;">Pre-Seed<br><span style="font-size: 1rem; color: var(--color-text-muted);">Pilot Stage</span></div>
+          <div class="stat-value" style="font-size: 1.6rem;">Pre-Seed<br><span
+              style="font-size: 1rem; color: var(--color-text-muted);">Pilot Stage</span></div>
           <p>Validated pilot (Technomobile) delivered R1.4M in findings. Pipeline of 40+ discovery calls.</p>
         </div>
         <div class="stat-card reveal delay-3" style="border-top: 3px solid #3b82f6;">
           <div class="stat-label">Immediate Target</div>
-          <div class="stat-value" style="font-size: 1.6rem;">3&ndash;5<br><span style="font-size: 1rem; color: var(--color-text-muted);">Pilots by end-2026</span></div>
+          <div class="stat-value" style="font-size: 1.6rem;">3&ndash;5<br><span
+              style="font-size: 1rem; color: var(--color-text-muted);">Pilots by end-2026</span></div>
           <p>127 shadow entities, R2.3M exposure, 2-week delivery cycle. Quantified proof for Series A.</p>
         </div>
         <div class="stat-card reveal delay-4" style="border-top: 3px solid #10b981;">
           <div class="stat-label">Series A Milestone</div>
-          <div class="stat-value" style="font-size: 1.6rem;">R640k<br><span style="font-size: 1rem; color: var(--color-text-muted);">ARR by Q4 2026</span></div>
+          <div class="stat-value" style="font-size: 1.6rem;">R640k<br><span
+              style="font-size: 1rem; color: var(--color-text-muted);">ARR by Q4 2026</span></div>
           <p>Path to R2M+ ARR by 2028. 80% pilot-to-license conversion. 50:1+ LTV:CAC.</p>
         </div>
       </div>
@@ -2047,7 +2495,8 @@
         <div class="stat-card reveal delay-2">
           <div class="stat-label">TAM (South Africa)</div>
           <div class="stat-value">R1.6T</div>
-          <p>2,000+ complex-AP organisations across financial services, government, construction, manufacturing, retail.</p>
+          <p>2,000+ complex-AP organisations across financial services, government, construction, manufacturing, retail.
+          </p>
         </div>
         <div class="stat-card reveal delay-3">
           <div class="stat-label">SAM &rarr; SOM</div>
@@ -2063,24 +2512,79 @@
         <div class="section-label">Market Sizing</div>
         <h2>TAM / SAM / SOM breakdown</h2>
       </div>
-      <p class="reveal delay-1">Priority markets: South Africa (immediate), sub-Saharan Africa (12&ndash;24m), APAC (24&ndash;36m).</p>
+      <p class="reveal delay-1">Priority markets: South Africa (immediate), sub-Saharan Africa (12&ndash;24m), APAC
+        (24&ndash;36m).</p>
       <div class="table-wrapper reveal delay-2">
         <table style="min-width: 750px;">
-          <thead><tr><th>Segment</th><th>Organisations</th><th>Avg AP Payables</th><th>Calculation</th><th>Segment TAM</th></tr></thead>
+          <thead>
+            <tr>
+              <th>Segment</th>
+              <th>Organisations</th>
+              <th>Avg AP Payables</th>
+              <th>Calculation</th>
+              <th>Segment TAM</th>
+            </tr>
+          </thead>
           <tbody>
-            <tr><td>Financial Services</td><td>150</td><td>R2.5&ndash;5B</td><td>150 &times; R3.5B</td><td><strong style="color: var(--color-text);">R525B</strong></td></tr>
-            <tr><td>Government &amp; SOEs</td><td>200+</td><td>R1.5&ndash;3B</td><td>200 &times; R2B</td><td><strong style="color: var(--color-text);">R400B</strong></td></tr>
-            <tr><td>Construction &amp; Engineering</td><td>300+</td><td>R800M&ndash;2B</td><td>300 &times; R1.2B</td><td><strong style="color: var(--color-text);">R360B</strong></td></tr>
-            <tr><td>Manufacturing</td><td>200+</td><td>R1&ndash;2B</td><td>200 &times; R1.3B</td><td><strong style="color: var(--color-text);">R260B</strong></td></tr>
-            <tr><td>Retail &amp; Logistics</td><td>100+</td><td>R500M&ndash;1B</td><td>100 &times; R750M</td><td><strong style="color: var(--color-text);">R75B</strong></td></tr>
-            <tr style="background: rgba(255,69,0,0.05);"><td><strong style="color: var(--color-text);">TOTAL SA TAM</strong></td><td colspan="3"></td><td><strong style="color: var(--color-accent); font-size: 1.1rem;">~R1.6T</strong></td></tr>
+            <tr>
+              <td>Financial Services</td>
+              <td>150</td>
+              <td>R2.5&ndash;5B</td>
+              <td>150 &times; R3.5B</td>
+              <td><strong style="color: var(--color-text);">R525B</strong></td>
+            </tr>
+            <tr>
+              <td>Government &amp; SOEs</td>
+              <td>200+</td>
+              <td>R1.5&ndash;3B</td>
+              <td>200 &times; R2B</td>
+              <td><strong style="color: var(--color-text);">R400B</strong></td>
+            </tr>
+            <tr>
+              <td>Construction &amp; Engineering</td>
+              <td>300+</td>
+              <td>R800M&ndash;2B</td>
+              <td>300 &times; R1.2B</td>
+              <td><strong style="color: var(--color-text);">R360B</strong></td>
+            </tr>
+            <tr>
+              <td>Manufacturing</td>
+              <td>200+</td>
+              <td>R1&ndash;2B</td>
+              <td>200 &times; R1.3B</td>
+              <td><strong style="color: var(--color-text);">R260B</strong></td>
+            </tr>
+            <tr>
+              <td>Retail &amp; Logistics</td>
+              <td>100+</td>
+              <td>R500M&ndash;1B</td>
+              <td>100 &times; R750M</td>
+              <td><strong style="color: var(--color-text);">R75B</strong></td>
+            </tr>
+            <tr style="background: rgba(255,69,0,0.05);">
+              <td><strong style="color: var(--color-text);">TOTAL SA TAM</strong></td>
+              <td colspan="3"></td>
+              <td><strong style="color: var(--color-accent); font-size: 1.1rem;">~R1.6T</strong></td>
+            </tr>
           </tbody>
         </table>
       </div>
       <div class="grid-3" style="margin-top: var(--space-6);">
-        <div class="stat-card reveal delay-3" style="border-left: 3px solid var(--color-accent);"><div class="stat-label">SAM Filter 1</div><p style="font-size: 0.9rem; margin: 0;">500K+ AP transactions/annum &rarr; <strong style="color: var(--color-text);">~2,000 orgs</strong></p></div>
-        <div class="stat-card reveal delay-4" style="border-left: 3px solid #3b82f6;"><div class="stat-label">SAM Filter 2</div><p style="font-size: 0.9rem; margin: 0;">IA + CFO budget authority &rarr; <strong style="color: var(--color-text);">~1,500 orgs</strong></p></div>
-        <div class="stat-card reveal delay-4" style="border-left: 3px solid #10b981;"><div class="stat-label">SAM Filter 3</div><p style="font-size: 0.9rem; margin: 0;">Active regulatory/IA review &rarr; <strong style="color: var(--color-text);">~800 orgs</strong> / R50&ndash;75B SAM</p></div>
+        <div class="stat-card reveal delay-3" style="border-left: 3px solid var(--color-accent);">
+          <div class="stat-label">SAM Filter 1</div>
+          <p style="font-size: 0.9rem; margin: 0;">500K+ AP transactions/annum &rarr; <strong
+              style="color: var(--color-text);">~2,000 orgs</strong></p>
+        </div>
+        <div class="stat-card reveal delay-4" style="border-left: 3px solid #3b82f6;">
+          <div class="stat-label">SAM Filter 2</div>
+          <p style="font-size: 0.9rem; margin: 0;">IA + CFO budget authority &rarr; <strong
+              style="color: var(--color-text);">~1,500 orgs</strong></p>
+        </div>
+        <div class="stat-card reveal delay-4" style="border-left: 3px solid #10b981;">
+          <div class="stat-label">SAM Filter 3</div>
+          <p style="font-size: 0.9rem; margin: 0;">Active regulatory/IA review &rarr; <strong
+              style="color: var(--color-text);">~800 orgs</strong> / R50&ndash;75B SAM</p>
+        </div>
       </div>
     </section>
 
@@ -2092,27 +2596,60 @@
       </div>
       <div class="grid-2" style="margin-top: var(--space-4);">
         <div class="reveal delay-1">
-          <h3 style="font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted); margin-bottom: var(--space-4);">Industry Prevalence</h3>
+          <h3
+            style="font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted); margin-bottom: var(--space-4);">
+            Industry Prevalence</h3>
           <ul class="minimal-list">
-            <li><strong style="color: var(--color-text);">60% of orgs</strong> lack a complete 3P vendor list <span style="color: var(--color-text-muted); font-size: 0.85rem;">(Ponemon)</span></li>
-            <li><strong style="color: var(--color-text);">20&ndash;40% of spend</strong> outside procurement control <span style="color: var(--color-text-muted); font-size: 0.85rem;">(industry benchmark)</span></li>
-            <li><strong style="color: var(--color-text);">40&ndash;60% of vendor masters</strong> contain duplicates/fraud entries <span style="color: var(--color-text-muted); font-size: 0.85rem;">(client data)</span></li>
-            <li><strong style="color: var(--color-text);">1.7% median fraud loss</strong> as % of revenue <span style="color: var(--color-text-muted); font-size: 0.85rem;">(ACFE)</span></li>
+            <li><strong style="color: var(--color-text);">60% of orgs</strong> lack a complete 3P vendor list <span
+                style="color: var(--color-text-muted); font-size: 0.85rem;">(Ponemon)</span></li>
+            <li><strong style="color: var(--color-text);">20&ndash;40% of spend</strong> outside procurement control
+              <span style="color: var(--color-text-muted); font-size: 0.85rem;">(industry benchmark)</span></li>
+            <li><strong style="color: var(--color-text);">40&ndash;60% of vendor masters</strong> contain
+              duplicates/fraud entries <span style="color: var(--color-text-muted); font-size: 0.85rem;">(client
+                data)</span></li>
+            <li><strong style="color: var(--color-text);">1.7% median fraud loss</strong> as % of revenue <span
+                style="color: var(--color-text-muted); font-size: 0.85rem;">(ACFE)</span></li>
           </ul>
-          <div class="note" style="margin-top: var(--space-6);">At 100 orgs penetrated (R75M payables avg., 2.5&ndash;3% exposure): <strong style="color: var(--color-text);">R190&ndash;230M</strong> discovered annually.</div>
+          <div class="note" style="margin-top: var(--space-6);">At 100 orgs penetrated (R75M payables avg., 2.5&ndash;3%
+            exposure): <strong style="color: var(--color-text);">R190&ndash;230M</strong> discovered annually.</div>
         </div>
         <div class="reveal delay-2">
-          <h3 style="font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted); margin-bottom: var(--space-4);">Technomobile Pilot Proof</h3>
+          <h3
+            style="font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted); margin-bottom: var(--space-4);">
+            Technomobile Pilot Proof</h3>
           <div class="table-wrapper" style="margin-top: 0;">
             <table style="min-width: 280px;">
-              <thead><tr><th>Metric</th><th>Finding</th></tr></thead>
+              <thead>
+                <tr>
+                  <th>Metric</th>
+                  <th>Finding</th>
+                </tr>
+              </thead>
               <tbody>
-                <tr><td>AP Recipients</td><td>432 suppliers, 2,149 txns (R73.4M)</td></tr>
-                <tr><td>Shadow Vendors</td><td><strong style="color: var(--color-accent);">23 out-of-system entities</strong></td></tr>
-                <tr><td>Ghost Exposure</td><td><strong style="color: var(--color-accent);">R1.9M</strong> (2.6%)</td></tr>
-                <tr><td>Duplicate Vendor</td><td>R1.4M (single-character diff)</td></tr>
-                <tr><td>Total Out-of-Master</td><td><strong style="color: var(--color-accent);">R2.3M</strong></td></tr>
-                <tr><td>Delivery Speed</td><td><strong style="color: #10b981;">2 weeks</strong></td></tr>
+                <tr>
+                  <td>AP Recipients</td>
+                  <td>432 suppliers, 2,149 txns (R73.4M)</td>
+                </tr>
+                <tr>
+                  <td>Shadow Vendors</td>
+                  <td><strong style="color: var(--color-accent);">23 out-of-system entities</strong></td>
+                </tr>
+                <tr>
+                  <td>Ghost Exposure</td>
+                  <td><strong style="color: var(--color-accent);">R1.9M</strong> (2.6%)</td>
+                </tr>
+                <tr>
+                  <td>Duplicate Vendor</td>
+                  <td>R1.4M (single-character diff)</td>
+                </tr>
+                <tr>
+                  <td>Total Out-of-Master</td>
+                  <td><strong style="color: var(--color-accent);">R2.3M</strong></td>
+                </tr>
+                <tr>
+                  <td>Delivery Speed</td>
+                  <td><strong style="color: #10b981;">2 weeks</strong></td>
+                </tr>
               </tbody>
             </table>
           </div>
@@ -2165,12 +2702,17 @@
         <div class="stat-card reveal delay-2">
           <div class="stat-label">3-Year LTV per Client</div>
           <div class="stat-value" style="font-size: 1.8rem; color: #10b981;">R373k</div>
-          <ul class="timeline-list" style="margin-top: var(--space-2);"><li>Pilot R28k + 3 &times; R115k license contribution</li></ul>
+          <ul class="timeline-list" style="margin-top: var(--space-2);">
+            <li>Pilot R28k + 3 &times; R115k license contribution</li>
+          </ul>
         </div>
         <div class="stat-card reveal delay-3">
           <div class="stat-label">LTV:CAC Ratio</div>
           <div class="stat-value" style="font-size: 1.8rem; color: #f59e0b;">47:1 &rarr; 75:1</div>
-          <ul class="timeline-list" style="margin-top: var(--space-2);"><li>CAC R5&ndash;8k &bull; Payback: 2&ndash;4 weeks &bull; SaaS bench: &gt;3:1 healthy, &gt;10:1 exceptional</li></ul>
+          <ul class="timeline-list" style="margin-top: var(--space-2);">
+            <li>CAC R5&ndash;8k &bull; Payback: 2&ndash;4 weeks &bull; SaaS bench: &gt;3:1 healthy, &gt;10:1 exceptional
+            </li>
+          </ul>
         </div>
       </div>
     </section>
@@ -2183,20 +2725,82 @@
       </div>
       <div class="table-wrapper reveal delay-2">
         <table style="min-width: 800px;">
-          <thead><tr><th>Period</th><th>Pilots</th><th>Pilot Rev</th><th>License Customers</th><th>License Rev</th><th>Cumulative ARR</th></tr></thead>
+          <thead>
+            <tr>
+              <th>Period</th>
+              <th>Pilots</th>
+              <th>Pilot Rev</th>
+              <th>License Customers</th>
+              <th>License Rev</th>
+              <th>Cumulative ARR</th>
+            </tr>
+          </thead>
           <tbody>
-            <tr><td>Q2&ndash;Q3 2026</td><td>3</td><td>R120k</td><td>1</td><td>R140k</td><td><strong>R260k</strong></td></tr>
-            <tr><td>Q4 2026</td><td>2</td><td>R80k</td><td>4</td><td>R560k</td><td><strong style="color: var(--color-accent);">R640k &larr; Series A</strong></td></tr>
-            <tr><td>H1 2027</td><td>4</td><td>R160k</td><td>8</td><td>R1.12M</td><td><strong>R1.28M</strong></td></tr>
-            <tr><td>H2 2027</td><td>5</td><td>R200k</td><td>12</td><td>R1.68M</td><td><strong>R1.88M</strong></td></tr>
-            <tr><td>FY 2028</td><td>12&ndash;15</td><td>R480&ndash;600k</td><td>20&ndash;25</td><td>R2.8&ndash;3.5M</td><td><strong style="color: #10b981;">~R3.7M</strong></td></tr>
+            <tr>
+              <td>Q2&ndash;Q3 2026</td>
+              <td>3</td>
+              <td>R120k</td>
+              <td>1</td>
+              <td>R140k</td>
+              <td><strong>R260k</strong></td>
+            </tr>
+            <tr>
+              <td>Q4 2026</td>
+              <td>2</td>
+              <td>R80k</td>
+              <td>4</td>
+              <td>R560k</td>
+              <td><strong style="color: var(--color-accent);">R640k &larr; Series A</strong></td>
+            </tr>
+            <tr>
+              <td>H1 2027</td>
+              <td>4</td>
+              <td>R160k</td>
+              <td>8</td>
+              <td>R1.12M</td>
+              <td><strong>R1.28M</strong></td>
+            </tr>
+            <tr>
+              <td>H2 2027</td>
+              <td>5</td>
+              <td>R200k</td>
+              <td>12</td>
+              <td>R1.68M</td>
+              <td><strong>R1.88M</strong></td>
+            </tr>
+            <tr>
+              <td>FY 2028</td>
+              <td>12&ndash;15</td>
+              <td>R480&ndash;600k</td>
+              <td>20&ndash;25</td>
+              <td>R2.8&ndash;3.5M</td>
+              <td><strong style="color: #10b981;">~R3.7M</strong></td>
+            </tr>
           </tbody>
         </table>
       </div>
       <div class="grid-3" style="margin-top: var(--space-6);">
-        <div class="stat-card reveal delay-3"><div class="stat-label">Gross Margin</div><ul class="timeline-list" style="margin-top: var(--space-2);"><li>2026: <strong style="color: var(--color-text);">65%</strong></li><li>2027: <strong style="color: var(--color-text);">68%</strong></li><li>2028: <strong style="color: var(--color-text);">70%+</strong></li></ul></div>
-        <div class="stat-card reveal delay-4"><div class="stat-label">Operating Costs</div><ul class="timeline-list" style="margin-top: var(--space-2);"><li>2026 (6m): R550k</li><li>2027: R1.63M</li><li>2028: R2.72M</li></ul></div>
-        <div class="stat-card reveal delay-4" style="border-top: 3px solid var(--color-accent);"><div class="stat-label">Breakeven</div><div class="stat-value" style="font-size: 1.5rem;">Q4 2028</div><p style="font-size: 0.9rem; margin: 0;">18&ndash;24 month runway</p></div>
+        <div class="stat-card reveal delay-3">
+          <div class="stat-label">Gross Margin</div>
+          <ul class="timeline-list" style="margin-top: var(--space-2);">
+            <li>2026: <strong style="color: var(--color-text);">65%</strong></li>
+            <li>2027: <strong style="color: var(--color-text);">68%</strong></li>
+            <li>2028: <strong style="color: var(--color-text);">70%+</strong></li>
+          </ul>
+        </div>
+        <div class="stat-card reveal delay-4">
+          <div class="stat-label">Operating Costs</div>
+          <ul class="timeline-list" style="margin-top: var(--space-2);">
+            <li>2026 (6m): R550k</li>
+            <li>2027: R1.63M</li>
+            <li>2028: R2.72M</li>
+          </ul>
+        </div>
+        <div class="stat-card reveal delay-4" style="border-top: 3px solid var(--color-accent);">
+          <div class="stat-label">Breakeven</div>
+          <div class="stat-value" style="font-size: 1.5rem;">Q4 2028</div>
+          <p style="font-size: 0.9rem; margin: 0;">18&ndash;24 month runway</p>
+        </div>
       </div>
     </section>
 
@@ -2208,12 +2812,44 @@
       </div>
       <div class="table-wrapper reveal delay-2">
         <table style="min-width: 750px;">
-          <thead><tr><th>Buyer</th><th>Pain Point</th><th>Channel</th><th>Cycle</th><th>Pilot Fee</th></tr></thead>
+          <thead>
+            <tr>
+              <th>Buyer</th>
+              <th>Pain Point</th>
+              <th>Channel</th>
+              <th>Cycle</th>
+              <th>Pilot Fee</th>
+            </tr>
+          </thead>
           <tbody>
-            <tr><td>Head of IA / CAE</td><td>Sampling gap; full-population blind spot</td><td>Direct + LinkedIn + referral</td><td>6&ndash;12 wk</td><td>R35&ndash;50k</td></tr>
-            <tr><td>CFO / Finance Exec</td><td>Quantified exposure; board reporting</td><td>CEO-led + co-sell</td><td>8&ndash;16 wk</td><td>R25&ndash;40k</td></tr>
-            <tr><td>TPRM / Risk Leader</td><td>Unknown vendor population</td><td>LinkedIn + events</td><td>10&ndash;14 wk</td><td>R35&ndash;50k</td></tr>
-            <tr><td>Audit Committee</td><td>Post-M&amp;A control evidence</td><td>Through IA Head</td><td>12&ndash;20 wk</td><td>R50k+</td></tr>
+            <tr>
+              <td>Head of IA / CAE</td>
+              <td>Sampling gap; full-population blind spot</td>
+              <td>Direct + LinkedIn + referral</td>
+              <td>6&ndash;12 wk</td>
+              <td>R35&ndash;50k</td>
+            </tr>
+            <tr>
+              <td>CFO / Finance Exec</td>
+              <td>Quantified exposure; board reporting</td>
+              <td>CEO-led + co-sell</td>
+              <td>8&ndash;16 wk</td>
+              <td>R25&ndash;40k</td>
+            </tr>
+            <tr>
+              <td>TPRM / Risk Leader</td>
+              <td>Unknown vendor population</td>
+              <td>LinkedIn + events</td>
+              <td>10&ndash;14 wk</td>
+              <td>R35&ndash;50k</td>
+            </tr>
+            <tr>
+              <td>Audit Committee</td>
+              <td>Post-M&amp;A control evidence</td>
+              <td>Through IA Head</td>
+              <td>12&ndash;20 wk</td>
+              <td>R50k+</td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -2221,10 +2857,14 @@
         <div class="reveal delay-3">
           <div class="stat-label" style="margin-bottom: var(--space-3);">Trigger-Event Playbook</div>
           <ul class="minimal-list">
-            <li><strong style="color: var(--color-text);">M&amp;A announcements</strong> &mdash; post-merger vendor master chaos</li>
-            <li><strong style="color: var(--color-text);">Fraud scandals</strong> &mdash; GEMS R268M, OCJ R225M, Transnet (Mar 2026)</li>
-            <li><strong style="color: var(--color-text);">IA leadership changes</strong> &mdash; new CAE seeks quick wins</li>
-            <li><strong style="color: var(--color-text);">SOE restructures</strong> &mdash; SAA, Transnet, SOE Act reforms</li>
+            <li><strong style="color: var(--color-text);">M&amp;A announcements</strong> &mdash; post-merger vendor
+              master chaos</li>
+            <li><strong style="color: var(--color-text);">Fraud scandals</strong> &mdash; GEMS R268M, OCJ R225M,
+              Transnet (Mar 2026)</li>
+            <li><strong style="color: var(--color-text);">IA leadership changes</strong> &mdash; new CAE seeks quick
+              wins</li>
+            <li><strong style="color: var(--color-text);">SOE restructures</strong> &mdash; SAA, Transnet, SOE Act
+              reforms</li>
           </ul>
         </div>
         <div class="stat-card reveal delay-4">
@@ -2249,35 +2889,70 @@
         <div class="reveal delay-1">
           <div class="stat-label" style="margin-bottom: var(--space-3);">Proof Points</div>
           <ul class="minimal-list">
-            <li><strong style="color: var(--color-text);">Market Validation</strong> &mdash; 127 shadow entities, R2.3M exposure, 2-week delivery, Big-4-blind finding</li>
-            <li><strong style="color: var(--color-text);">Repeatable Model</strong> &mdash; 80% conversion, 50:1+ LTV:CAC, unit-level profitability from Day 1</li>
-            <li><strong style="color: var(--color-text);">Channel Validation</strong> &mdash; FSG co-sell live; BDO warm; GEMS/OCJ/Transnet urgency active</li>
-            <li><strong style="color: var(--color-text);">Defensibility</strong> &mdash; system independence + analyst QA + FSG forensic layer</li>
+            <li><strong style="color: var(--color-text);">Market Validation</strong> &mdash; 127 shadow entities, R2.3M
+              exposure, 2-week delivery, Big-4-blind finding</li>
+            <li><strong style="color: var(--color-text);">Repeatable Model</strong> &mdash; 80% conversion, 50:1+
+              LTV:CAC, unit-level profitability from Day 1</li>
+            <li><strong style="color: var(--color-text);">Channel Validation</strong> &mdash; FSG co-sell live; BDO
+              warm; GEMS/OCJ/Transnet urgency active</li>
+            <li><strong style="color: var(--color-text);">Defensibility</strong> &mdash; system independence + analyst
+              QA + FSG forensic layer</li>
           </ul>
-          <div class="stat-label" style="margin-top: var(--space-6); margin-bottom: var(--space-3);">Live Pipeline (March 2026)</div>
+          <div class="stat-label" style="margin-top: var(--space-6); margin-bottom: var(--space-3);">Live Pipeline
+            (March 2026)</div>
           <ul class="minimal-list">
             <li><strong style="color: var(--color-text);">Live Pilot:</strong> Technomobile CC</li>
-            <li><strong style="color: var(--color-text);">Hot (13):</strong> Fio Capital, MultiChoice, Absa, SAA, Transnet, Standard Bank, GEMS, OCJ, BDO+</li>
-            <li><strong style="color: var(--color-text);">Partners (8):</strong> FSG (live), Grant Thornton, Nexia SABT, DBSA, Public Protector SA+</li>
+            <li><strong style="color: var(--color-text);">Hot (13):</strong> Fio Capital, MultiChoice, Absa, SAA,
+              Transnet, Standard Bank, GEMS, OCJ, BDO+</li>
+            <li><strong style="color: var(--color-text);">Partners (8):</strong> FSG (live), Grant Thornton, Nexia SABT,
+              DBSA, Public Protector SA+</li>
           </ul>
         </div>
         <div class="reveal delay-2">
           <div class="stat-label" style="margin-bottom: var(--space-3);">Key Risks &amp; Mitigations</div>
           <div class="table-wrapper" style="margin-top: 0;">
             <table style="min-width: 280px;">
-              <thead><tr><th>Risk</th><th>Mitigation</th></tr></thead>
+              <thead>
+                <tr>
+                  <th>Risk</th>
+                  <th>Mitigation</th>
+                </tr>
+              </thead>
               <tbody>
-                <tr><td>Slower conversion</td><td>100% fee creditability; board urgency; quarterly check-ins</td></tr>
-                <tr><td>Big 4 builds in-house</td><td>Partner (referral/white-label); lock annual licenses pre-2028</td></tr>
-                <tr><td>ERP embeds reconciliation</td><td>First-mover + analyst QA moat; continuous licensing by 2027</td></tr>
-                <tr><td>POPIA compliance</td><td>POPIA-ready from Day 1; annual audits; retention in contracts</td></tr>
-                <tr><td>Key person risk</td><td>Playbooks in code; 2nd analyst hire Q1 2027</td></tr>
+                <tr>
+                  <td>Slower conversion</td>
+                  <td>100% fee creditability; board urgency; quarterly check-ins</td>
+                </tr>
+                <tr>
+                  <td>Big 4 builds in-house</td>
+                  <td>Partner (referral/white-label); lock annual licenses pre-2028</td>
+                </tr>
+                <tr>
+                  <td>ERP embeds reconciliation</td>
+                  <td>First-mover + analyst QA moat; continuous licensing by 2027</td>
+                </tr>
+                <tr>
+                  <td>POPIA compliance</td>
+                  <td>POPIA-ready from Day 1; annual audits; retention in contracts</td>
+                </tr>
+                <tr>
+                  <td>Key person risk</td>
+                  <td>Playbooks in code; 2nd analyst hire Q1 2027</td>
+                </tr>
               </tbody>
             </table>
           </div>
           <div class="grid-2" style="margin-top: var(--space-4); gap: var(--space-3);">
-            <div class="stat-card" style="padding: var(--space-4);"><div class="stat-label">Conservative 3yr</div><div class="stat-value" style="font-size: 1.4rem;">R1.4M</div><p style="font-size: 0.8rem; margin: 0;">60% conv., R35k avg</p></div>
-            <div class="stat-card" style="padding: var(--space-4); border-top: 2px solid var(--color-accent);"><div class="stat-label">Base Case 3yr</div><div class="stat-value" style="font-size: 1.4rem;">R2.8M</div><p style="font-size: 0.8rem; margin: 0;">80% conv., R40k avg</p></div>
+            <div class="stat-card" style="padding: var(--space-4);">
+              <div class="stat-label">Conservative 3yr</div>
+              <div class="stat-value" style="font-size: 1.4rem;">R1.4M</div>
+              <p style="font-size: 0.8rem; margin: 0;">60% conv., R35k avg</p>
+            </div>
+            <div class="stat-card" style="padding: var(--space-4); border-top: 2px solid var(--color-accent);">
+              <div class="stat-label">Base Case 3yr</div>
+              <div class="stat-value" style="font-size: 1.4rem;">R2.8M</div>
+              <p style="font-size: 0.8rem; margin: 0;">80% conv., R40k avg</p>
+            </div>
           </div>
         </div>
       </div>
@@ -2312,6 +2987,8 @@
     const titles = {
       'brand': 'Brand Narrative',
       'brand-positioning': 'Brand Promise',
+      'naming-strategy': 'Naming Strategy',
+      'seo-strategy': 'SEO Playbook',
       'personas': 'Target Personas',
       'problem': 'The Blind Spot',
       'market': 'Market Insight',
@@ -2471,48 +3148,62 @@
     })();
 
     // --- Slide Dropdown Navigator ---
-    (function() {
+    (function () {
       const navGroups = [
-        { label: 'Brand & Narrative', items: [
-          { id: 'brand', title: 'Brand Narrative' },
-          { id: 'brand-positioning', title: 'Brand Promise' },
-          { id: 'personas', title: 'Target Personas' },
-        ]},
-        { label: 'Problem & Market', items: [
-          { id: 'problem', title: 'The Blind Spot' },
-          { id: 'market', title: 'Market Insight' },
-        ]},
-        { label: 'Competitive Landscape', items: [
-          { id: 'landscape', title: 'Landscape' },
-          { id: 'competitors', title: 'Competitive Intel' },
-          { id: 'whitespace', title: 'White Space' },
-          { id: 'differentiators', title: 'Moat & Defensibility' },
-        ]},
-        { label: 'Strategy & Execution', items: [
-          { id: 'positioning', title: 'Positioning' },
-          { id: 'sprint', title: 'Phase 1 Sprint' },
-          { id: 'timeline', title: 'Sprint Timeline' },
-          { id: 'roles', title: 'Accountability' },
-          { id: 'benefits', title: 'Benefits & Owners' },
-          { id: 'roadmap', title: 'Product Roadmap' },
-          { id: 'yc', title: 'YC & Traction' },
-        ]},
-        { label: 'Product Architecture', items: [
-          { id: 'product-matrix', title: 'Three-Tier Overview' },
-          { id: 'base-saas', title: 'SecureWatch Essentials' },
-          { id: 'enterprise-license', title: 'SecureWatch Enterprise' },
-          { id: 'value-share', title: 'Value-Share Model' },
-          { id: 'exec-tradeoffs', title: 'Decision Trade-offs' },
-        ]},
-        { label: 'Opportunity Analysis', items: [
-          { id: 'opportunity', title: 'Opportunity Overview' },
-          { id: 'tam', title: 'Market Sizing (TAM)' },
-          { id: 'fraud-baseline', title: 'Market Validation' },
-          { id: 'revenue-model', title: 'Commercial Model' },
-          { id: 'projections', title: 'Financial Projections' },
-          { id: 'gtm-channels', title: 'Go-to-Market' },
-          { id: 'series-a-thesis', title: 'Investor Thesis' },
-        ]},
+        {
+          label: 'Brand & Narrative', items: [
+            { id: 'brand', title: 'Brand Narrative' },
+            { id: 'brand-positioning', title: 'Brand Promise' },
+            { id: 'naming-strategy', title: 'Naming Strategy' },
+            { id: 'seo-strategy', title: 'SEO Playbook' },
+            { id: 'personas', title: 'Target Personas' },
+          ]
+        },
+        {
+          label: 'Problem & Market', items: [
+            { id: 'problem', title: 'The Blind Spot' },
+            { id: 'market', title: 'Market Insight' },
+          ]
+        },
+        {
+          label: 'Competitive Landscape', items: [
+            { id: 'landscape', title: 'Landscape' },
+            { id: 'competitors', title: 'Competitive Intel' },
+            { id: 'whitespace', title: 'White Space' },
+            { id: 'differentiators', title: 'Moat & Defensibility' },
+          ]
+        },
+        {
+          label: 'Strategy & Execution', items: [
+            { id: 'positioning', title: 'Positioning' },
+            { id: 'sprint', title: 'Phase 1 Sprint' },
+            { id: 'timeline', title: 'Sprint Timeline' },
+            { id: 'roles', title: 'Accountability' },
+            { id: 'benefits', title: 'Benefits & Owners' },
+            { id: 'roadmap', title: 'Product Roadmap' },
+            { id: 'yc', title: 'YC & Traction' },
+          ]
+        },
+        {
+          label: 'Product Architecture', items: [
+            { id: 'product-matrix', title: 'Three-Tier Overview' },
+            { id: 'base-saas', title: 'SecureWatch Essentials' },
+            { id: 'enterprise-license', title: 'SecureWatch Enterprise' },
+            { id: 'value-share', title: 'Value-Share Model' },
+            { id: 'exec-tradeoffs', title: 'Decision Trade-offs' },
+          ]
+        },
+        {
+          label: 'Opportunity Analysis', items: [
+            { id: 'opportunity', title: 'Opportunity Overview' },
+            { id: 'tam', title: 'Market Sizing (TAM)' },
+            { id: 'fraud-baseline', title: 'Market Validation' },
+            { id: 'revenue-model', title: 'Commercial Model' },
+            { id: 'projections', title: 'Financial Projections' },
+            { id: 'gtm-channels', title: 'Go-to-Market' },
+            { id: 'series-a-thesis', title: 'Investor Thesis' },
+          ]
+        },
       ];
 
       const dropdown = document.getElementById('slide-dropdown');
@@ -2529,7 +3220,7 @@
       });
 
       // Click handler for nav items
-      dropdown.addEventListener('click', function(e) {
+      dropdown.addEventListener('click', function (e) {
         const btn = e.target.closest('.nav-item');
         if (!btn) return;
         const targetId = btn.dataset.target;
@@ -2541,14 +3232,14 @@
       });
 
       // Close dropdown when clicking outside
-      document.addEventListener('click', function(e) {
+      document.addEventListener('click', function (e) {
         if (!e.target.closest('#slide-nav-wrapper')) {
           dropdown.classList.remove('open');
         }
       });
 
       // Close on Escape
-      document.addEventListener('keydown', function(e) {
+      document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') dropdown.classList.remove('open');
       });
 
