@@ -62,6 +62,7 @@
       --radius-pill: 9999px;
 
       --max-width: 1200px;
+      --header-height: 90px;
     }
 
     *,
@@ -134,7 +135,7 @@
       overflow-y: hidden;
       scroll-snap-type: x mandatory;
       scroll-behavior: smooth;
-      padding-top: 140px;
+      padding-top: var(--header-height);
       -ms-overflow-style: none;
       /* IE and Edge */
       scrollbar-width: none;
@@ -382,15 +383,38 @@
     .hero,
     footer {
       flex: 0 0 100vw;
-      height: calc(100vh - 140px);
+      min-height: calc(100vh - var(--header-height));
+      height: calc(100vh - var(--header-height));
       scroll-snap-align: start;
       scroll-snap-stop: always;
       overflow-y: auto;
-      padding: max(var(--space-4), 5vh) max(var(--space-4), calc((100vw - var(--max-width)) / 2)) var(--space-8);
+      overflow-x: hidden;
+      padding: clamp(1.5rem, 4vh, 3rem) max(var(--space-4), calc((100vw - var(--max-width)) / 2)) var(--space-6);
       margin-bottom: 0;
       position: relative;
       display: flex;
       flex-direction: column;
+      justify-content: flex-start;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255,255,255,0.1) transparent;
+    }
+
+    section::-webkit-scrollbar,
+    .hero::-webkit-scrollbar {
+      width: 4px;
+    }
+    section::-webkit-scrollbar-track,
+    .hero::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    section::-webkit-scrollbar-thumb,
+    .hero::-webkit-scrollbar-thumb {
+      background: rgba(255,255,255,0.1);
+      border-radius: 4px;
+    }
+
+    /* Center content only on the hero slide */
+    .hero {
       justify-content: center;
     }
 
@@ -432,9 +456,10 @@
     }
 
     .section-header {
-      margin-bottom: var(--space-10);
+      margin-bottom: var(--space-6);
       border-left: 1px solid var(--color-accent);
       padding-left: var(--space-6);
+      flex-shrink: 0;
     }
 
     .section-label {
@@ -524,7 +549,7 @@
     .grid-3 {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: var(--space-6);
+      gap: var(--space-4);
     }
 
     .grid-2 {
@@ -798,47 +823,117 @@
       color: var(--color-text);
     }
 
-    /* Responsive */
-    @media (max-width: 900px) {
-
-      .contrast-panels,
-      .grid-3 {
-        grid-template-columns: 1fr;
-      }
-
-      .panel {
-        padding: var(--space-6);
-      }
+    /* Responsive — Large Tablets */
+    @media (max-width: 1200px) {
+      .grid-3 { grid-template-columns: repeat(2, 1fr); }
+      .stat-value { font-size: clamp(1.2rem, 1rem + 1vw, 2rem); }
     }
 
+    /* Responsive — Tablets */
+    @media (max-width: 900px) {
+      .contrast-panels,
+      .grid-3 { grid-template-columns: 1fr; }
+      .grid-2 { grid-template-columns: 1fr; }
+      .panel { padding: var(--space-6); }
+
+      section, .hero, footer {
+        padding: clamp(1.2rem, 3vh, 2rem) var(--space-4) var(--space-4);
+      }
+
+      h2 { font-size: clamp(1.2rem, 1rem + 1.5vw, 1.6rem); }
+
+      .section-header { margin-bottom: var(--space-4); }
+
+      .table-wrapper table { font-size: 0.85rem; }
+      .table-wrapper th, .table-wrapper td { padding: 8px 12px; }
+
+      .stat-card { padding: var(--space-4); }
+    }
+
+    /* Responsive — Mobile */
     @media (max-width: 768px) {
       :root {
         --space-16: 3rem;
         --space-24: 4rem;
       }
 
+      :root { --header-height: 70px; }
+
       header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: var(--space-4);
+        padding: var(--space-3) var(--space-4);
+        gap: var(--space-2);
       }
 
-      nav {
-        width: 100%;
-        justify-content: flex-start;
+      #slide-nav-wrapper {
+        max-width: 45vw;
       }
 
-      .grid-2 {
-        grid-template-columns: 1fr;
+      #slide-title {
+        font-size: 0.8rem !important;
+        letter-spacing: 0.08em !important;
       }
 
-      .hero-title {
-        font-size: 2.75rem;
+      section, .hero, footer {
+        padding: clamp(1rem, 2.5vh, 1.5rem) var(--space-3) var(--space-3);
       }
+
+      .hero-title { font-size: 2rem; }
+      .hero-kicker { font-size: 0.75rem; }
 
       .section-header {
-        padding-left: var(--space-4);
+        padding-left: var(--space-3);
+        margin-bottom: var(--space-3);
       }
+      .section-label { font-size: 0.7rem; margin-bottom: var(--space-2); }
+      h2 { font-size: 1.15rem; }
+
+      .stat-card { padding: var(--space-3); }
+      .stat-value { font-size: 1.3rem; }
+      .stat-label { font-size: 0.65rem; }
+
+      .minimal-list li, .timeline-list li { font-size: 0.85rem; padding-left: 1.2em; }
+      .minimal-list li::before { font-size: 0.7rem; }
+
+      .note { padding: var(--space-3); font-size: 0.85rem; }
+
+      .table-wrapper table { font-size: 0.8rem; min-width: 500px !important; }
+      .table-wrapper th, .table-wrapper td { padding: 6px 8px; }
+
+      .slide-btn { width: 36px; height: 36px; }
+      .slide-btn svg { width: 18px; height: 18px; }
+
+      .logo-text-main { font-size: 1rem; }
+      .logo-text-sub { font-size: 0.6rem; }
+      .logo-shape { width: 28px; height: 28px; }
+
+      #slide-dropdown { min-width: 220px; right: -20px; }
+      #slide-dropdown .nav-item { font-size: 0.8rem; padding: 6px 16px; }
+      #slide-dropdown .nav-group-label { font-size: 0.6rem; padding: 8px 16px 3px; }
+    }
+
+    /* Responsive — Small Mobile */
+    @media (max-width: 480px) {
+      :root { --header-height: 60px; }
+
+      header { padding: var(--space-2) var(--space-3); }
+
+      section, .hero, footer {
+        padding: clamp(0.75rem, 2vh, 1.2rem) var(--space-2) var(--space-2);
+      }
+
+      .hero-title { font-size: 1.6rem; }
+      h2 { font-size: 1rem; }
+
+      .grid-2, .grid-3 { gap: var(--space-3); }
+      .stat-card { padding: var(--space-2); }
+      .stat-value { font-size: 1.1rem; }
+
+      .logo-text-sub { display: none; }
+
+      #slide-nav-wrapper { max-width: 50vw; }
+      #slide-title { font-size: 0.7rem !important; }
+
+      #slide-dropdown { min-width: 200px; max-height: 60vh; }
     }
 
     /* --- Auth Overlay Styles --- */
@@ -931,7 +1026,7 @@
     }
 
     /* Slide dropdown navigator */
-    #slide-nav-wrapper { position: relative; z-index: 100; }
+    #slide-nav-wrapper { position: relative; z-index: 200; pointer-events: auto; }
 
     #slide-dropdown {
       display: none;
@@ -1741,8 +1836,8 @@
           <div class="stat-label" style="color: #60A5FA;">Tier 1</div>
           <h3 style="font-size: 1.15rem; margin: var(--space-2) 0;">SecureWatch Essentials</h3>
           <p style="font-size: 0.9rem; color: var(--color-text-muted); margin-bottom: var(--space-3);">SME &amp; Mid-Market</p>
-          <div class="stat-value" style="font-size: 1.3rem;">$5,000<span style="font-size: 0.85rem; color: var(--color-text-muted);"> pilot</span></div>
-          <p style="font-size: 0.85rem; margin-top: var(--space-2);">$5,000&ndash;$1,000/mo subscription. 95% automated. Volume-based ARR. 24-hour turnaround.</p>
+          <div class="stat-value" style="font-size: 1.3rem;">R95k<span style="font-size: 0.85rem; color: var(--color-text-muted);"> pilot</span></div>
+          <p style="font-size: 0.85rem; margin-top: var(--space-2);">R9.5k&ndash;R19k/mo subscription. 95% automated. Volume-based ARR. 24-hour turnaround.</p>
           <div class="note" style="margin-top: var(--space-4); font-size: 0.85rem; border-left-color: #60A5FA;">
             <strong>ICP:</strong> Single ERP (Sage 200), &lt;500 suppliers, under R250M payables.
           </div>
@@ -1783,8 +1878,8 @@
         <div class="reveal delay-1">
           <h3 style="font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted); margin-bottom: var(--space-4);">Product Specification</h3>
           <ul class="minimal-list">
-            <li><strong style="color: var(--color-text);">Entry:</strong> $5,000 pilot &mdash; 12-month AP scan, up to 10,000 transactions. Frictionless loss-leader to prove value.</li>
-            <li><strong style="color: var(--color-text);">Subscription:</strong> $5,000&ndash;$1,000/mo (billed annually). Automated monthly anti-join reconciliation + standard dashboard.</li>
+            <li><strong style="color: var(--color-text);">Entry:</strong> R95k pilot &mdash; 12-month AP scan, up to 10,000 transactions. Frictionless loss-leader to prove value.</li>
+            <li><strong style="color: var(--color-text);">Subscription:</strong> R9.5k&ndash;R19k/mo (billed annually). Automated monthly anti-join reconciliation + standard dashboard.</li>
             <li><strong style="color: var(--color-text);">Delivery:</strong> 95% automated. Client uploads CSVs. Engine flags anomalies. Minimal human QA.</li>
             <li><strong style="color: var(--color-text);">Turnaround:</strong> 24 hours from data upload to findings report.</li>
           </ul>
@@ -1794,11 +1889,11 @@
           <h3 style="font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted); margin-bottom: var(--space-4);">Unit Economics &amp; GTM</h3>
           <div class="stat-card" style="border-left: 3px solid #60A5FA; margin-bottom: var(--space-4);">
             <div class="stat-label">Revenue Model</div>
-            <p style="font-size: 0.95rem; margin: 0;">Volume-based ARR. High automation = high margin at scale. Target: 50&ndash;100 SME accounts generating $300k&ndash;$1.2M ARR within 24 months.</p>
+            <p style="font-size: 0.95rem; margin: 0;">Volume-based ARR. High automation = high margin at scale. Target: 50&ndash;100 SME accounts generating R5.7M&ndash;R22.8M ARR within 24 months.</p>
           </div>
           <div class="stat-card" style="border-left: 3px solid #1C6E4A;">
             <div class="stat-label">Sales Channel</div>
-            <p style="font-size: 0.95rem; margin: 0;">Inbound LinkedIn + product-led growth (PLG). Self-serve onboarding portal (roadmap Q3 2026). Fully automated data validation pipeline to keep the $5,000 pilot profitable.</p>
+            <p style="font-size: 0.95rem; margin: 0;">Inbound LinkedIn + product-led growth (PLG). Self-serve onboarding portal (roadmap Q3 2026). Fully automated data validation pipeline to keep the R95k pilot profitable.</p>
           </div>
         </div>
       </div>
@@ -1815,7 +1910,7 @@
         <div class="reveal delay-1">
           <h3 style="font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted); margin-bottom: var(--space-4);">Product Specification</h3>
           <ul class="minimal-list">
-            <li><strong style="color: var(--color-text);">Pilot:</strong> R25k&ndash;R50k ($1,300&ndash;$2,600+). Forensic analyst review required &mdash; $5,000 unviable at this complexity (Technomobile lesson).</li>
+            <li><strong style="color: var(--color-text);">Pilot:</strong> R25k&ndash;R50k Forensic analyst review required &mdash; R95k Essentials pilot unviable at this complexity (Technomobile lesson).</li>
             <li><strong style="color: var(--color-text);">License:</strong> R200k&ndash;R350k/year. Continuous quarterly/monthly monitoring, multi-tenant dashboards, analyst-reviewed reports.</li>
             <li><strong style="color: var(--color-text);">Delivery:</strong> 80% automated engine + 20% analyst QA. Dual-ledger false positive filtering. Complex accounting structure mapping.</li>
             <li><strong style="color: var(--color-text);">Integrations:</strong> API connections (audit.ai roadmap), exportable analyst audit trail for board/audit committee evidence.</li>
@@ -1880,14 +1975,14 @@
           <h3 style="font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted); margin-bottom: var(--space-4);">The Pricing Resolution</h3>
           <div class="stat-card" style="border-left: 3px solid #D94028; margin-bottom: var(--space-4);">
             <div class="stat-label" style="color: #D94028;">The Friction</div>
-            <p style="font-size: 0.95rem; margin: 0;">The $5,000 pilot drives massive top-of-funnel &mdash; but on a messy enterprise ERP it will bankrupt delivery. <strong style="color: var(--color-text);">Resolution:</strong> $5,000 is strictly gated to Essentials tier. Max 1 ERP, &le;500 suppliers. MultiChoice or Absa asking for $5,000? Immediately disqualified &mdash; redirected to Enterprise scoping track.</p>
+            <p style="font-size: 0.95rem; margin: 0;">The R95k pilot drives massive top-of-funnel &mdash; but on a messy enterprise ERP it will bankrupt delivery. <strong style="color: var(--color-text);">Resolution:</strong> R95k is strictly gated to Essentials tier. Max 1 ERP, &le;500 suppliers. MultiChoice or Absa asking for R95k? Immediately disqualified &mdash; redirected to Enterprise scoping track.</p>
           </div>
           <div class="stat-card" style="border-left: 3px solid #1E40AF;">
             <div class="stat-label">GTM Focus Split</div>
             <ul class="timeline-list" style="margin-top: var(--space-2);">
               <li><strong style="color: var(--color-text);">Sean (founder-led):</strong> Enterprise License &rarr; push for R5M ARR</li>
               <li><strong style="color: var(--color-text);">FSG Forensics:</strong> Value-Share model &rarr; hunt in public sector</li>
-              <li><strong style="color: var(--color-text);">Inbound/PLG:</strong> Base SaaS ($5,000 pilot) &rarr; LinkedIn + automated growth post Q3 2026</li>
+              <li><strong style="color: var(--color-text);">Inbound/PLG:</strong> Base SaaS (R95k pilot) &rarr; LinkedIn + automated growth post Q3 2026</li>
             </ul>
           </div>
         </div>
@@ -1901,7 +1996,7 @@
                 <tr>
                   <td style="color: #60A5FA;">Essentials</td>
                   <td>No self-serve portal</td>
-                  <td>Automated CSV validation pipeline. $5,000 pilot must need &lt;1hr manual time.</td>
+                  <td>Automated CSV validation pipeline. R95k pilot must need &lt;1hr manual time.</td>
                 </tr>
                 <tr>
                   <td style="color: #D94028;">Enterprise</td>
